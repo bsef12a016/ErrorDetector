@@ -46,9 +46,4 @@ print_r($pass);
         $this->load->view('Dashboard/footer_dashboard');
     }
     
-    public function myProject() {
-//        $this->load->view('Dashboard/header_dashboard');
-//        $this->load->view('Dashboard/projects');
-//        $this->load->view('Dashboard/footer_dashboard');
-    }
 }
