@@ -66,9 +66,19 @@
     <script src="<?=base_url()?>public/dashboard_assets/js/pages/dashboard.js"></script>
     <!-- END PAGE SCRIPT -->
     <!-- BEGIN PAGE SCRIPTS -->
-    <!--<script src="<?=base_url()?>public/dashboard_assets/plugins/step-form-wizard/plugins/parsley/parsley.min.js"></script>  OPTIONAL, IF YOU NEED VALIDATION -->
-    <script src="<?=base_url()?>public/dashboard_assets/plugins/step-form-wizard/js/step-form-wizard.js"></script> <!-- Step Form Validation -->
-    <!--<script src="<?=base_url()?>public/dashboard_assets/js/pages/form_wizard.js"></script>-->
+    <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Form Validation -->
+    <!--<script src="<?=base_url()?>public/dashboard_assets/plugins/jquery-validation/additional-methods.min.js"></script>  Form Validation Additional Methods - OPTIONAL -->
     <!-- END PAGE SCRIPTS -->
+    <script>
+    $("#projName").on("keydown",function (e){
+        var val=$("#projName").val();
+        if(val!=""){
+            $("#create").prop('disabled',false);
+        }else{
+            $("#create").prop('disabled',true);
+        }
+    });
+    
+</script>
 </body>
 </html>

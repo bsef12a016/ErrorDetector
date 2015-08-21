@@ -19,15 +19,15 @@ class User extends CI_Controller{
         $result=  $this->login_model->get($uname,$pass);
         if($result){
             $this->session->set_userdata(['username'=>$uname]);
-//    $session=  $this->session->all_userdata();
-//    print_r($session["username"]);
-            redirect('Dashboard/userDashboard');
+            $this->session->set_userdata(['userID'=>$result[0]->id]);
+            $session=  $this->session->all_userdata();
+            print_r($session["userID"]);
+            redirect('Dashboard/projects');
             }
             else
                 {
                 $this->load->view('User/login');
-}
-    
+                }
     }
     
     public function user_signup(){        
@@ -52,23 +52,20 @@ class User extends CI_Controller{
         
         if($q){
             $s=$this->login_model->insert([
-            'u_id'=>$q, 'username'=>$uname, 'password'=>$pass]);            
+            'u_id'=>$q, 'username'=>$uname, 'password'=>$pass]);     
+            $this->session->set_userdata(['userID'=>$q]);
         }
         if($s)
         {
              $this->session->set_userdata(['username'=>$uname]);
-//    $session=  $this->session->all_userdata();
-//    print_r($session["username"]);
-            redirect('Dashboard/adProject');
+            //    $session=  $this->session->all_userdata();
+            //    print_r($session["username"]);
+            redirect('Dashboard/addProject');
         }
         else
         {
             $this->load->view('User/signup');            
         }
-
-        
-        
-    
     }
         
     public function signup() {

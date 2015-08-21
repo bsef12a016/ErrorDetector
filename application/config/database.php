@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'b1634403-b08f-46c9-b3b6-a4f90117bae6.mysql.sequelizer.com',
-	'username' => 'dggmgpadqqhlfsse',
-	'password' => 'f5nuGpnk4BWQdtKf8nApLYuzkdZanMso4Q8KoQC2bdJUVtesckB8rBFoHUiCwm7p',
-	'database' => 'dbb1634403b08f46c9b3b6a4f90117bae6',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '1234',
+	'database' => 'error_detector',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

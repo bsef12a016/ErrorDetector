@@ -67,7 +67,7 @@
                 </div>
                 <ul class="nav nav-sidebar">
                     <li class=" nav-active active">
-                        <a href="<?= site_url('Dashboard/userDashboard')?>"><i class="icon-home"></i><span data-translate="dashboard">Dashboard</span></a>
+                        <a href="<?= site_url('Dashboard/projects')?>"><i class="icon-home"></i><span data-translate="dashboard">Projects</span></a>
                     </li>
                     <li class="">
                         <a href="<?= site_url('Dashboard/settings')?>"><i class="icon-settings"></i><span data-translate="dashboard">Settings</span></a>
@@ -111,12 +111,12 @@
                                 <img src="<?=base_url()?>public/dashboard_assets/images/avatars/user1.png" alt="user image">
                                 <span class="username">Hi,
                                     <?php
-//                                    $session=  $this->session->all_userdata();
-//                                    if($session["username"])
-//                                        {
-//                                        print_r($session["username"]);    
-//                                        }
-                                        ?>
+                                    $session=  $this->session->all_userdata();
+                                    if($session["username"])
+                                    {
+                                        print_r($session["username"]);    
+                                    }
+                                    ?>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -130,7 +130,7 @@
                                     <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-logout"></i><span>Logout</span></a>
+                                    <a href="<?= site_url('/')?>"><i class="icon-logout"></i><span>Logout</span></a>
                                 </li>
                             </ul>
                         </li>

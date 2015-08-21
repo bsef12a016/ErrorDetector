@@ -9,9 +9,8 @@ class login_model extends CI_Model
 {
     public function get($uname=null,$password=null)
     {
-            $this->db->where(['username' => $uname, 'password'=>$password]);
-            $q=$this->db->get('login');            
-     
+        $this->db->where(['username' => $uname, 'password'=>$password]);
+        $q=$this->db->get('login');            
         return $q->result();
     }
         

@@ -14,9 +14,9 @@
         showNavNumbers: true,
         showButtons: true,
         showLegend: true,
-        nextBtn: $('<a class="next-btn sf-right sf-btn" href="#">NEXT</a>'),
+        nextBtn: $('<a class="next-btn sf-right sf-btn" href="#" disabled>NEXT</a>'),
         prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">PREV</a>'),
-        finishBtn: $('<input class="finish-btn sf-right sf-btn" type="submit" value="FINISH"/>'),
+        finishBtn: $('<input class="finish-btn sf-right sf-btn" type="submit" value="FINISH"  "/>'),
         onNext: function(i, wizard) {},
         onPrev: function(i, wizard) {},
         onFinish: function(i, wizard) {},
@@ -531,7 +531,7 @@
             .addClass('sf-btn-finish')
             .data('step', index - 1);
         this.btnFinish.appendTo($(this.controls));
-
+//        alert(jQuery('#myproject').val());
     }
 
     stepFormWizard.prototype.next = function() {

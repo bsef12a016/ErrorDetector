@@ -28,6 +28,12 @@
                         </div>
                         <div class="panel-content">
                             <table class="table table-hover">
+                                <?php
+                                $status = FALSE;
+                                foreach ($errors as $value) {
+                                    $status=TRUE;
+                                    break;
+                                ?>
                                 <thead>
                                     <tr>
                                         <th>
@@ -37,37 +43,46 @@
                                         <th>Last occurrences</th>
                                     </tr>
                                 </thead>
+                                
+                                <?php
+                                }
+                                ?>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="<?php echo site_url('Dashboard/error_details')?>">
-                                                <h3 style="margin-top:0px; margin-bottom:10px;"><strong>Reference Error</strong>/HtmlPage1.html</h3>
-                                                Uncaught ReferenceError: crash is not defined
-                                            </a>
-                                        </td>
-                                        <td>4</td>
-                                        <td>4 days ago</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="<?php echo site_url('Dashboard/error_details')?>">
-                                                <h3 style="margin-top:0px; margin-bottom:10px;"><strong>Reference Error</strong>/HtmlPage1.html</h3>
-                                                Uncaught ReferenceError: crash is not defined
-                                            </a>
-                                        </td>
-                                        <td>4</td>
-                                        <td>4 days ago</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="<?php echo site_url('Dashboard/error_details')?>">
-                                                <h3 style="margin-top:0px; margin-bottom:10px;"><strong>Reference Error</strong>/HtmlPage1.html</h3>
-                                                Uncaught ReferenceError: crash is not defined
-                                            </a>
-                                        </td>
-                                        <td>4</td>
-                                        <td>4 days ago</td>
-                                    </tr>
+                                    <?php
+                                    foreach ($errors as $value) {
+                                        echo '<tr>';
+                                        echo '<td>';
+                                        $link = '<a href="';
+                                        $href = 'Dashboard/error_details/';
+                                        $href .= $value->id;
+                                        $href .= '/';
+                                        $href .= $value->project_id;
+                                        $link .= site_url($href);
+                                        $link .= '">';
+                                        echo $link;
+                                        
+                                        $message  = $value->message;
+                                        $pieces = explode(":", $message);
+                                        $link_2 = '<h3 style="margin-top:0px; margin-bottom:10px;"><strong>';
+                                        $link_2 .=  $pieces[0];
+                                        $link_2 .='</strong>/';
+                                        $link_2 .= $value->fileUrl;
+                                        $link_2 .='</h3>';
+                                        echo $link_2;
+                                        echo $value->message;
+                                        echo '</a>';
+                                        echo '</td>';
+                                        echo '<td>-</td>';
+                                        $link_3 = '<td>';
+                                        $link_3 .= $value->lastOccurence;
+                                        $link_3 .= '</td>';
+                                        echo $link_3;
+                                        echo '</tr>';
+                                        }
+                                        if($status==FALSE){
+                                            echo '<p><h3 style="margin:0px;">No Errors existing currently</h3></p>';
+                                        }
+                                        ?>
                                 </tbody>
                             </table>
                         </div>
