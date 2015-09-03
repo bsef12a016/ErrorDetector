@@ -72,5 +72,10 @@ class Dashboard extends CI_Controller{
         }  else {
             $this->addProject();
         }
-        }
+    }
+    public function accountSettings() {
+        $this->load->view('Dashboard/header_dashboard');
+        $this->load->view('Dashboard/accountSettings');
+        $this->load->view('Dashboard/footer_dashboard');
+    }        
 }

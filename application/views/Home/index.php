@@ -13,8 +13,8 @@
                             <!--BEGIN: MAIN TITLE -->
                             <div class="caption customin customout tp-resizeme" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-speed="500" data-start="1000" data-customin="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600">
                                 <h3 class="c-font-60 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
-                                    MEET JANGO<br>
-                                    The Theme of 2015
+                                    Find JavaScript Errors<br>
+                                    You aren't even aware of
                                 </h3>
                             </div>
                             <!--END -->
@@ -27,11 +27,11 @@
                                 <div class="c-action-bar">
                                     <div class="container">
                                         <div class="c-content">
-                                            <h3 class="c-font-30 c-font-sbold c-font-white">
-                                                Purchase JANGO Today & Get Unlimited Amazing Features
+                                            <h3 class="c-font-20 c-font-sbold c-font-white">
+                                                Real User Monitoring (RUM) and<br> JavaScript Error Tracking for Modern Web.
                                             </h3>
-                                            <p class="c-font-20 c-font-thin">
-                                                Constant updates, ultra responsive, dedicated support. JANGO has it all.
+                                            <p class="c-font-16 c-font-thin">
+                                               In-depth performance and error analysis. 
                                             </p>
                                         </div>
                                         <div class="c-btn-container">
@@ -49,14 +49,14 @@
                             <!--BEGIN: MAIN TITLE -->
                             <div class="caption customin customout tp-resizeme" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-speed="500" data-start="1000" data-customin="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600">
                                 <h3 class="c-font-60 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
-                                    Incredibly flexible<br>
-                                    Clean codes
+                                    Detect and diagnose<br>
+                                    crashes in your applications
                                 </h3>
                             </div>
                             <!--END -->
                             <!--BEGIN: ACTION BUTTON -->
                             <div class="caption randomrotateout tp-resizeme" data-x="center" data-y="center" data-hoffset="" data-voffset="200" data-speed="300" data-start="1800" data-easing="Back.easeOut">
-                                <a href="#" class="btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">Purchase</a>
+                                <a href="#" class="btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">start your free trial</a>
                             </div>
                             <!--END -->
                         </li>
@@ -149,7 +149,7 @@
                             </div>
                             <h3 class="c-font-uppercase c-font-bold">Full-stack crash detection</h3>
                             <p class="c-font-thin">
-                                Beautiful cinematic designs optimized for all screen sizes and types. Compatible with Retina high pixel density displays.
+                                Add a line of code to your web framework, mobile app or JavaScript to start capturing crashes in real-timecard
                             </p>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                             </div>
                             <h3 class="c-font-uppercase c-font-bold">Alerts & Workflow Integration</h3>
                             <p class="c-font-thin">
-                                Featuring trending modern web standards.<br />Clean and easy framework design for worry and hassle free customizations.
+                                Email notifications that keep you in the know, wherever you are
                             </p>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                             </div>
                             <h3 class="c-font-uppercase c-font-bold">Advanced crash diagnostic</h3>
                             <p class="c-font-thin">
-                                Quick response with regular updates.<br />Each update will include great new features and enhancements for free.
+                                Get to the root cause of crashes faster with detailed stacktraces, device and request information, and more
                             </p>
                         </div>
                     </div>
@@ -189,27 +189,27 @@
                             </div>
                             <h3 class="c-font-uppercase c-font-bold">Minute integration</h3>
                             <p class="c-font-thin">
-                                Beautiful cinematic designs optimized for all screen sizes and types. Compatible with Retina high pixel density displays.
+                                It's easy! Copy and paste a small JavaScript snippet to your markup and you're done! 
                             </p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="c-content-feature-1">
-                            <div class="c-content-line-icon c-theme c-icon-35">
+                            <div class="c-content-line-icon c-theme c-icon-25">
                             </div>
-                            <h3 class="c-font-uppercase c-font-bold">Alerts & Workflow Integration</h3>
+                            <h3 class="c-font-uppercase c-font-bold">High performance</h3>
                             <p class="c-font-thin">
-                                Featuring trending modern web standards.<br />Clean and easy framework design for worry and hassle free customizations.
+                                Errorception causes no load-time performance hit. Your site operates at top speed.
                             </p>
                         </div>
                     </div>
                     <div class="col-sm-4 c-card">
                         <div class="c-content-feature-1">
-                            <div class="c-content-line-icon c-theme c-icon-42">
+                            <div class="c-content-line-icon c-theme c-icon-globe">
                             </div>
-                            <h3 class="c-font-uppercase c-font-bold">Advanced crash diagnostic</h3>
+                            <h3 class="c-font-uppercase c-font-bold">Smart grouping</h3>
                             <p class="c-font-thin">
-                                Quick response with regular updates.<br />Each update will include great new features and enhancements for free.
+                                Errorception groups errors together, so you don't sift through raw logs. 
                             </p>
                         </div>
                     </div>

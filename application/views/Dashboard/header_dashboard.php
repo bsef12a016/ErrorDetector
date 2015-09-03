@@ -60,14 +60,20 @@
                     <div class="userlogged clearfix">
                         <i class="icon icons-faces-users-01"></i>
                         <div class="user-details">
-                            <h4>Mike Mayers</h4>
+                            <h4><?php
+                                    $session=  $this->session->all_userdata();
+                                    if($session["username"])
+                                    {
+                                        print_r($session["username"]);    
+                                    }
+                                    ?></h4>
 
                         </div>
                     </div>
                 </div>
                 <ul class="nav nav-sidebar">
                     <li class=" nav-active active">
-                        <a href="<?= site_url('Dashboard/projects')?>"><i class="icon-home"></i><span data-translate="dashboard">Projects</span></a>
+                        <a href="<?= site_url('Dashboard/projects')?>"><i class="fa fa-laptop"></i><span data-translate="dashboard">Projects</span></a>
                     </li>
                     <li class="">
                         <a href="<?= site_url('Dashboard/settings')?>"><i class="icon-settings"></i><span data-translate="dashboard">Settings</span></a>
@@ -108,7 +114,7 @@
                         <!-- BEGIN USER DROPDOWN -->
                         <li class="dropdown" id="user-header">
                             <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img src="<?=base_url()?>public/dashboard_assets/images/avatars/user1.png" alt="user image">
+<!--                                <img src="<?=base_url()?>public/dashboard_assets/images/avatars/user1.png" alt="user image">-->
                                 <span class="username">Hi,
                                     <?php
                                     $session=  $this->session->all_userdata();
