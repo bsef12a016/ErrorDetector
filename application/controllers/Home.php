@@ -7,10 +7,10 @@
  */
 
 class Home extends CI_Controller{
-    
-    
     public function index() {
         session_destroy();
+        $this->load->library('session');
+        $this->session->set_userdata('login_status','');
         $this->load->view('Home/header');
         $this->load->view('Home/index');
         $this->load->view('Home/footer');
@@ -47,6 +47,28 @@ class Home extends CI_Controller{
         $this->load->view('Home/footer');   
     }
 
+    public function sendMail() {
+        $name=  $this->input->post('name');
+        $telNumber=  $this->input->post('phoneNum');
+        $emailFrom=  $this->input->post('email');
+        $message=  $this->input->post('message');
+        $subject = "Message"; 
+        
+        $this->load->library('email');
+        
+        $this->email->from($emailFrom , 'Nabeel');
+        $this->email->to('nabeel.akhtar1993@gmail.com');
+        
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');
+        
+        if($this->email->send())        
+        {
+            
+            echo 'Worked';
+        }
+    }
+       
     public function tes()
     {
 //       $this->load->database();

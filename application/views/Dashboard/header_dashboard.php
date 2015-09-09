@@ -1,3 +1,7 @@
+<?php
+ $session=  $this->session->all_userdata();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,15 +79,51 @@
                     <li class=" nav-active active">
                         <a href="<?= site_url('Dashboard/projects')?>"><i class="fa fa-laptop"></i><span data-translate="dashboard">Projects</span></a>
                     </li>
+                    <?php
+                    if($session["project_status"]==1){
+                        $href = 'Dashboard/settings/';
+                        $href .= $session["userID"];
+                        $href .= '/';
+                        $href .= $session["project_ID"];
+                        
+                        $href_graph = 'Dashboard/projectGraph/';
+			$href_graph .= $session["userID"];
+
+                        
+                    ?>
                     <li class="">
-                        <a href="<?= site_url('Dashboard/settings')?>"><i class="icon-settings"></i><span data-translate="dashboard">Settings</span></a>
+                        <a href="<?= site_url($href_graph)?>"><i class="icon-bar-chart"></i><span data-translate="dashboard">Graph</span></a>
                     </li>
                     <li class="">
-                        <a href="<?= site_url('/')?>"><i class="icon-docs"></i><span data-translate="dashboard">Docs</span></a>
+                        <a href="<?= site_url($href)?>"><i class="icon-settings"></i><span data-translate="dashboard">Settings</span></a>
                     </li>
+                    <?php
+                    }
+                    ?>
+                    
                     <li class="">
-                        <a href="<?= site_url('Home/tour')?>"><i class="icon-home"></i><span data-translate="dashboard">Any Other</span></a>
+                        <a href="<?= site_url('Home/docs')?>"><i class="icon-docs"></i><span data-translate="dashboard">Docs</span></a>
                     </li>
+                    
+                    <li class="">
+                        <a href=""><i class="fa fa-table"></i><span data-translate="medias manager">Tabular View</span></a>
+                    </li>
+                    
+                    <li class="nav-parent">
+                        <a href=""><i class="icon-basket"></i><span data-translate="pages">eCommerce </span><span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="ecommerce-cart.html"> Shopping Cart</a></li>
+                            <li><a href="ecommerce-invoice.html"> Invoice</a></li>
+                            <li><a href="ecommerce-pricing-table.html"><span class="pull-right badge badge-success">5</span> Pricing Table</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="">
+                        <a href=""><i class="icon-docs"></i><span data-translate="pages">Contact Us</span></a>
+                    </li>
+                    
+                    
+                    
                 </ul>
                 <!-- SIDEBAR WIDGET FOLDERS -->
                 <div class="sidebar-footer clearfix">
@@ -107,6 +147,18 @@
                 <div class="header-left">
                     <div class="topnav">
                         <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+                        <?php
+                            if($session["project_status"]==1){
+                                $href_graph = 'Dashboard/projectGraph/';
+				$href_graph .= $session["userID"];
+
+                        ?>
+                            <ul class="nav nav-icons">
+                                <li><a href="<?= site_url($href_graph) ?>" class=""><span class="icon-bar-chart"></span></a></li>
+                            </ul>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="header-right">
@@ -133,7 +185,7 @@
                                     <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
+                                    <a href="<?= site_url('Dashboard/accountSettings')?>"><i class="icon-settings"></i><span>Account Settings</span></a>
                                 </li>
                                 <li>
                                     <a href="<?= site_url('/')?>"><i class="icon-logout"></i><span>Logout</span></a>

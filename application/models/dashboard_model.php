@@ -24,51 +24,73 @@ class dashboard_model extends CI_Model{
     }
     public function get_projects(){
         $session=  $this->session->all_userdata();
-        $id=$session['userID'];
+        $id = $session['userID'];
         $this->db->where(['u_id' => $id]);
         $q=$this->db->get('project');            
         return $q->result();
     }    
-    
-    public function get_errors($proj_id=NULL)
-    {
-        if($proj_id==null)
+    public function updateapikey($u_id, $apikey, $projectID){
+        if($this->projectExistenceCheck($u_id, $projectID)){
+            $this->db->where(['id'=>$projectID]);
+            $this->db->update('project',$apikey);
+            return $this->db->affected_rows();
+        }else{
+            return NULL;    
+        }
+    }
+    public function get_projectsID($u_id, $projectID){
+        $session = $this->session->all_userdata();
+        $this->db->where(['id' => $projectID, 'u_id' => $u_id]);
+        $q = $this->db->get('project');            
+        if($q){
+            return $q->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_errors($u_id = NULL, $proj_id = NULL){
+        if($proj_id == NULL && $u_id == NULL)
         {
-            $q=$this->db->get('user');            
+            return "empty";
         }
         else {
-            $this->db->where(['project_id' => $proj_id]);
-            $q=$this->db->get('error_metadata');            
+            if($this->projectExistenceCheck($u_id, $proj_id)){
+                $this->db->where(['project_id' => $proj_id]);
+                $q=$this->db->get('error_metadata');            
+                return $q->result();
+            }  else {
+                return "empty";                
+            }
         }
-        return $q->result();
     }    
-    
-    public function get_error_details($id=null,$proj_id=NULL)
-    {
-        $this->db->where(['project_id' => $proj_id]);
-        $this->db->where(['id' => $id]);
-        $q=$this->db->get('error_metadata');            
-        return $q->result();
-    }    
-    
-    
-    
-    
-    public function insert($d)
-    {
-        $this->db->insert('user', $d);
-        return $this->db->insert_id();
+    public function get_error_details($u_id, $id = null,$proj_id = NULL){
+        if($this->projectExistenceCheck($u_id, $proj_id)){
+            $this->db->where(['project_id' => $proj_id]);
+            $this->db->where(['id' => $id]);
+            $q=$this->db->get('error_metadata');            
+            return $q->result();
+            }    
+            else{
+                return NULL;
+                }
     }
-    public function update($d,$u_id)
-    {
-        $this->db->where(['id'=>$u_id]);
-        $this->db->update('user',$d);
-        return $this->db->affected_rows();
+    public function projectExistenceCheck($u_id, $projectID) {
+        $this->db->where(['u_id' => $u_id]);
+        $this->db->where(['id' => $projectID]);
+        $result = $this->db->get('project');
+        if($result){
+            return TRUE;
+        }
+        return FALSE;
     }
-    public function delete($u_id)
-    {
-        $this->db->where(['id'=>$u_id]);
-        $this->db->delete('user');
-        return $this->db->affected_rows();        
+    public function deleteproject($u_id, $projectID){
+        $session = $this->session->all_userdata();
+        $this->db->where(['id' => $projectID, 'u_id' => $u_id]);
+        $result = $this->db->get('project');            
+        if($result){
+            $this->db->where(['id'=>$projectID]);
+            $this->db->delete('project');
+            return $this->db->affected_rows();        
+        }
     }
 }

@@ -1,61 +1,26 @@
 <!-- BEGIN PAGE CONTENT -->
    <?php
    $session=  $this->session->all_userdata();
-   $apiKey = NULL;
-   $projectID = NULL;
-   foreach ($projects as $value) {
-       $href_delete = 'Dashboard/deleteproj1/';
-       $href_delete .= $value->id;
-//       $this->session->set_userdata(['projid'=>$value->id]);
-//       $this->session->set_userdata(['apikey'=>$value->apikey]);
-       $apiKey = $value->apikey;
-       $projectID = $value->id;
-       $u_id = $value->u_id;
-       $href_regenerate = 'Dashboard/regeneratekey/';
-       $href_regenerate .= $value->id;
-       }
    ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
-    function regenerateApi() {
-        a=confirm("This will regenerate your API key, nd invalidate the existing key. Are you sure you want to do this?project.")
+    function f2() {
+        a=confirm("do you realy want to regenerate??")
         if(a) 
         {
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "Dashboard/regenerateApiKey/" + "<?= $u_id ?>" + "/" + "<?= $projectID ?>" + "/" + "<?= $apiKey ?>",
+                url: "<?php echo base_url(); ?>" + "Dashboard/re/",
                 dataType: 'json',
                 success: function(res) {
-                    if(res == "Key Is not Regenerated. Try again later."){
-                        alert(res);
-                    }else{   
                     jQuery("input#api").val(res);
                     jQuery("div#test2").show();
                     jQuery("div#value2").html(" Include new generated api key in your project \n\
                                    otherwise you will not get the errors.");
-                    }
-                },
-                error:function(){
-                    alert("ERROR");
                 }
             });
         }
     }
-    function deleteproject() {
-        if(confirm("Do you realy want to delete Project??"))
-        {
-            jQuery.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>" + "Dashboard/deleteProject/" + "<?= $u_id ?>" + "/" + "<?= $projectID ?>",
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        window.location.replace("Dashboard/projects");
-                    }
-                }   
-            });
-        }     
-    } 
 </script> 
 <div class="page-content page-thin">
     <div class="row">
@@ -68,24 +33,48 @@
                 <div class="panel-content">
                     <div class="tab_left">
                         <ul class="nav nav-tabs nav-red">
-                            <li class="active" ><a aria-expanded="false" href="#tab3_1" data-toggle="tab"><i class="icon-home"></i> General</a></li>
-                            <li><a aria-expanded="false" href="#tab3_2" data-toggle="tab"><i class="icon-user"></i> Api key</a></li>
-<!--                            <li ><a aria-expanded="false" href="#tab3_4" data-toggle="tab"><i class="icon-cloud-download"></i> Email notification</a></li>-->
+                            <li><a aria-expanded="false" href="#tab3_1" data-toggle="tab"><i class="icon-home"></i> General</a></li>
+                            <li class="active" ><a aria-expanded="false" href="#tab3_2" data-toggle="tab"><i class="icon-user"></i> Api key</a></li>
+                            <li ><a aria-expanded="true" href="#tab3_3" data-toggle="tab"><i class="icon-cloud-download"></i> integerations</a></li>
+                            <li ><a aria-expanded="false" href="#tab3_4" data-toggle="tab"><i class="icon-cloud-download"></i> Email notification</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade  active in" id="tab3_1">
-                                <h2>Delete project</h2>
-                                <p>Project Name: <b><?php echo $value->name;  ?></b></p>
-                                <p>Once you delete this project, there is no going back.</p>
-                                <input class="btn btn-embossed btn-primary m-t-20" id="submit" type="button" value="Delete Project" onclick="deleteproject()">
+                            <div class="tab-pane fade" id="tab3_1">
+                                            <?php
+                                                foreach ($projects as $value) {
+                                                   $href = 'Dashboard/deleteproj1/';
+                                                   $href .= $value->id;
+                                                    $this->session->set_userdata(['projid'=>$value->id]);
+                                                    $this->session->set_userdata(['apikey'=>$value->apikey]);
+                                                     $session=  $this->session->all_userdata();
+                                                   $href1 = 'Dashboard/regeneratekey/';
+                                                   $href1 .= $value->id;
+                                               ?>
+                                              <?php
+                                            }
+                                            ?>
+                                <form id="s"  role="form" method="post" action="<?=site_url($href)?>">
+                                    <h1>Delete project</h1>
+                                    <p>project name is: <b><?php echo $value->name;  ?></b></p>
+                                    <p>Once you delete this project, there is no going back.</p>
+                                    <input class="btn btn-embossed btn-primary m-t-20" id="submit" type="submit" value="delete project" >
+                                </form>
                             </div>
-                            <div class="tab-pane fade" id="tab3_2" >
-                                <p>Your Project's API key, used when configuring notifier libaries</p>
-                                <input  name="api" class="form-control" id="api" type="text" value="<?= $apiKey ?>" size="40"  >
-                                <input class="btn btn-embossed btn-primary m-t-20" id="re" type="button" value="Regenerate key"  onclick="regenerateApi()">
+                            <div class="tab-pane fade active in" id="tab3_2" >
+                                <INPUT  name="api" id="api" TYPE = "Text" VALUE = " <?php echo $session['apikey'];  ?>" size="40"  >
+                                <input class="btn btn-embossed btn-primary m-t-20" id="re" type="button" value="Regenerate key"  onclick="f2()">
                                 <div id='test2' style='display: none'>
                                     <div id='value2'> </div>
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab3_3">
+                                <p style="font-size:15px;" class="panel-title">Detection libraries enable us to capture data on errors in your application.
+                                    No matter which framework you use, our library is lightweight,
+                                    won't affect performance, and are easy to install.
+                                    Installing the JS detection library.</strong></p>
+                                <span class="">src</span><span class="">=</span><span class="">"</span><span class="">Link of our JS Detection Library</span><span class="">"</span>
+                                <span class="">data-apikey</span><span class="">=</span><span class="">"</span><span class=""><?php echo $value->apikey;  ?></span><span class="">"</span><span class="">></span>
+                                    
                             </div>
                             <div class="tab-pane fade " id="tab3_4" >
                                 <h1><strong>Email Notifications</strong></h1>

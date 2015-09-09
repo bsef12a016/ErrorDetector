@@ -74,12 +74,12 @@
                         <div class="col-md-7">
                             <div class="c-content-feature-5">
                                 <div class="c-content-title-1">
-                                    <h3 class="c-left c-font-dark c-font-uppercase c-font-bold">Why<br />JANGO ?</h3>
+                                    <h3 class="c-left c-font-dark c-font-uppercase c-font-bold">Why<br />jErrors ?</h3>
                                     <div class="c-line-left c-bg-blue-3 c-theme-bg">
                                     </div>
                                 </div>
                                 <div class="c-text">
-                                    JANGO is the ultimate tool to power any of your projects. Corporate, ecommerce, SAAS, CRM and much more.
+                                    jErrors is the ultimate tool to power any of your projects. Corporate, ecommerce, SAAS, CRM and much more.
                                 </div>
                                 <button type="submit" class="btn c-btn-uppercase btn-md c-btn-bold c-btn-square c-theme-btn">Explore</button>
                                 <img class="c-photo img-responsive" width="420" alt="" src="<?=base_url()?>public/assets/base/img/content/misc/jango-intro-2.jpg" />

@@ -16,7 +16,7 @@
         <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
 
 
-        <div class="c-content-box c-size-md c-no-bottom-padding c-overflow-hide">
+<!--        <div class="c-content-box c-size-md c-no-bottom-padding c-overflow-hide">
             <div class="c-container">
                 <div class="row">
                     <div class="col-md-12">
@@ -146,12 +146,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-4-3 -->
         <!-- BEGIN: FEATURES 4.3 -->
-        <div class="c-content-box c-size-md c-no-padding c-bg-white">
+<!--        <div class="c-content-box c-size-md c-no-padding c-bg-white">
             <div class="c-content-feature-4">
                 <div class="c-bg-parallax c-feature-bg c-content-right c-diagonal c-border-left-white" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-40.jpg)">
                 </div>
@@ -183,12 +183,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- END: FEATURES 4.3 -->
         <!-- END: CONTENT/FEATURES/FEATURES-4-3 -->
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-4-4 -->
         <!-- BEGIN: FEATURES 4.4 -->
-        <div class="c-content-box c-size-md c-no-padding c-bg-dark-2">
+<!--        <div class="c-content-box c-size-md c-no-padding c-bg-dark-2">
             <div class="c-content-feature-4">
                 <div class="c-bg-parallax c-feature-bg c-content-left c-diagonal c-border-right-dark-2" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-54.jpg)">
                 </div>
@@ -220,14 +220,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- END: FEATURES 4.4 -->
         <!-- END: CONTENT/FEATURES/FEATURES-4-4 -->
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-4-5 -->
         <!-- BEGIN: FEATURES 4.5 -->
-        <div class="c-content-box c-size-md c-no-padding c-bg-white">
+<!--        <div class="c-content-box c-size-md c-no-padding c-bg-white">
             <div class="c-content-feature-4">
-                <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-43.jpg)">
+                <div class="c-bg-parallax c-feature-bg c-content-right c-arrow c-border-left-white" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-63.jpg)">
                 </div>
                 <div class="c-content-area c-content-left">
                 </div>
@@ -257,7 +257,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- END: FEATURES 4.5 -->
         <!-- END: CONTENT/FEATURES/FEATURES-4-5 -->
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-4-6 -->
@@ -295,13 +295,48 @@
                 </div>
             </div>
         </div>
+        
+        
+         <div class="c-content-box c-size-md c-no-padding c-bg-dark">
+            <div class="c-content-feature-4">
+                <div class="c-bg-parallax c-feature-bg c-content-left c-arrow c-border-right-dark" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-64.jpg)">
+                </div>
+                <div class="c-content-area c-content-right">
+                </div>
+                <div class="container">
+                    <div class="c-feature-content c-right">
+                        <div class="c-content-v-center">
+                            <div class="c-wrapper">
+                                <div class="c-body">
+                                    <div class="c-content-title-1">
+                                        <h3 class="c-font-uppercase c-font-bold c-right c-font-white">Unique Design</h3>
+                                        <div class="c-line-right">
+                                        </div>
+                                        <p class="c-right">
+                                            JANGO has it all
+                                        </p>
+                                    </div>
+                                    <div class="c-content">
+                                        <p class="c-margin-b-30 c-right">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy tincidunt ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud.
+                                        </p>
+                                        <button class="btn btn-lg c-btn-green c-btn-border-2x c-btn-square c-btn-bold">EXPLORE</button>
+                                        <button class="btn btn-lg c-btn-green c-btn-square c-btn-bold">PURCHASE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- END: FEATURES 4.6 -->
         <!-- END: CONTENT/FEATURES/FEATURES-4-6 -->
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-4-1 -->
         <!-- BEGIN: FEATURES 4.1 -->
-        <div class="c-content-box c-size-md c-no-padding c-bg-white">
+<!--        <div class="c-content-box c-size-md c-no-padding c-bg-white">
             <div class="c-content-feature-4">
-                <div class="c-bg-parallax c-feature-bg c-content-right c-semi-circle" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-20.jpg)">
+                <div class="c-bg-parallax c-feature-bg c-content-right c-semi-circle" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-63.jpg)">
                 </div>
                 <div class="c-content-area c-content-left">
                 </div>
@@ -331,12 +366,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- END: FEATURES 4.1 -->
         <!-- END: CONTENT/FEATURES/FEATURES-4-1 -->
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-4-2 -->
         <!-- BEGIN: FEATURES 4.2 -->
-        <div class="c-content-box c-size-md c-no-padding c-bg-white">
+<!--        <div class="c-content-box c-size-md c-no-padding c-bg-white">
             <div class="c-content-feature-4">
                 <div class="c-bg-parallax c-feature-bg c-content-left c-semi-circle" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-21.jpg)">
                 </div>
@@ -368,7 +403,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- END: FEATURES 4.2 -->
         <!-- END: CONTENT/FEATURES/FEATURES-4-2 -->
         <!-- END: PAGE CONTENT -->

@@ -21,11 +21,19 @@
             <div class="container">
                 <div class="c-content-pricing-1 c-option-2">
                     <div class="c-content-title-1">
-                        <h3 class="c-center c-font-uppercase c-font-bold">Purchase a Package</h3>
+                        <h3 class="c-center c-font-uppercase c-font-bold">Currently in Beta version</h3>
                         <div class="c-line-center">
                         </div>
                     </div>
-                    <div class="c-tile-container">
+                    <div class="c-content-title-1 m-t-100">
+                        <h3 class="c-center c-font-uppercase c-font-bold">Launching Soon</h3>
+                        <div class="c-line-center">
+                        </div>
+                    </div>
+                    <p class="p-b-140">
+                        
+                    </p>
+<!--                    <div class="c-tile-container">
                         <div class="c-tile c-tile-small c-bordered c-theme-border">
                             <div class="c-label c-theme-bg">
                                 Standard
@@ -89,7 +97,7 @@
                             </p>
                             <button type="button" class="btn btn-md c-btn-square c-btn-border-2x c-btn-dark c-btn-uppercase c-btn-bold">Purchase</button>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 <?php
+$session=  $this->session->all_userdata();
 $status = FALSE;
 ?>
             <!-- BEGIN PAGE CONTENT -->
@@ -56,6 +57,8 @@ $status = FALSE;
                                         echo '<td>';
                                         $link = '<a href="';
                                         $href = 'Dashboard/error_details/';
+                                        $href .= $session["userID"];
+                                        $href .= '/';
                                         $href .= $value->id;
                                         $href .= '/';
                                         $href .= $value->project_id;

@@ -1,7 +1,11 @@
+<?php
+ $session=  $this->session->all_userdata();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>JANGO - Posted by Dospel & GanjaParker -  - Home Version 5</title>
+    <title>jErrors - JavaScript Error Tracking for Modern Web</title>
+    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -57,9 +61,9 @@
                             <li class="c-active c-menu-type-classic">
                                 <a href="<?php echo site_url('Home/index')?>" class="c-link dropdown-toggle">Home</a>
                             </li>
-                            <li class="c-menu-type-classic">
+<!--                            <li class="c-menu-type-classic">
                                 <a href="<?php echo site_url('Home/features')?>" class="c-link dropdown-toggle">Features</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="<?php echo site_url('Home/tour')?>" class="c-link dropdown-toggle">Tour</a>
                             </li>
@@ -70,7 +74,21 @@
                                 <a href="<?php echo site_url('Home/docs')?>" class="c-link dropdown-toggle">Docs</a>
                             </li>
                             <li>
+                                <?php
+                                if($session["login_status"]=="login"){
+                                    $href_dashboard = 'Dashboard/projects/';
+                                    $href_dashboard .= $session["userID"];
+                                    
+                                    ?>
+                                <a href="<?= site_url($href_dashboard)?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>Dashboard</a>
+                                <?php
+                                
+                                }else{
+                                ?>
                                 <a href="<?php echo site_url('User/login')?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i> Sign In</a>
+                                <?php
+                                }
+                                ?>
                             </li>
                         </ul>
                         <!-- END MEGA MENU -->

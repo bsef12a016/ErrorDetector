@@ -6,7 +6,9 @@
                     <div class="col-md-6">
                         <div class="c-container c-first">
                             <div class="c-content-title-1">
-                                <h3 class="c-font-uppercase c-font-bold c-font-white">JAN<span class="c-theme-font">GO</span></h3>
+<!--                                <h3 class="c-font-uppercase c-font-bold c-font-white">jErrors<span class="c-theme-font"></span></h3>-->
+                                                            <img src="<?=base_url()?>public/assets/base/img/layout/logos/logo-1.png" alt="JANGO" class="c-desktop-logo">
+
                                 <div class="c-line-left hide">
                                 </div>
                                 <p class="c-text">
@@ -24,7 +26,7 @@
                                     <a href="#">Terms</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <a href="<?php echo site_url('Home/contact')?>">Contact</a>
                                 </li>
                             </ul>
                         </div>
