@@ -7,6 +7,11 @@
  */
 
 class Home extends CI_Controller{
+    
+    public function __construct() {
+        parent::__construct();
+         $this->load->model('home_model');
+    }
     public function index() {
         session_destroy();
         $this->load->library('session');
@@ -46,37 +51,35 @@ class Home extends CI_Controller{
         $this->load->view('Home/contact');
         $this->load->view('Home/footer');   
     }
-
+    public function contactSuccess() {
+        $this->load->view('Home/header');
+        $this->load->view('Home/contactSuccess');
+        $this->load->view('Home/footer'); 
+    }
     public function sendMail() {
-        $name=  $this->input->post('name');
-        $telNumber=  $this->input->post('phoneNum');
-        $emailFrom=  $this->input->post('email');
-        $message=  $this->input->post('message');
-        $subject = "Message"; 
+        $name = $this->input->post("name");
+        $subject = $this->input->post('subject');
+        $emailFrom = $this->input->post('email');
+        $message = $this->input->post('message');
+        $date = date("Y-m-d h:i:sa");
         
-        $this->load->library('email');
+//        $result = $this->dashboard_model->updateapikey($u_id ,['apikey'=>$val], $projectID);
+//        $q=$this->dashboard_model->insert_project([
+//                    'name'=>$pass,
+//                    'u_id'=>$session["userID"], 
+//                    'apikey'=>$val,
+//                    'creation_date'=>  date("Y/m/d") 
+//                    ]);
         
-        $this->email->from($emailFrom , 'Nabeel');
-        $this->email->to('nabeel.akhtar1993@gmail.com');
         
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');
-        
-        if($this->email->send())        
-        {
-            
-            echo 'Worked';
-        }
+        $result = $this->home_model->insertVisitorMail([
+                    'Name' => $name,
+                    'Subject' => $subject,
+                    'from' => $emailFrom,
+                    'date' => $date,
+                    'message' => $message
+                ]);
+        redirect('Home/contactSuccess');       
+
     }
-       
-    public function tes()
-    {
-//       $this->load->database();
-//        $g=$this->db->get('user');
-//        print_r($g->result());
-//        
-//        $q=$this->db->delete('user', ['first_name'=>'khizra']);
-//        print_r($q);
-    }
-    
 }

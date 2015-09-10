@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class dashboard_model extends CI_Model{
+class admin_dashboard_model extends CI_Model{
     
     public function insert_project($d)
     {
@@ -93,11 +93,4 @@ class dashboard_model extends CI_Model{
             return $this->db->affected_rows();        
         }
     }
-    
-    public function insertUserMail($data){
-        $this->db->insert('user_mails', $data);
-        return $this->db->insert_id();
-    }
-    
-    
 }

@@ -1,11 +1,11 @@
 <?php
-
+    
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+     
 class Dashboard extends CI_Controller{
     public function __construct() {
         parent::__construct();
@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller{
                 $data['error']=$this->dashboard_model->get_error_details($u_id, $id, $projID);
                 if($data['error']){
                                         $this->session->set_userdata("project_status", 1);
-
+                                            
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/error_details', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -69,7 +69,7 @@ class Dashboard extends CI_Controller{
                 $data['projects']=$this->dashboard_model->get_projectsID($u_id ,$projID);
                 if($data['projects'])
                 {                    $this->session->set_userdata("project_status", 1);
-
+                    
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/settings', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -85,7 +85,7 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-
+        
     public function logout(){
         
         redirect('Home/index');
@@ -136,7 +136,7 @@ class Dashboard extends CI_Controller{
                 $this->load->view('Dashboard/header_dashboard');
                 $this->load->view('Dashboard/projectIntegration');
                 $this->load->view('Dashboard/footer_dashboard');
-                
+                    
                 }  else {
                     $this->addProject();
                     }
@@ -220,31 +220,61 @@ class Dashboard extends CI_Controller{
             echo json_encode($val);
         }
     }
-    
+        
     public function contactus() {
         $this->load->view('Dashboard/header_dashboard');
         $this->load->view('Dashboard/contactus');
         $this->load->view('Dashboard/footer_dashboard');
     }
-    
+    public function contactusSuccess() {
+        $this->load->view('Dashboard/header_dashboard');
+        $this->load->view('Dashboard/contactusSuccess');
+        $this->load->view('Dashboard/footer_dashboard');
+    }
     public function tabularview() {
         $this->load->view('Dashboard/header_dashboard');
         $this->load->view('Dashboard/tabularview');
         $this->load->view('Dashboard/footer_dashboard');
     }
-    
-    public function uploadpic() {
-        $config['upload_path'] = "./images/";
-        $config['allowed_types'] = 'jpg|jpeg|gif|png';
-        $this->load->library('upload',$config);
         
-        if(!$this->upload->do_upload()){
-            echo $this->upload->display_errors();
-        }
-        else{
-            $file = $this->upload->data();
-            $data['img']=  base_url().'/images/'.$file['file_name'];
-            $this->load->view('sucess', $data);
-        }
+    public function uploadpic() {
+        $config = array(
+            'upload_path' => "./images/",
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+                );
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload())
+            {
+            $data['img'] = array('upload_data' => $this->upload->data());
+            $this->load->view('t',$data);
+            }
+            else
+                {
+                echo $this->upload->display_errors();
+                }
+                    
+    }
+    public function sucess() {
+        $this->load->view('Dashboard/sucess', array('error' => ' ' ));
+    }
+    public function sendMail() {
+        $name = $this->input->post("name");
+        $subject = $this->input->post('subject');
+        $emailFrom = $this->input->post('email');
+        $message = $this->input->post('message');
+        $date = date("Y-m-d h:i:sa");   
+        $result = $this->dashboard_model->insertUserMail([
+                    'Name' => $name,
+                    'Subject' => $subject,
+                    'from' => $emailFrom,
+                    'date' => $date,
+                    'message' => $message
+                ]);
+        redirect('Dashboard/contactusSuccess');       
+            
     }
 }
