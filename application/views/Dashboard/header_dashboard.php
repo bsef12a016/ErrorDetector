@@ -92,6 +92,9 @@
                         
                     ?>
                     <li class="">
+                        <a href=""><i class="fa fa-table"></i><span data-translate="medias manager">Tabular View</span></a>
+                    </li>
+                    <li class="">
                         <a href="<?= site_url($href_graph)?>"><i class="icon-bar-chart"></i><span data-translate="dashboard">Graph</span></a>
                     </li>
                     <li class="">
@@ -105,9 +108,6 @@
                         <a href="<?= site_url('Home/docs')?>"><i class="icon-docs"></i><span data-translate="dashboard">Docs</span></a>
                     </li>
                     
-                    <li class="">
-                        <a href=""><i class="fa fa-table"></i><span data-translate="medias manager">Tabular View</span></a>
-                    </li>
                     
                     <li class="nav-parent">
                         <a href=""><i class="icon-basket"></i><span data-translate="pages">eCommerce </span><span class="fa arrow"></span></a>
@@ -133,6 +133,9 @@
                     <a class="pull-left footer-settings" href="<?= site_url('Dashboard/settings')?>" data-rel="tooltip" data-placement="top" data-original-title="Settings">
                         <i class="icon-settings"></i>
                     </a>
+                    <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
+                        <i class="icon-size-fullscreen"></i>
+                    </a>
                     <a class="pull-left btn-effect" href="#" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
                         <i class="icon-power"></i>
                     </a>
@@ -147,18 +150,20 @@
                 <div class="header-left">
                     <div class="topnav">
                         <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+                        <ul class="nav nav-icons">
+                            <li><a href="<?= site_url('AdminDashboard/adminDashboard')?>" class=""><span class="fa fa-dashboard"></span></a></li>
                         <?php
                             if($session["project_status"]==1){
                                 $href_graph = 'Dashboard/projectGraph/';
 				$href_graph .= $session["userID"];
 
                         ?>
-                            <ul class="nav nav-icons">
-                                <li><a href="<?= site_url($href_graph) ?>" class=""><span class="icon-bar-chart"></span></a></li>
-                            </ul>
+                            <li><a href="<?= site_url($href_graph) ?>" class=""><span class="octicon octicon-graph"></span></a></li>
                         <?php
                             }
                         ?>
+                        </ul>
+
                     </div>
                 </div>
                 <div class="header-right">

@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="answers">
+<!--                    <div class="answers">
                         <div class="answer-subject">
                             <h2 class="answer-title"></h2>
                             <p>from <strong>me</strong> &bull; <span class="answer-date"></span></p>
@@ -93,7 +93,7 @@
                     <div class="write-answer">
                         <div class="answer-textarea"></div>
                         <button id="save" class="btn btn-primary" type="button">Send</button>
-                    </div>
+                    </div>-->
                 </div>
             </section>
         </aside>

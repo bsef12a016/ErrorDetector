@@ -231,10 +231,30 @@ class Dashboard extends CI_Controller{
         $this->load->view('Dashboard/contactusSuccess');
         $this->load->view('Dashboard/footer_dashboard');
     }
-    public function tabularview() {
-        $this->load->view('Dashboard/header_dashboard');
-        $this->load->view('Dashboard/tabularview');
-        $this->load->view('Dashboard/footer_dashboard');
+    public function tabularview($u_id, $projID) {
+        $session=  $this->session->all_userdata();
+        if($session["login_status"]=="login" && $projID != NULL && $u_id != NULL){
+            if($session["userID"]==$u_id){   
+                $data['errors']=$this->dashboard_model->get_errors($u_id ,$projID);
+                if($data['errors'] != "empty"){
+                    $this->session->set_userdata("project_status", 1);
+                    $this->session->set_userdata('project_ID', $projID);
+                    $this->load->view('Dashboard/header_dashboard');
+                    $this->load->view('Dashboard/tabularview', $data);
+                    $this->load->view('Dashboard/footer_dashboard');
+                }
+                else{
+                    redirect('Dashboard/projects');                                        
+                }
+            }
+            else{
+                redirect('Dashboard/projects');                    
+            }
+        }
+        else{
+            redirect('Home/index');
+        }
+
     }
         
     public function uploadpic() {
@@ -277,4 +297,12 @@ class Dashboard extends CI_Controller{
         redirect('Dashboard/contactusSuccess');       
             
     }
+    
+    
+    
+    
+    
+    
+    
+
 }

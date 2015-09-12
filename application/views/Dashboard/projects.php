@@ -70,7 +70,7 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h3>File &amp; Image <strong>Upload</strong></h3>
-                        <form enctype="multipart/form-data" action="<?=site_url('Dashboard/uploadpic')?>">
+                        <form enctype="multipart/form-data" action="<?=site_url('Dashboard/uploadpic')?>" method="post">
 <!--                            <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <p><strong>Image uploader</strong></p>
                                 <div class="fileinput-new thumbnail">

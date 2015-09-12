@@ -93,4 +93,25 @@ class admin_dashboard_model extends CI_Model{
             return $this->db->affected_rows();        
         }
     }
+    
+    public function getErrorAndProjectsCount() {
+        
+        
+        //    $this->db->select('*');
+//    $this->db->from('blogs');
+//    $this->db->join('comments', 'comments.id = blogs.id');
+//
+//$query = $this->db->get();
+//
+//    $this->db->select('*');
+//    $this->db->from('blogs');
+//    $this->db->join('comments', 'comments.id = blogs.id');
+//    $this->db->join('authors', 'authors.id = comments.author_id');
+        
+        
+    }
+    
+    
+    
+    
 }

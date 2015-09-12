@@ -5,7 +5,7 @@
         <aside class="aside-md emails-list">
             <section>
                 <div class="mailbox-page clearfix">
-                    <h1 class="pull-left">User's Mail Inbox</h1>
+                    <h1 class="pull-left">Visitor's Mail Inbox</h1>
                     <div class="append-icon">
                         <input type="text" class="form-control form-white pull-right" id="email-search" placeholder="Search...">
                         <i class="icon-magnifier"></i>
