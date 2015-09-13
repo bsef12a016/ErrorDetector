@@ -13,9 +13,8 @@ class Home extends CI_Controller{
          $this->load->model('home_model');
     }
     public function index() {
-        session_destroy();
-        $this->load->library('session');
-        $this->session->set_userdata('login_status','');
+        
+        $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         $this->load->view('Home/header');
         $this->load->view('Home/index');
         $this->load->view('Home/footer');
@@ -62,16 +61,6 @@ class Home extends CI_Controller{
         $emailFrom = $this->input->post('email');
         $message = $this->input->post('message');
         $date = date("Y-m-d h:i:sa");
-        
-//        $result = $this->dashboard_model->updateapikey($u_id ,['apikey'=>$val], $projectID);
-//        $q=$this->dashboard_model->insert_project([
-//                    'name'=>$pass,
-//                    'u_id'=>$session["userID"], 
-//                    'apikey'=>$val,
-//                    'creation_date'=>  date("Y/m/d") 
-//                    ]);
-        
-        
         $result = $this->home_model->insertVisitorMail([
                     'Name' => $name,
                     'Subject' => $subject,
@@ -80,6 +69,5 @@ class Home extends CI_Controller{
                     'message' => $message
                 ]);
         redirect('Home/contactSuccess');       
-
     }
 }

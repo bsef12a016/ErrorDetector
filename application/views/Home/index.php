@@ -35,7 +35,7 @@
                                             </p>
                                         </div>
                                         <div class="c-btn-container">
-                                            <a href="#" class="btn btn-xlg c-btn-square c-btn-border-2x c-btn-white c-btn-sbold c-btn-uppercase">Purchase</a>
+                                            <!--<a href="#" class="btn btn-xlg c-btn-square c-btn-border-2x c-btn-white c-btn-sbold c-btn-uppercase">Purchase</a>-->
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                             <!--END -->
                             <!--BEGIN: ACTION BUTTON -->
                             <div class="caption randomrotateout tp-resizeme" data-x="center" data-y="center" data-hoffset="" data-voffset="200" data-speed="300" data-start="1800" data-easing="Back.easeOut">
-                                <a href="#" class="btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">start your free trial</a>
+                                <!--<a href="#" class="btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">start your free trial</a>-->
                             </div>
                             <!--END -->
                         </li>
@@ -221,36 +221,5 @@
         <!-- END: PAGE CONTENT -->
     </div>
     <!-- END: PAGE CONTAINER -->
-    <!-- BEGIN: CONTENT/SLIDERS/TESTIMONIALS-3 -->
-    <div class="c-content-box c-size-lg c-bg-parallax" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-3.jpg)">
-        <div class="container">
-            <!-- Begin: testimonials 1 component -->
-            <div class="c-content-testimonials-1" data-slider="owl" data-single-item="true" data-auto-play="5000">
-                <!-- Begin: Title 1 component -->
-                <div class="c-content-title-1">
-                    <h3 class="c-center c-font-white c-font-uppercase c-font-bold">Make more customers happy</h3>
-                    <div class="c-line-center c-theme-bg">
-                    </div>
-                </div>
-                <!-- End-->
-                <!-- Begin: Owlcarousel -->
-                <div class="owl-carousel owl-theme c-theme">
-                    <div class="item">
-                        <div class="c-testimonial">
-                            <p>
-                                Everything you need to avoid bad user experience and make your site awesome for your users.
-                            </p>
-                            <h3>
-                                <a href="<?php echo site_url('Home/login')?>" class="btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-sbold c-btn-uppercase">Start your free trial</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- End-->
-            </div>
-            <!-- End-->
-        </div>
-    </div>
-    <!-- END: CONTENT/SLIDERS/TESTIMONIALS-3 -->
     <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
    

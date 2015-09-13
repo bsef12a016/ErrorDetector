@@ -84,3 +84,47 @@ define('EXIT_USER_INPUT', 7); // invalid user input
 define('EXIT_DATABASE', 8); // database error
 define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+//User Defined Constants
+
+$ALLOW_LOGIN = TRUE;
+
+//Admin
+define('ADMINISTRATOR_CREDENTIAL_NAME','administrator');
+define('ADMINISTRATOR_CREDENTIAL_STATUS','ADMINISTRATOR_CREDENTIAL_STATUS');
+define('ADMINISTRATOR_CREDENTIAL_STATUS_TRUE',TRUE);
+define('ADMINISTRATOR_CREDENTIAL_STATUS_FALSE',FALSE);
+
+
+
+//Login
+define('LOGIN_STATUS_TRUE', TRUE);
+define('LOGIN_STATUS_FLASE', FALSE);
+define('LOGIN_STATUS','LOGIN_STATUS');
+
+//User
+define('USER_ID','USER_ID');
+define('USER_NAME','USER_NAME');
+
+//Project
+define('PROJECT_ID','PROJECT_ID');
+define('PROJECT_OPEN_STATUS','PROJECT_OPEN_STATUS');
+define('PROJECT_OPEN_STATUS_TRUE', TRUE);
+define('PROJECT_OPEN_STATUS_FALSE', FALSE);
+define('PROJECT_APIKEY', 'PROJECT_APIKEY');
+
+
+//Emails
+define('USER_EMAIL_STATUS', 'USER_EMAIL_STATUS');
+define('USER_EMAIL_STATUS_TRUE', TRUE);
+define('USER_EMAIL_STATUS_FLASE', FALSE);
+define('VISITOR_EMAIL_STATUS', 'USER_EMAIL_STATUS');
+define('VISITOR_EMAIL_STATUS_TRUE', TRUE);
+define('VISITOR_EMAIL_STATUS_FALSE', FALSE);
+
+
+//Admin Dashboard
+define('USER_COUNT', 'USER_COUNT');
+define('PROJECTS_COUNT', 'PROJECTS_COUNT');
+define('ERRORS_COUNT', 'ERRORS_COUNT');

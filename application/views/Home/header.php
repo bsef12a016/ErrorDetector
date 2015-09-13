@@ -31,7 +31,7 @@
     <!-- BEGIN THEME STYLES -->
     <link href="<?=base_url()?>public/assets/base/css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="<?=base_url()?>public/assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
-    <link href="<?=base_url()?>public/assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+    <link href="<?=base_url()?>public/assets/base/css/themes/dark1.css" rel="stylesheet" id="style_theme" type="text/css" />
     <link href="<?=base_url()?>public/assets/base/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -75,9 +75,9 @@
                             </li>
                             <li>
                                 <?php
-                                if($session["login_status"]=="login"){
+                                if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE){
                                     $href_dashboard = 'Dashboard/projects/';
-                                    $href_dashboard .= $session["userID"];
+                                    $href_dashboard .= $session[USER_ID];
                                     
                                     ?>
                                 <a href="<?= site_url($href_dashboard)?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>Dashboard</a>

@@ -1,3 +1,34 @@
+<!-- BEGIN: CONTENT/SLIDERS/TESTIMONIALS-3 -->
+    <div class="c-content-box c-size-lg c-bg-parallax" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-3.jpg)">
+        <div class="container">
+            <!-- Begin: testimonials 1 component -->
+            <div class="c-content-testimonials-1" data-slider="owl" data-single-item="true" data-auto-play="5000">
+                <!-- Begin: Title 1 component -->
+                <div class="c-content-title-1">
+                    <h3 class="c-center c-font-white c-font-uppercase c-font-bold">Make more customers happy</h3>
+                    <div class="c-line-center c-theme-bg">
+                    </div>
+                </div>
+                <!-- End-->
+                <!-- Begin: Owlcarousel -->
+                <div class="owl-carousel owl-theme c-theme">
+                    <div class="item">
+                        <div class="c-testimonial">
+                            <p>
+                                Everything you need to avoid bad user experience and make your site awesome for your users.
+                            </p>
+                            <h3>
+                              <!--  <a href="<?php echo site_url('Home/login')?>" class="btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-sbold c-btn-uppercase">Start your free trial</a>-->
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End-->
+            </div>
+            <!-- End-->
+        </div>
+    </div>
+    <!-- END: CONTENT/SLIDERS/TESTIMONIALS-3 -->
  <a name="footer"></a>
     <footer class="c-layout-footer c-layout-footer-3 c-bg-dark">
         <div class="c-prefooter">
@@ -6,24 +37,19 @@
                     <div class="col-md-6">
                         <div class="c-container c-first">
                             <div class="c-content-title-1">
-<!--                                <h3 class="c-font-uppercase c-font-bold c-font-white">jErrors<span class="c-theme-font"></span></h3>-->
-                                                            <img src="<?=base_url()?>public/assets/base/img/layout/logos/logo-1.png" alt="JANGO" class="c-desktop-logo">
-
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">jErrors<span class="c-theme-font"></span></h3>
                                 <div class="c-line-left hide">
                                 </div>
                                 <p class="c-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, s ed elit diam nonummy ad minim veniam quis nostrud exerci et tation diam.
+
                                 </p>
                             </div>
                             <ul class="c-links">
                                 <li>
-                                    <a href="#">Home</a>
+                                    <a href="<?php echo site_url('Home/index')?>">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">About</a>
-                                </li>
-                                <li>
-                                    <a href="#">Terms</a>
+                                    <a href="<?php echo site_url('Home/about')?>">About</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo site_url('Home/contact')?>">Contact</a>
@@ -38,7 +64,6 @@
                                 <div class="c-line-left hide">
                                 </div>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy ad minim.
                                 </p>
                             </div>
                             <ul class="c-socials">
@@ -57,13 +82,13 @@
                             </ul>
                             <ul class="c-address">
                                 <li>
-                                    <i class="icon-pointer c-theme-font"></i> One Boulevard, Beverly Hills
+                                    <i class="icon-pointer c-theme-font"></i>PUCIT, Old Campus Mall Road Lahore Pakistan
                                 </li>
                                 <li>
-                                    <i class="icon-call-end c-theme-font"></i> +1800 1234 5678
+                                    <i class="icon-call-end c-theme-font"></i> +923244456881
                                 </li>
                                 <li>
-                                    <i class="icon-envelope c-theme-font"></i> email@example.com
+                                    <i class="icon-envelope c-theme-font"></i> jerrors@gamil.com
                                 </li>
                             </ul>
                         </div>
@@ -74,7 +99,7 @@
         <div class="c-postfooter">
             <div class="container">
                 <p class="c-font-oswald c-font-14">
-                    Copyright &copy; JANGO Inc.
+                    Copyright &copy; jErrors Inc.
                 </p>
             </div>
         </div>

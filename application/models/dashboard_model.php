@@ -24,7 +24,7 @@ class dashboard_model extends CI_Model{
     }
     public function get_projects(){
         $session=  $this->session->all_userdata();
-        $id = $session['userID'];
+        $id = $session[USER_ID];
         $this->db->where(['u_id' => $id]);
         $q=$this->db->get('project');            
         return $q->result();

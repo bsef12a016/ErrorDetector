@@ -43,10 +43,10 @@
         <aside class="email-details">
             <section>
                 <div class="email-subject">
-                    <h1>Theory of <strong>Design</strong></h1>
+                    <h1><strong>User's </strong>Mail</h1>
                     <div class="clearfix">
                         <div class="go-back-list"><i data-rel="tooltip" data-placement="bottom" data-original-title="Back to email list" class="icon-arrow-left"></i></div>
-                        <p>from <strong><span class="sender">Sandra Merlin</span></strong> &bull; <span class="date">16 January, 4:04pm</span></p>
+                        <!--<p>from <strong><span class="sender">Sandra Merlin</span></strong> &bull; <span class="date">16 January, 4:04pm</span></p>-->
                         <div class="pos-rel pull-left">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300"> 
                                 <i class=" icon-rounded-arrow-down-thin"></i>

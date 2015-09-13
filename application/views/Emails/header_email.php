@@ -1,3 +1,7 @@
+<?php
+ $session=  $this->session->all_userdata();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="description" content="admin-themes-lab">
         <meta name="author" content="themes-lab">
-        <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-        <title>Make Admin Template &amp; Builder</title>
+        <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
+        <title>Dashboard - jErrors - JavaScript Error Tracking for Modern Web</title>
         <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
         <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
         <link href="<?=base_url()?>public/dashboard_assets/css/theme.css" rel="stylesheet">
@@ -33,8 +37,20 @@
                         <a href="<?= site_url('AdminDashboard/adminDashboard')?>" class="btn btn-primary btn-compose">Dashboard</a>
                     </div>
                     <ul class="nav nav-sidebar">
-                        <li class="tm nav-active active"><a href="<?= site_url('Emails/userMails')?>"><span class="pull-right badge badge-primary">8</span> <i class="icons-office-28"></i><span data-translate="inbpx">User's Mail Inbox</span></a></li>
+                        <?php
+                        if($session[USER_EMAIL_STATUS] != USER_EMAIL_STATUS_TRUE ){
+                        ?>
+                        <li class="tm active"><a href="<?= site_url('Emails/userMails')?>"><span class="pull-right badge badge-primary"></span> <i class="icons-office-28"></i><span data-translate="inbpx">User's Mail Inbox</span></a></li>
                         <li class="tm"><a href="<?= site_url('Emails/visitorsMails')?>"><i class="icons-chat-messages-14"></i><span data-translate="portlets">Visitor's Mail Inbox</span></a></li>
+                        <?php
+                        }else{
+                        ?>
+                        <li class="tm "><a href="<?= site_url('Emails/userMails')?>"><span class="pull-right badge badge-primary"></span> <i class="icons-office-28"></i><span data-translate="inbpx">User's Mail Inbox</span></a></li>
+                        <li class="tm active"><a href="<?= site_url('Emails/visitorsMails')?>"><i class="icons-chat-messages-14"></i><span data-translate="portlets">Visitor's Mail Inbox</span></a></li>
+                        <?php
+                        }
+                        ?>
+
                     </ul>
                     <div class="sidebar-charts">
                         <div id="chart-legend"></div>
@@ -71,7 +87,15 @@
                             <li class="dropdown" id="user-header">
                                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
             <!--                        <img src="<?=base_url()?>public/dashboard_assets/images/avatars/user1.png" alt="user image">-->
-                                    <span class="username">Hi, John Doe</span>
+                                    <span class="username">Hi, 
+                                    <?php
+                                    $session=  $this->session->all_userdata();
+                                    if($session[USER_NAME])
+                                    {
+                                        print_r($session[USER_NAME]);    
+                                    }
+                                    ?>
+                                    </span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -84,7 +108,6 @@
                             </li>
                             <!-- END USER DROPDOWN -->
                             <!-- CHAT BAR ICON -->
-                            <li id="quickview-toggle"><a href="#"><i class="icon-bubbles"></i></a></li>
                         </ul>
                     </div>
                     <!-- header-right -->

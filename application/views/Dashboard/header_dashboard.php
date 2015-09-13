@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="admin-themes-lab">
     <meta name="author" content="themes-lab">
-    <link rel="shortcut icon" href="<?=base_url()?>public/dashboard_assets/images/favicon.png" type="image/png">
-    <title>Make Admin Template &amp; Builder</title>
+    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
+    <title>Dashboard - jErrors - JavaScript Error Tracking for Modern Web</title>
     <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/css/theme.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/css/ui.css" rel="stylesheet">
@@ -23,26 +23,6 @@
     <!-- BEGIN PAGE STYLE -->
     <link href="<?= base_url()?>public/dashboard_assets/plugins/step-form-wizard/css/step-form-wizard.min.css" rel="stylesheet">
 </head>
-<!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
-<!-- LAYOUT: Apply "sidebar-collapsed" class to body element to have collapsed sidebar -->
-<!-- LAYOUT: Apply "sidebar-top" class to body element to have sidebar on top of the page -->
-<!-- LAYOUT: Apply "sidebar-hover" class to body element to show sidebar only when your mouse is on left / right corner -->
-<!-- LAYOUT: Apply "submenu-hover" class to body element to show sidebar submenu on mouse hover -->
-<!-- LAYOUT: Apply "fixed-sidebar" class to body to have fixed sidebar -->
-<!-- LAYOUT: Apply "fixed-topbar" class to body to have fixed topbar -->
-<!-- LAYOUT: Apply "rtl" class to body to put the sidebar on the right side -->
-<!-- LAYOUT: Apply "boxed" class to body to have your page with 1200px max width -->
-<!-- THEME STYLE: Apply "theme-sdtl" for Sidebar Dark / Topbar Light -->
-<!-- THEME STYLE: Apply  "theme sdtd" for Sidebar Dark / Topbar Dark -->
-<!-- THEME STYLE: Apply "theme sltd" for Sidebar Light / Topbar Dark -->
-<!-- THEME STYLE: Apply "theme sltl" for Sidebar Light / Topbar Light -->
-<!-- THEME COLOR: Apply "color-default" for dark color: #2B2E33 -->
-<!-- THEME COLOR: Apply "color-primary" for primary color: #319DB5 -->
-<!-- THEME COLOR: Apply "color-red" for red color: #C9625F -->
-<!-- THEME COLOR: Apply "color-green" for green color: #18A689 -->
-<!-- THEME COLOR: Apply "color-orange" for orange color: #B66D39 -->
-<!-- THEME COLOR: Apply "color-purple" for purple color: #6E62B5 -->
-<!-- THEME COLOR: Apply "color-blue" for blue color: #4A89DC -->
 <!-- BEGIN BODY -->
 <body class="fixed-topbar fixed-sidebar theme-sdtl color-default">
     <!--[if lt IE 7]>
@@ -66,9 +46,9 @@
                         <div class="user-details">
                             <h4><?php
                                     $session=  $this->session->all_userdata();
-                                    if($session["username"])
+                                    if($session[USER_NAME])
                                     {
-                                        print_r($session["username"]);    
+                                        print_r($session[USER_NAME]);    
                                     }
                                     ?></h4>
 
@@ -80,19 +60,22 @@
                         <a href="<?= site_url('Dashboard/projects')?>"><i class="fa fa-laptop"></i><span data-translate="dashboard">Projects</span></a>
                     </li>
                     <?php
-                    if($session["project_status"]==1){
+                    if($session[PROJECT_OPEN_STATUS] == PROJECT_OPEN_STATUS_TRUE){
                         $href = 'Dashboard/settings/';
-                        $href .= $session["userID"];
+                        $href .= $session[USER_ID];
                         $href .= '/';
-                        $href .= $session["project_ID"];
+                        $href .= $session[PROJECT_ID];
                         
                         $href_graph = 'Dashboard/projectGraph/';
-			$href_graph .= $session["userID"];
+			$href_graph .= $session[USER_ID];
 
-                        
+                        $href_table = 'Dashboard/tabularview/';
+                        $href_table .= $session[USER_ID];
+                        $href_table .= '/';
+                        $href_table .= $session[PROJECT_ID];
                     ?>
                     <li class="">
-                        <a href=""><i class="fa fa-table"></i><span data-translate="medias manager">Tabular View</span></a>
+                        <a href="<?= site_url($href_table)?>"><i class="fa fa-table"></i><span data-translate="medias manager">Tabular View</span></a>
                     </li>
                     <li class="">
                         <a href="<?= site_url($href_graph)?>"><i class="icon-bar-chart"></i><span data-translate="dashboard">Graph</span></a>
@@ -105,18 +88,18 @@
                     ?>
                     
                     <li class="">
-                        <a href="<?= site_url('Home/docs')?>"><i class="icon-docs"></i><span data-translate="dashboard">Docs</span></a>
+                        <a href="<?= site_url('Home/docs')?>" target="_blank"><i class="icon-docs"></i><span data-translate="dashboard">Docs</span></a>
                     </li>
                     
                     
-                    <li class="nav-parent">
+<!--                    <li class="nav-parent">
                         <a href=""><i class="icon-basket"></i><span data-translate="pages">eCommerce </span><span class="fa arrow"></span></a>
                         <ul class="children collapse">
                             <li><a href="ecommerce-cart.html"> Shopping Cart</a></li>
                             <li><a href="ecommerce-invoice.html"> Invoice</a></li>
                             <li><a href="ecommerce-pricing-table.html"><span class="pull-right badge badge-success">5</span> Pricing Table</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                     
                     <li class="">
                         <a href=""><i class="icon-docs"></i><span data-translate="pages">Contact Us</span></a>
@@ -136,7 +119,7 @@
                     <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
                         <i class="icon-size-fullscreen"></i>
                     </a>
-                    <a class="pull-left btn-effect" href="#" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+                    <a class="pull-left btn-effect" href="<?= site_url('Dashboard/logout')?>" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
                         <i class="icon-power"></i>
                     </a>
                 </div>
@@ -151,13 +134,13 @@
                     <div class="topnav">
                         <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
                         <ul class="nav nav-icons">
-                            <li><a href="<?= site_url('AdminDashboard/adminDashboard')?>" class=""><span class="fa fa-dashboard"></span></a></li>
+                            <li><a href="<?= site_url('Dashboard/projects')?>" class=""><span class="fa fa-laptop"></span></a></li>
                         <?php
-                            if($session["project_status"]==1){
+                            if($session[PROJECT_OPEN_STATUS] == PROJECT_OPEN_STATUS_TRUE){
                                 $href_graph = 'Dashboard/projectGraph/';
-				$href_graph .= $session["userID"];
-
+				$href_graph .= $session[USER_ID];
                         ?>
+                            <li><a href="<?= site_url($href_table) ?>" class=""><span class="fa fa-table"></span></a></li>
                             <li><a href="<?= site_url($href_graph) ?>" class=""><span class="octicon octicon-graph"></span></a></li>
                         <?php
                             }
@@ -175,25 +158,25 @@
                                 <span class="username">Hi,
                                     <?php
                                     $session=  $this->session->all_userdata();
-                                    if($session["username"])
+                                    if($session[USER_NAME])
                                     {
-                                        print_r($session["username"]);    
+                                        print_r($session[USER_NAME]);    
                                     }
                                     ?>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
+<!--                                <li>
                                     <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
-                                </li>
+                                </li>-->
                                 <li>
                                     <a href="<?= site_url('Dashboard/accountSettings')?>"><i class="icon-settings"></i><span>Account Settings</span></a>
                                 </li>
                                 <li>
-                                    <a href="<?= site_url('/')?>"><i class="icon-logout"></i><span>Logout</span></a>
+                                    <a href="<?= site_url('Dashboard/logout')?>"><i class="icon-logout"></i><span>Logout</span></a>
                                 </li>
                             </ul>
                         </li>

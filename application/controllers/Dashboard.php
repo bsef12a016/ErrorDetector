@@ -14,13 +14,14 @@ class Dashboard extends CI_Controller{
     //DONE
     public function userDashboard($u_id, $projID) {
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login" && $projID != NULL && $u_id != NULL){
-            if($session["userID"]==$u_id){   
-                
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE 
+                && $projID != NULL && $u_id != NULL){
+            if($session[USER_ID] == $u_id){                   
                 $data['errors']=$this->dashboard_model->get_errors($u_id ,$projID);
                 if($data['errors'] != "empty"){
-                    $this->session->set_userdata("project_status", 1);
-                    $this->session->set_userdata('project_ID', $projID);
+                    $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);
+                    $this->session->set_userdata(PROJECT_ID, $projID);
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/userDashboard', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -40,12 +41,13 @@ class Dashboard extends CI_Controller{
     //DONE
     public function error_details($u_id = NULL, $id = NULL, $projID = NULL) {
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login" && $u_id != NULL && $projID != NULL && $id != NULL){
-            if($session["userID"]==$u_id){  
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE
+                && $u_id != NULL && $projID != NULL && $id != NULL){
+            if($session[USER_ID] == $u_id){  
                 $data['error']=$this->dashboard_model->get_error_details($u_id, $id, $projID);
                 if($data['error']){
-                                        $this->session->set_userdata("project_status", 1);
-                                            
+                    $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);                        
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/error_details', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -62,14 +64,14 @@ class Dashboard extends CI_Controller{
         }
     }
     //DONE
-    public function settings($u_id = NULL, $projID=NULL) {
+    public function settings($u_id = NULL, $projID = NULL) {
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login"){
-            if($session["userID"]==$u_id){
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            if($session[USER_ID] == $u_id){
                 $data['projects']=$this->dashboard_model->get_projectsID($u_id ,$projID);
-                if($data['projects'])
-                {                    $this->session->set_userdata("project_status", 1);
-                    
+                if($data['projects']){
+                    $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/settings', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -87,13 +89,16 @@ class Dashboard extends CI_Controller{
     }
         
     public function logout(){
-        
+        session_destroy();
+        $this->load->library('session');
+        $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         redirect('Home/index');
     }
     public function addProject() {
-        $session=  $this->session->all_userdata();
-        if($session["login_status"] == "login"){
-            $this->session->set_userdata('project_status','');
+        $session = $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE ){
+            $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_FALSE);
             $this->load->view('Dashboard/header_dashboard');
             $this->load->view('Dashboard/addProject');
             $this->load->view('Dashboard/footer_dashboard');
@@ -104,9 +109,10 @@ class Dashboard extends CI_Controller{
     }
     public function projects() {
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login"){
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE && 
+                $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
             $data['projects']=$this->dashboard_model->get_projects();
-            $this->session->set_userdata('project_status','');
+            $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_FALSE);
             $this->load->view('Dashboard/header_dashboard');
             $this->load->view('Dashboard/projects', $data);
             $this->load->view('Dashboard/footer_dashboard');
@@ -116,27 +122,25 @@ class Dashboard extends CI_Controller{
         }
     }
     public function projectIntegration() {
-        $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login"){
-            $this->session->set_userdata('project_status','');
-            $pass=  $this->input->post('my');
-            $projecturl=  $this->input->post('projecturl');
-            $session=  $this->session->all_userdata();
-            $val=  md5(uniqid(rand(),true));
-            $this->session->set_userdata(['projapikey'=>$val]);
-            print_r($pass);        
-            print_r($val);
+        $session = $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_FALSE);
+            $pass = $this->input->post('my');
+            $projecturl = $this->input->post('projecturl');
+            $session = $this->session->all_userdata();
+            $val = md5(uniqid(rand(),true));
+            $this->session->set_userdata([PROJECT_APIKEY => $val]);
             if(!$this->dashboard_model->chekProjectName($pass)){        
-                $q=$this->dashboard_model->insert_project([
-                    'name'=>$pass,
-                    'u_id'=>$session["userID"], 
-                    'apikey'=>$val,
-                    'creation_date'=>  date("Y/m/d") 
+                $q = $this->dashboard_model->insert_project([
+                    'name' => $pass,
+                    'u_id' => $session[USER_ID], 
+                    'apikey' => $val,
+                    'creation_date' => date("Y/m/d") 
                     ]);
                 $this->load->view('Dashboard/header_dashboard');
                 $this->load->view('Dashboard/projectIntegration');
-                $this->load->view('Dashboard/footer_dashboard');
-                    
+                $this->load->view('Dashboard/footer_dashboard');                    
                 }  else {
                     $this->addProject();
                     }
@@ -147,8 +151,9 @@ class Dashboard extends CI_Controller{
     }
     public function accountSettings() {
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login"){
-            $this->session->set_userdata('project_status','');
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE ){
+            $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_FALSE);
             $this->load->view('Dashboard/header_dashboard');
             $this->load->view('Dashboard/accountSettings');
             $this->load->view('Dashboard/footer_dashboard');
@@ -157,11 +162,12 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
+    //Pending
     public function projectGraph($projID) {
-        $errors=$this->dashboard_model->get_errors($projID);
-        $lastOccur=array();
+        $errors = $this->dashboard_model->get_errors($projID);
+        $lastOccur = array();
         foreach($errors as $value){
-            $lastOccur[]=$value->lastOccurence;
+            $lastOccur[] = $value->lastOccurence;
         }
         $dates=array(); 
         foreach ($lastOccur as $s) {
@@ -189,8 +195,10 @@ class Dashboard extends CI_Controller{
     //DONE
     public function regenerateApiKey($u_id, $projectID, $apiKey){
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login" && $session["project_status"]=="open"){
-            $val=  md5(uniqid(rand(),true));
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE
+                && $session[PROJECT_OPEN_STATUS] == PROJECT_OPEN_STATUS_TRUE){
+            $val = md5(uniqid(rand(),true));
             $result = $this->dashboard_model->updateapikey($u_id ,['apikey'=>$val], $projectID);
             if($result != NULL){
                if($result != 0){
@@ -210,8 +218,10 @@ class Dashboard extends CI_Controller{
     //DONE
     public function deleteProject($u_id, $projectID) {
         $session = $this->session->all_userdata();
-        if($session["login_status"]=="login" && $projectID != NULL && $u_id != NULL){
-            if($session["userID"]==$u_id){    
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE
+                && $projectID != NULL && $u_id != NULL){
+            if($session[USER_ID] == $u_id){    
                 $d = $this->dashboard_model->deleteproject($u_id, $projectID);
             }
             if($d){
@@ -219,26 +229,35 @@ class Dashboard extends CI_Controller{
             }
             echo json_encode($val);
         }
-    }
-        
+    }   
     public function contactus() {
-        $this->load->view('Dashboard/header_dashboard');
-        $this->load->view('Dashboard/contactus');
-        $this->load->view('Dashboard/footer_dashboard');
+        $session = $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            $this->load->view('Dashboard/header_dashboard');
+            $this->load->view('Dashboard/contactus');
+            $this->load->view('Dashboard/footer_dashboard');
+        }
     }
     public function contactusSuccess() {
-        $this->load->view('Dashboard/header_dashboard');
-        $this->load->view('Dashboard/contactusSuccess');
-        $this->load->view('Dashboard/footer_dashboard');
+        $session = $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            $this->load->view('Dashboard/header_dashboard');
+            $this->load->view('Dashboard/contactusSuccess');
+            $this->load->view('Dashboard/footer_dashboard');
+        }
     }
     public function tabularview($u_id, $projID) {
         $session=  $this->session->all_userdata();
-        if($session["login_status"]=="login" && $projID != NULL && $u_id != NULL){
-            if($session["userID"]==$u_id){   
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE
+                && $projID != NULL && $u_id != NULL){
+            if($session[USER_ID] == $u_id){   
                 $data['errors']=$this->dashboard_model->get_errors($u_id ,$projID);
                 if($data['errors'] != "empty"){
-                    $this->session->set_userdata("project_status", 1);
-                    $this->session->set_userdata('project_ID', $projID);
+                    $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);
+                    $this->session->set_userdata(PROJECT_ID, $projID);
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/tabularview', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -254,9 +273,9 @@ class Dashboard extends CI_Controller{
         else{
             redirect('Home/index');
         }
-
     }
-        
+    
+    //STILL PENDING
     public function uploadpic() {
         $config = array(
             'upload_path' => "./images/",
@@ -281,21 +300,25 @@ class Dashboard extends CI_Controller{
     public function sucess() {
         $this->load->view('Dashboard/sucess', array('error' => ' ' ));
     }
+    
     public function sendMail() {
-        $name = $this->input->post("name");
-        $subject = $this->input->post('subject');
-        $emailFrom = $this->input->post('email');
-        $message = $this->input->post('message');
-        $date = date("Y-m-d h:i:sa");   
-        $result = $this->dashboard_model->insertUserMail([
-                    'Name' => $name,
-                    'Subject' => $subject,
-                    'from' => $emailFrom,
-                    'date' => $date,
-                    'message' => $message
-                ]);
-        redirect('Dashboard/contactusSuccess');       
-            
+        $session = $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            $name = $this->input->post("name");
+            $subject = $this->input->post('subject');
+            $emailFrom = $this->input->post('email');
+            $message = $this->input->post('message');
+            $date = date("Y-m-d h:i:sa");   
+            $result = $this->dashboard_model->insertUserMail([
+                'Name' => $name,
+                'Subject' => $subject,
+                'from' => $emailFrom,
+                'date' => $date,
+                'message' => $message
+                    ]);
+            redirect('Dashboard/contactusSuccess');       
+        }    
     }
     
     

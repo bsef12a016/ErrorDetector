@@ -13,14 +13,37 @@ class AdminDashboard extends CI_Controller{
     }
     
     public function adminDashboard() {
-        $this->load->view('AdminDashboard/header_adminDashboard');
-        $this->load->view('AdminDashboard/adminDashboard');
-        $this->load->view('AdminDashboard/footer_adminDashboard');
+        $session=  $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_FLASE 
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_TRUE){
+            $this->session->set_userdata(USER_COUNT, $this->admin_dashboard_model->userCount());
+            
+            $this->session->set_userdata(PROJECTS_COUNT, $this->admin_dashboard_model->projectCount());
+            
+            $this->session->set_userdata(ERRORS_COUNT, $this->admin_dashboard_model->errorCount());
+            
+            $this->load->view('AdminDashboard/header_adminDashboard');
+            $this->load->view('AdminDashboard/adminDashboard');
+            $this->load->view('AdminDashboard/footer_adminDashboard');
+        } else {
+            redirect('Home/index');
+        }
     }
     public function graphs() {
-        $this->load->view('AdminDashboard/header_adminDashboard');
-        $this->load->view('AdminDashboard/graphs');
-        $this->load->view('AdminDashboard/footer_adminDashboard');
+        $session=  $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_FLASE 
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_TRUE){       
+            $this->load->view('AdminDashboard/header_adminDashboard');
+            $this->load->view('AdminDashboard/graphs');
+            $this->load->view('AdminDashboard/footer_adminDashboard');
+        } else {
+            redirect('Home/index');
+        }
     }
-
+    public function logout(){
+        session_destroy();
+        redirect('Home/index');
+    }
+    
+    
 }

@@ -8,110 +8,13 @@
 
 class admin_dashboard_model extends CI_Model{
     
-    public function insert_project($d)
-    {
-        $this->db->insert('project', $d);
-        return $this->db->insert_id();
+    public function userCount() {
+        return $this->db->count_all('user');
     }
-    public function chekProjectName($projNmae)
-    {
-        if($projNmae!=null)
-        {
-            $this->db->where(['name' => $projNmae]);
-            $q=$this->db->get('project');            
-        }
-        return $q->result();
+    public function projectCount() {
+        return $this->db->count_all('project');
     }
-    public function get_projects(){
-        $session=  $this->session->all_userdata();
-        $id = $session['userID'];
-        $this->db->where(['u_id' => $id]);
-        $q=$this->db->get('project');            
-        return $q->result();
-    }    
-    public function updateapikey($u_id, $apikey, $projectID){
-        if($this->projectExistenceCheck($u_id, $projectID)){
-            $this->db->where(['id'=>$projectID]);
-            $this->db->update('project',$apikey);
-            return $this->db->affected_rows();
-        }else{
-            return NULL;    
-        }
+    public function errorCount() {
+        return $this->db->count_all('error_metadata');
     }
-    public function get_projectsID($u_id, $projectID){
-        $session = $this->session->all_userdata();
-        $this->db->where(['id' => $projectID, 'u_id' => $u_id]);
-        $q = $this->db->get('project');            
-        if($q){
-            return $q->result();
-        }else{
-            return NULL;
-        }
-    }
-    public function get_errors($u_id = NULL, $proj_id = NULL){
-        if($proj_id == NULL && $u_id == NULL)
-        {
-            return "empty";
-        }
-        else {
-            if($this->projectExistenceCheck($u_id, $proj_id)){
-                $this->db->where(['project_id' => $proj_id]);
-                $q=$this->db->get('error_metadata');            
-                return $q->result();
-            }  else {
-                return "empty";                
-            }
-        }
-    }    
-    public function get_error_details($u_id, $id = null,$proj_id = NULL){
-        if($this->projectExistenceCheck($u_id, $proj_id)){
-            $this->db->where(['project_id' => $proj_id]);
-            $this->db->where(['id' => $id]);
-            $q=$this->db->get('error_metadata');            
-            return $q->result();
-            }    
-            else{
-                return NULL;
-                }
-    }
-    public function projectExistenceCheck($u_id, $projectID) {
-        $this->db->where(['u_id' => $u_id]);
-        $this->db->where(['id' => $projectID]);
-        $result = $this->db->get('project');
-        if($result){
-            return TRUE;
-        }
-        return FALSE;
-    }
-    public function deleteproject($u_id, $projectID){
-        $session = $this->session->all_userdata();
-        $this->db->where(['id' => $projectID, 'u_id' => $u_id]);
-        $result = $this->db->get('project');            
-        if($result){
-            $this->db->where(['id'=>$projectID]);
-            $this->db->delete('project');
-            return $this->db->affected_rows();        
-        }
-    }
-    
-    public function getErrorAndProjectsCount() {
-        
-        
-        //    $this->db->select('*');
-//    $this->db->from('blogs');
-//    $this->db->join('comments', 'comments.id = blogs.id');
-//
-//$query = $this->db->get();
-//
-//    $this->db->select('*');
-//    $this->db->from('blogs');
-//    $this->db->join('comments', 'comments.id = blogs.id');
-//    $this->db->join('authors', 'authors.id = comments.author_id');
-        
-        
-    }
-    
-    
-    
-    
 }

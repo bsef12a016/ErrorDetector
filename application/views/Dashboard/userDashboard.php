@@ -57,7 +57,7 @@ $status = FALSE;
                                         echo '<td>';
                                         $link = '<a href="';
                                         $href = 'Dashboard/error_details/';
-                                        $href .= $session["userID"];
+                                        $href .= $session[USER_ID];
                                         $href .= '/';
                                         $href .= $value->id;
                                         $href .= '/';

@@ -1,3 +1,6 @@
+<?php
+$session=  $this->session->all_userdata();
+?>
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-thin">
     <div class="row">
@@ -513,20 +516,6 @@
     
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content">
-    <div class="header">
-        <h2><strong>Widgets</strong></h2>
-        <div class="breadcrumb-wrapper">
-            <ol class="breadcrumb">
-                <li>
-                    <a href="dashboard.html">Make</a>
-                </li>
-                <li>
-                    <a href="#">Pages</a>
-                </li>
-                <li class="active">Widgets</li>
-            </ol>
-        </div>
-    </div>
     <h3 class="m-t-30 m-b-10"><strong>Counters</strong></h3>
     <p>Counters are bigger infobox with animated numbers.</p>
     <div class="row m-t-10">
@@ -538,8 +527,8 @@
                             <i class="fa fa-umbrella bg-green"></i>
                         </div>
                         <div class="right">
-                            <p class="number countup" data-from="0" data-to="52000">0</p>
-                            <p class="text">New robots</p>
+                            <p class="number countup" data-from="0" data-to="<?= $session[USER_COUNT] ?>">0</p>
+                            <p class="text">User's</p>
                         </div>
                     </div>
                 </div>
@@ -553,8 +542,8 @@
                             <i class="fa fa-bug bg-blue"></i>
                         </div>
                         <div class="right">
-                            <p class="number countup" data-from="0" data-to="575" data-suffix="k">0</p>
-                            <p class="text">Bugs Intruded</p>
+                            <p class="number countup" data-from="0" data-to="<?= $session[PROJECTS_COUNT] ?>">0</p>
+                            <p class="text">Project's</p>
                         </div>
                     </div>
                 </div>
@@ -568,23 +557,8 @@
                             <i class="fa fa-fire-extinguisher bg-red"></i>
                         </div>
                         <div class="right">
-                            <p class="number countup" data-from="0" data-to="463" data-suffix="k">0</p>
-                            <p class="text">Extinguishers</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xlg-2 col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="panel">
-                <div class="panel-content widget-info">
-                    <div class="row">
-                        <div class="left">
-                            <i class="icon-microphone bg-purple"></i>
-                        </div>
-                        <div class="right">
-                            <p class="number countup" data-from="0" data-to="1210">0</p>
-                            <p class="text">Left to exit</p>
+                            <p class="number countup" data-from="0" data-to="<?= $session[ERRORS_COUNT] ?>">0</p>
+                            <p class="text">Error's</p>
                         </div>
                     </div>
                 </div>
