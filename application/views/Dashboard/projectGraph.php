@@ -1,202 +1,479 @@
-<script src="<?=base_url()?>public/dashboard_assets/plugins/charts-chartjs/Chart.min.js"></script> 
-<?php 
-$temp=$lastOccur[0];
-$i=0;
+ <?php 
+$x_axis=array();
+
 $count=array();
-$count[0]=0;
-foreach($lastOccur as $value){
-if($value==$temp)
-{
- $count[$i]++;   
-}
-else
-{
-    $i++;
-    $count[$i]=1;
-    $temp=$value;
-}
-//array is already sorted and diff dates are indexed at:
-// $index=0, $index=index+count[i]   
-}    
-
-//______________________________________________________________________________
-//foreach ($count as $x)
-//{
-//	echo $x;
-//	echo '<br>';
-//}
-
-//______________________________________________________________________________
-
-    $index=0;
-    foreach ($count as $x)
+foreach ($last_12days as $value)
     {
-        // x coordinate (date) =      $lastOccur[$index];
-        $lastOccur[$index];
-	$index=$index+$x;
-        // y coordinate (count for a day) =      $x;
-
-    }
-
+    $count[]=0;
+    $temp=true;
+    foreach ($lastOccur as $v)
+        {
+        if($value === $v)
+            {
+            $count[]++;
+            $x_axis[]=$value;
+            $temp=false;
+            }
+        }
+        if($temp===true)
+            {
+            $x_axis[]=0;            
+            }
+        }
 
 ?>
 
 
 
-<div style="width:80%; height:90%; margin-top:10%; margin-left:5% ">
-    <canvas id="canvas"></canvas>
-</div>
-
 
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content">
     <div class="header">
-        <h2><strong>Financial</strong> Charts</h2>
-        <p>Need graph for trading? Prices evolution? All Financial reports can easily be display with <strong>HighStock Charts</strong>: various periods, simple export tools.<br>
-            You can find more infos about HighStock here: <a href="http://api.highcharts.com/highstock">HighStock API</a>.
+        <h2><strong>PROJECT STATISTICS</strong></h2>
+        <p>
+            THE GRAPHS BELOW ARE CREATED TO NOTIFY YOU THE ERRORS FREQUENCY IN THIS PARTICULAR PROJECT. THE ERROR STATISTICS ARE REQUIRED HERE TO KEEP IN TOUCH WITH THE ERRORS COUNTS EVERY TIME YOUR PROJECT IS LOADED.
+            Well, AS WE ALL KNOW ONLY AN IDOL PROJECT COULD BE FREE OF ERRORS AND IDOL CASE IS RARE AND HAPPEN IN DREAMS ONLY.
         </p>
-        <div class="breadcrumb-wrapper">
-            <ol class="breadcrumb">
-                <li><a href="dashboard.html">Make</a>
-                </li>
-                <li><a href="charts.html">Charts</a>
-                </li>
-                <li class="active">Finance Charts</li>
-            </ol>
-        </div>
+        
     </div>
+    
     <div class="row">
-        <div class="col-sm-6">
-            <h3><strong>Financial</strong> Charts</h3>
-            <p>Highstock lets you create stock or general timeline charts in pure JavaScript, including sophisticated navigation options like a small navigator series, preset date ranges, date picker, scrolling and panning.</p>
-            <div id="financial-chart" style="height:320px"></div>
-        </div>
-        <div class="col-sm-6">
-            <h3><strong>Candles</strong> Charts</h3>
-            <p>It works in all modern browsers including the iPhone/iPad and Internet Explorer from version 6. Standard browsers use SVG for the graphics rendering. In legacy Internet Explorer graphics are drawn using VML.</p>
-            <div id="candle-chart" style="height:320px"></div>
+        <div class="col-sm-6" style="width:100%">
+            <h3><strong>ERROR FREQUENCY OVER TIME</strong></h3>
+            <p>The Graph Shows ERROR FREQUENCY (y-axis) over time (x-axis). This is a real-time graph working with dynamic data on run time. no need to reload this page every time you run your project.</p>
+            <div id="errors_frequency" style="height:500px"></div>
         </div>
     </div>
+    
+    <br>
+    <br>
+    
     <div class="row">
-        <div class="col-sm-6">
-            <h3><strong>OHLC</strong> Charts</h3>
-            <p>An <strong>open-high-low-close</strong> chart is a type of chart typically used to illustrate movements in the price of a financial instrument over time. Each vertical line on the chart shows the highest and lowest prices over one unit of time.</p>
-            <div id="ohlc-chart" style="height:320px"></div>
-        </div>
-        <div class="col-sm-6">
-            <h3><strong>Range</strong> Charts</h3>
-            <p>Highstock supports line, spline, area, areaspline, column, scatter, OHLC, candlestick, flags, arearange, areasplinerange and columnrange chart types. Any of these can be combined in one chart.
-            </p>
-            <div id="arearange-chart" style="height:320px"></div>
+        <div class="col-sm-6" style="width:100%">
+            <h3><strong>404 vs Others</strong></h3>
+            <p>The Graph Shows ERROR FREQUENCY (y-axis) for 404 & other errors (including; REFERENCE ERRORS, SYNTAX ERRORS etc) against time (x-axis)</p>
+            <div class="ct-chart" id="others_vs_404" style="height:500px"></div>
         </div>
     </div>
+    
+    <br>
+    <br>
+    
     <div class="row">
-        <div class="col-sm-6">
-            <h3><strong>Real Time</strong> Charts with <strong>Navigator</strong></h3>
-            <p>Highstock is very intelligent about time values. With milliseconds axis units, Highstock determines where to place the ticks so that they always mark the start of the month or the week, midnight and midday, the full hour etc.</p>
-            <div id="realtime-chart" style="height:320px"></div>
+        <div class="col-sm-6" style="width:100%">
+            <h3><strong>DIFFERENT TYPE OF ERRORS</strong></h3>
+            <p>THE BAR chart shows each different type of error (x-axis) and their count (y-axis). This is very useful since it get you know how bad you are in tackling a particular type of error and how often an error occurs.  </p>
+            <div id="errorTypes_Bar" style="height:500px"></div>
         </div>
-        <div class="col-sm-6">
-            <h3><strong>Bar</strong> Charts</h3>
-            <p>Setting the Highstock configuration options requires no special programming skills. The options are given in a JavaScript object notation structure, which is basically a set of keys and values.</p>
-            <div id="bar-chart" style="height:320px"></div>
-        </div>
+        
     </div>
+    
     <div class="row">
-        <div class="col-sm-6">
-            <h3><strong>Export Tools</strong> Option</h3>
-            <p>
-                You can add very useful export tool option. It allow to export chart in various formats: PNG, JPEG, PDF and SVG.<br>
-                You can directly print your chart too.
-            </p>
-            <div id="export-tools-chart" style="height:320px"></div>
+        <div class="col-sm-6" style="width:100%">
+            <h3><strong>ERRORS FREQUENCY ON BROWSERS</strong></h3>
+            <p>The graph shows what browser you use the most to run a specified project</p>
+            <div id="browser_usage" style="height:500px"></div>
         </div>
-        <div class="col-sm-6">
-            <h3><strong>Points</strong> Charts</h3>
-            <p>In addition to controling the zooming and panning from the scroller and navigator, you have the option to set mouse and finger zooming and panning.
-            </p>
-            <div id="point-chart" style="height:320px"></div>
-        </div>
+        
     </div>
-    <div class="footer">
-        <div class="copyright">
-            <p class="pull-left sm-pull-reset">
-                <span>Copyright <span class="copyright">©</span> 2015 </span>
-                <span>THEMES LAB</span>.
-                <span>All rights reserved. </span>
-            </p>
-            <p class="pull-right sm-pull-reset">
-                <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
-            </p>
+    
+    <div class="row">
+        <div class="col-sm-6" style="width:100%">
+            <div style="height:200px"></div>
         </div>
+        
     </div>
+    
 </div>
 <!-- END PAGE CONTENT -->
 
 
-<script>
-    var lineChartData = {
-        labels : [" 0 ", <?php 
-    $index=0;
-    foreach ($count as $x)
-    {
-        // x coordinate (date) =      $lastOccur[$index];
-        echo '"'.$lastOccur[$index].'", ';
-        $index=$index+$x;
-        // y coordinate (count for a day) =      $x;
-    } 
-    ?>],
 
-                datasets : [
+
+<script type="text/javascript">
+    
+    
+    Highcharts.setOptions({
+        global : {
+            useUTC : false
+        }
+    });
+
+    // Create the chart
+    $('#errors_frequency').highcharts('StockChart', {
+        chart : {
+            backgroundColor: 'transparent',
+            events : {
+                load : function () {
+
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    setInterval(function () {
+                        jQuery.ajax({
+                            type: "POST",
+                            url: "<?php echo base_url(); ?>" + "/Dashboard/geterr",
+                            
+                            success: function(res) {
+                                
+                                var x = (new Date()).getTime(), // current time
+                                y = Math.round(res);
+                                series.addPoint([x, y], true, true);
+                            }
+                        });
+                    }, 1000);
+                }
+            }
+        },
+
+        rangeSelector: {
+            allButtonsEnabled: true,
+            buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                },{
+                    count: 1,
+                    type: 'hour',
+                    text: '1h'
+                },{
+                    type: 'month',
+                    count: 3,
+                    text: 'Day',
+                    dataGrouping: {
+                        forced: true,
+                        units: [['day', [1]]]
+                    }
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: 'Week',
+                    dataGrouping: {
+                        forced: true,
+                        units: [['week', [1]]]
+                    }
+                }, {
+                    type: 'all',
+                    text: 'Month',
+                    dataGrouping: {
+                        forced: true,
+                        units: [['month', [1]]]
+                    }
+                }],
+            inputEnabled: false,
+            selected: 0
+        },
+
+
+        title : {
+            text : 'Live random data'
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series : [{
+                name : 'Random data',
+                data : (function () {
+                    // generate an array of random data
+                    var data = [], time = (new Date()).getTime(), i;
+
+                    for (i = -999; i <= 0; i += 1) {
+                        data.push([
+                            time + i * 1000,
+                            Math.round(Math.random() * 100)
+                        ]);
+                    }
+                    return data;
+                }())
+            }]
+    });
+
+
+
+</script>
+
+<script type="text/javascript">
+    var chart = new Chartist.Line('#others_vs_404', {
+
+        labels: [<?php foreach($last_12days as $value){
+      echo "'".$value."', ";
+  } ?> ],
+  series: [
+    [<?php foreach($count as $value){
+      echo $value.", ";
+  } ?>]
+  ]
+    }, {
+        low: 0,
+        showArea: false,
+        showPoint: true,
+        fullWidth: false
+    });
+
+    // Let's put a sequence number aside so we can use it in the event callbacks
+    var seq = 0,
+            delays = 80,
+            durations = 500;
+
+    // Once the chart is fully created we reset the sequence
+    chart.on('created', function() {
+        seq = 0;
+    });
+
+    // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+    chart.on('draw', function(data) {
+        seq++;
+
+        if(data.type === 'line') {
+            // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+            data.element.animate({
+                opacity: {
+                    // The delay when we like to start the animation
+                    begin: seq * delays + 1000,
+                    // Duration of the animation
+                    dur: durations,
+                    // The value where the animation should start
+                    from: 0,
+                    // The value where it should end
+                    to: 1
+                }
+            });
+        } else if(data.type === 'label' && data.axis === 'x') {
+            data.element.animate({
+                y: {
+                    begin: seq * delays,
+                    dur: durations,
+                    from: data.y + 100,
+                    to: data.y,
+                    // We can specify an easing function from Chartist.Svg.Easing
+                    easing: 'easeOutQuart'
+                }
+            });
+        } else if(data.type === 'label' && data.axis === 'y') {
+            data.element.animate({
+                x: {
+                    begin: seq * delays,
+                    dur: durations,
+                    from: data.x - 100,
+                    to: data.x,
+                    easing: 'easeOutQuart'
+                }
+            });
+        } else if(data.type === 'point') {
+            data.element.animate({
+                x1: {
+                    begin: seq * delays,
+                    dur: durations,
+                    from: data.x - 10,
+                    to: data.x,
+                    easing: 'easeOutQuart'
+                },
+                x2: {
+                    begin: seq * delays,
+                    dur: durations,
+                    from: data.x - 10,
+                    to: data.x,
+                    easing: 'easeOutQuart'
+                },
+                opacity: {
+                    begin: seq * delays,
+                    dur: durations,
+                    from: 0,
+                    to: 1,
+                    easing: 'easeOutQuart'
+                }
+            });
+        } else if(data.type === 'grid') {
+            // Using data.axis we get x or y which we can use to construct our animation definition objects
+            var pos1Animation = {
+                begin: seq * delays,
+                dur: durations,
+                from: data[data.axis.units.pos + '1'] - 30,
+                to: data[data.axis.units.pos + '1'],
+                easing: 'easeOutQuart'
+            };
+
+            var pos2Animation = {
+                begin: seq * delays,
+                dur: durations,
+                from: data[data.axis.units.pos + '2'] - 100,
+                to: data[data.axis.units.pos + '2'],
+                easing: 'easeOutQuart'
+            };
+
+            var animations = {};
+            animations[data.axis.units.pos + '1'] = pos1Animation;
+            animations[data.axis.units.pos + '2'] = pos2Animation;
+            animations.opacity = {
+                begin: seq * delays,
+                dur: durations,
+                from: 0,
+                to: 1,
+                easing: 'easeOutQuart'
+            };
+
+            data.element.animate(animations);
+        }
+    });
+
+    // For the sake of the example we update the chart every time it's created with a delay of 10 seconds
+    chart.on('created', function() {
+        if(window.__exampleAnimateTimeout) {
+            clearTimeout(window.__exampleAnimateTimeout);
+            window.__exampleAnimateTimeout = null;
+        }
+        window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    $('#errorTypes_Bar').highcharts({
+        chart: {
+            backgroundColor: 'transparent',
+            type: 'column'
+        },
+        exporting: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'Frequency of different types of errors'
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Total percent ERROR share'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
+
+        series: [{
+                name: "Error Type",
+                colorByPoint: true,
+                data: [{
+                        name: "ReferenceError",
+                        y: <?php echo $errMessage['ReferenceError'];?>,
+                        drilldown: "ReferenceError"
+                    }, {
+                        name: "SyntaxError",
+                        y: <?php echo $errMessage['SyntaxError'];?>,
+                        drilldown: "SyntaxError"
+                    }, {
+                        name: "failed to load resource",
+                        y: <?php echo $errMessage['failedToLoadResource'];?>,
+                        drilldown: "failed to load resource"
+                    }, {
+                        name: "TypeError",
+                        y: <?php echo $errMessage['TypeError'];?>,
+                        drilldown: "TypeError"
+                    }, {
+                        name: "Script error",
+                        y: <?php echo $errMessage['ScriptError'];?>,
+                        drilldown: "Script error"
+                    }, {
+                        name: "others",
+                        y: <?php echo $errMessage['others'];?>,
+                        drilldown: "others"
+                    }]
+            }]
+
+    });
+</script>
+
+<script type="text/javascript">
+    $('#browser_usage').highcharts({
+        chart: {
+            backgroundColor: 'transparent',
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: 'Browser shares on loading this project'
+        },
+        exporting: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
                     {
-                        fillColor : "rgba(49, 157, 181, 0.6)",
-                        strokeColor : "black",
-                        pointColor : "grey",
-                        pointStrokeColor : "black",
-                        pointHighlightFill: "black",
-                        data : [" 0 ", <?php 
-                                $index=0;
-                                 foreach ($count as $x)
-                                {
+                        name: 'Chrome',
+                        y: <?php echo $browser_percentage['chrome']?>,
+                        color:'#F5A9BC'
+                    },
+                    {
+                        name: 'IE',
+                        y: <?php echo $browser_percentage['ie']?>,
+                        color:'#F7BE81'
+                    },
 
-                                    echo '"'.$x.'", ';
+                    {
+                        name: 'Firefox',
+                        y: <?php echo $browser_percentage['mozila']?>,
+                        sliced: true,
+                        selected: true,
+                        color:'#ACFA58'
+                    },
+                    {
+                        name: 'Safari',
+                        y: <?php echo $browser_percentage['safari']?>,
+                        color:'#74DF00'
+                    },
 
-                                } 
-                        ?>]
-                                            }
-                                        ]
-                                    }
-
-                                    Chart.defaults.global.animationSteps = 300;
-                                    Chart.defaults.global.tooltipYPadding = 16;
-                                    Chart.defaults.global.tooltipCornerRadius = 0;
-                                    Chart.defaults.global.tooltipTitleFontStyle = "normal";
-                                    Chart.defaults.global.tooltipFillColor = "rgba(27, 29, 27, 0.8)";
-                                    Chart.defaults.global.animationEasing = "easeOutBounce";
-                                    Chart.defaults.global.responsive = true;
-                                    Chart.defaults.global.scaleLineColor = "black";
-                                    Chart.defaults.global.scaleFontSize = 12;
-
-                                    var ctx = document.getElementById("canvas").getContext("2d");
-                                    var LineChartDemo = new Chart(ctx).Line(lineChartData, {
-                                        pointDotRadius: 2,
-                                        bezierCurve: true,
-                                        scaleShowGridLines : false,
-                                        scaleOverride : true,
-                                        scaleStepWidth : <?php 
-    $x=(min($count));
-    $y=(max($count));
-    if($x===$y)
-    {
-        echo 30;
-    }
-    else
-    {
-        echo 30;
-    }
-    ?>,
-                    scaleSteps : <?php echo (max($count) / 15)  ?>     
-                });
+                    ['Others',   <?php echo $browser_percentage['others']?>]
+                ]
+            }]
+    });
 </script>
 
 

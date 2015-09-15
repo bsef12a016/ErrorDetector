@@ -2,13 +2,13 @@ $(function () {
 
     var contact_map;
 
-    var ny = new google.maps.LatLng(40.7142700, -74.0059700);
+    var ny = new google.maps.LatLng(31.576, 74.425);
 
     var neighborhoods = [
-      new google.maps.LatLng(40.7232700, -73.8059700),
-      new google.maps.LatLng(40.7423500, -74.0656600),
-      new google.maps.LatLng(40.7314600, -74.0458500),
-      new google.maps.LatLng(40.7151800, -74.1557400)
+//      new google.maps.LatLng(40.7232700, -73.8059700),
+//      new google.maps.LatLng(40.7423500, -74.0656600),
+//      new google.maps.LatLng(40.7314600, -74.0458500),
+//      new google.maps.LatLng(40.7151800, -74.1557400)
     ];
 
     var markers = [];
@@ -170,13 +170,13 @@ $(function () {
     }
 
     function addMarker() {
-      markers.push(new google.maps.Marker({
-        position: neighborhoods[iterator],
-        map: map,
-        draggable: false,
-        animation: google.maps.Animation.DROP
-      }));
-      iterator++;
+//      markers.push(new google.maps.Marker({
+//        position: neighborhoods[iterator],
+//        map: map,
+//        draggable: false,
+//        animation: google.maps.Animation.DROP
+//      }));
+//      iterator++;
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);

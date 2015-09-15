@@ -63,6 +63,24 @@ class dashboard_model extends CI_Model{
             }
         }
     }    
+
+    public function get_errorsByProjectId($proj_id){
+        
+        $this->db->where(['project_id' => $proj_id]);
+        $q=$this->db->get('error_metadata');            
+        return $q->result();
+        
+    }    
+    public function get_errorsprproj($proj_id=NULL)
+    {
+       
+        
+            $this->db->where(['project_id' => $proj_id]);
+            $q=$this->db->get('error_metadata'); 
+            $s=$q->num_rows();
+       
+        return $s;
+    }
     public function get_error_details($u_id, $id = null,$proj_id = NULL){
         if($this->projectExistenceCheck($u_id, $proj_id)){
             $this->db->where(['project_id' => $proj_id]);

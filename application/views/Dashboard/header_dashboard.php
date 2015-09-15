@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="admin-themes-lab">
     <meta name="author" content="themes-lab">
-    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
-    <title>Dashboard - jErrors - JavaScript Error Tracking for Modern Web</title>
+    <link rel="shortcut icon" href="<?=base_url()?>public/dashboard_assets/images/favicon.png" type="image/png">
+    <title>Make Admin Template &amp; Builder</title>
+    <link href="<?=base_url()?>public/dashboard_assets/css/chartist.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/css/theme.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/css/ui.css" rel="stylesheet">
@@ -18,9 +19,13 @@
     <link href="<?=base_url()?>public/dashboard_assets/plugins/metrojs/metrojs.min.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.css" rel="stylesheet">
     <!-- END PAGE STYLE -->
+    <script src="<?=base_url()?>public/assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="<?=base_url()?>public/dashboard_assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    
-    <!-- BEGIN PAGE STYLE -->
+    <script src="<?=base_url()?>public/dashboard_assets/js/chartist.min.js" type="text/javascript"></script>
+    <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+     <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script>
+    <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts Export Tool -->
+     <!-- BEGIN PAGE STYLE -->
     <link href="<?= base_url()?>public/dashboard_assets/plugins/step-form-wizard/css/step-form-wizard.min.css" rel="stylesheet">
 </head>
 <!-- BEGIN BODY -->

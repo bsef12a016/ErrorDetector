@@ -24,6 +24,11 @@ class User extends CI_Controller{
         $uname = $this->input->post('u_name');
         $pass = $this->input->post('password');
         $result = $this->login_model->get($uname,$pass);
+        $uid = $result[0]->u_id;
+         $resultuser=  $this->user_model->get($uid);
+        $this->session->set_userdata(['email'=>$resultuser[0]->email]);
+
+        print_r($result);
         if($result){
             $this->session->set_userdata([USER_NAME => $uname]);
             $this->session->set_userdata([USER_ID => $result[0]->id]);

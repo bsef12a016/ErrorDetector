@@ -67,43 +67,42 @@
 <!-- END PAGE SCRIPT -->
 <!-- BEGIN PAGE SCRIPTS -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Form Validation -->
-
+    
 <!--Contact Us Script-->
 <script src="//maps.google.com/maps/api/js?sensor=true"></script> <!-- Google Maps -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/google-maps/gmaps.min.js"></script> <!-- Google Maps Easy -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/contact.js"></script>
-
+    
 <!--tabular view-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/table_dynamic.js"></script>
-
+    
 <!--graph page-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- Financial Charts -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highcharts-more.min.js"></script> <!-- Financial Charts additional -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts export tool -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/charts_finance.js"></script>
-
-
-
+    
+    
+    
 <script src="<?=base_url()?>public/dashboard_assets/plugins/dropzone/dropzone.min.js"></script>  <!-- Upload Image & File in dropzone -->
-
-
-
+    
+    
+    
 <!--counters-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/timepicker/jquery-ui-timepicker-addon.min.js"></script> <!-- Time Picker -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/multidatepicker/multidatespicker.min.js"></script> <!-- Multi dates Picker -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/countup/countUp.min.js"></script> <!-- Animated Counter Number -->
-
-
-
-
-
+    
+    
+    
+    
+    
 <!-- END PAGE SCRIPTS -->
 <script>
     $("#projName").on("keydown",function (e){
         var val=$("#projName").val();
-            alert("PN - val " + val);
-
+        alert("PN - val " + val);
         if(val!=""){
             $("#projURL").on("keydown",function (e){
                 var val_2=$("#projURL").val();
@@ -120,7 +119,7 @@
     });
     $("#projURL").on("keydown",function (e){
         var val=$("#projURL").val();
-            alert("PU - val " + val);
+        alert("PU - val " + val);
         if(val!=""){
             $("#projName").on("keydown",function (e){
                 var val_2=$("#projName").val();

@@ -1,7 +1,7 @@
 <?php
  $session=  $this->session->all_userdata();
 ?>
-
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,7 +50,7 @@
                                         print_r($session[USER_NAME]);    
                                     }
                                     ?></h4>
-                                
+                                        
                             </div>
                         </div>
                     </div>

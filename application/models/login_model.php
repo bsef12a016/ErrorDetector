@@ -13,7 +13,13 @@ class login_model extends CI_Model
         $q=$this->db->get('login');            
         return $q->result();
     }
-        
+        public function updatelogin($d,$u_id)
+    {
+        $this->db->where(['u_id'=>$u_id]);
+        $this->db->update('login',$d);
+        return $this->db->affected_rows();
+    }
+
     public function insert($d)
     {
         $this->db->insert('login', $d);

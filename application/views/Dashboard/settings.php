@@ -18,9 +18,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
     function regenerateApi() {
-        a=confirm("This will regenerate your API key, nd invalidate the existing key. Are you sure you want to do this?project.")
-        if(a) 
-        {
+        a=confirm("This will regenerate your API key, and invalidate the existing key. Are you sure you want to do this?")
+        if(a){
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "Dashboard/regenerateApiKey/" + "<?= $u_id ?>" + "/" + "<?= $projectID ?>" + "/" + "<?= $apiKey ?>",

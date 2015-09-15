@@ -90,6 +90,9 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 $ALLOW_LOGIN = TRUE;
 
+//API KEY
+define('API_KEY', 'AIzaSyAUstEMWunH22j5D0mpJatREDNcYpUCMrc');
+
 //Admin
 define('ADMINISTRATOR_CREDENTIAL_NAME','administrator');
 define('ADMINISTRATOR_CREDENTIAL_STATUS','ADMINISTRATOR_CREDENTIAL_STATUS');
