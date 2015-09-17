@@ -40,6 +40,19 @@ class user_model extends CI_Model
         $this->db->delete('user');
         return $this->db->affected_rows();        
     }
+    
+    public function setStatus($data) {
+        $session = $this->session->all_userdata();
+        $this->db->where(['id'=>$session[USER_ID]]);
+        $this->db->update('user', $data);
+        return $this->db->insert_id();
+    }
+    public function setStatusLogout($data) {
+        $session = $this->session->all_userdata();
+        $this->db->where(['id'=>$session[USER_ID]]);
+        $this->db->update('user', $data);
+        return $this->db->insert_id();
+    }
 }
 
 

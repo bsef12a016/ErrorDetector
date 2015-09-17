@@ -57,9 +57,17 @@
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-chartjs/Chart.min.js"></script>  <!-- ChartJS Chart -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- financial Charts -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts Export Tool -->
-<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.js"></script> <!-- Vector Map -->
-<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script> <!-- Vector World Map  -->
-<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script> <!-- Vector Map Black Theme -->
+
+
+
+<!--<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.js"></script>  Vector Map -->
+<!--<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script>  Vector World Map  
+<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script>  Vector Map Black Theme -->
+
+
+
+
+
 <script src="<?=base_url()?>public/dashboard_assets/plugins/skycons/skycons.min.js"></script> <!-- Animated Weather Icons -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/simple-weather/jquery.simpleWeather.js"></script> <!-- Weather Plugin -->
 <script src="<?=base_url()?>public/dashboard_assets/js/widgets/widget_weather.js"></script>
@@ -69,8 +77,8 @@
 <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Form Validation -->
     
 <!--Contact Us Script-->
-<script src="//maps.google.com/maps/api/js?sensor=true"></script> <!-- Google Maps -->
-<script src="<?=base_url()?>public/dashboard_assets/plugins/google-maps/gmaps.min.js"></script> <!-- Google Maps Easy -->
+<!--<script src="//maps.google.com/maps/api/js?sensor=true"></script>  Google Maps 
+<script src="<?=base_url()?>public/dashboard_assets/plugins/google-maps/gmaps.min.js"></script>  Google Maps Easy -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/contact.js"></script>
     
 <!--tabular view-->

@@ -97,6 +97,13 @@ class Dashboard extends CI_Controller{
     }
         
     public function logout(){
+        $session=  $this->session->all_userdata();
+        if($session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            $logoutDate = date("Y-m-d h:i:sa");
+            $this->user_model->setStatusLogout(['lastLogout' => $logoutDate,
+                'status' => 0]);
+        }
+        
         session_destroy();
         $this->load->library('session');
         $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
@@ -159,6 +166,63 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
+    
+    
+    public function errors_btw_lastLogin($uid,$projID)
+    {
+        $q=$this->dashboard_model->getUser($uid);
+        $lastLogin=array();
+        $lastLogout=array();
+        foreach($q as $value){
+            $lastLogin[]=$value->lastLogin;
+            $lastLogout[]=$value->lastLogout;                
+            }
+            $logout=date('Y-m-d', strtotime($lastLogout[0]));
+            $login=date('Y-m-d', strtotime($lastLogin[0]));
+
+            $errors=$this->dashboard_model->get_errorsByProjectId($projID);
+            $this->session->set_userdata(['projid'=>$projID]);
+            $lastOccur=array();
+            foreach($errors as $value){
+                $lastOccur[]=$value->lastOccurence;
+                }
+                $dates=array(); 
+                foreach ($lastOccur as $s) {
+                    if(ord($s[0])>=48 && ord($s[0])<=57){
+                        $dates[] = date('Y-m-d', strtotime($s));
+                        }
+                        else if($s[0]=='?'){
+                            $p = explode("?", $s);
+                            $d = implode($p);
+                            $date= date('Y-m-d', strtotime($d));
+                            $dates[] = $date;	
+                            }
+                            else{
+                                $p = explode(" ", $s);
+                                $d=$p[1]." ".$p[2]." ".$p[3];
+                                $date= date('Y-m-d', strtotime($d));
+                                $dates[] =$date;        	
+                                }
+                                }
+                                
+                                $errCount_between_lastLOgin=0;
+                                    print_r($logout > $dates[0]);
+                                    
+                                foreach ($dates as $d)
+                                {
+
+                                    if($logout < $d){
+
+                                            if($login > $d) { 
+                                         $errCount_between_lastLOgin++;
+                                        }
+                                    }
+                                }
+//                                print_r($login."<br>");
+//                                print_r($logout);
+                                print_r($errCount_between_lastLOgin);
+                                }
+    
     public function accountSettings() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
@@ -569,4 +633,6 @@ class Dashboard extends CI_Controller{
         }
        echo json_encode($name);
     }
+    
+
 }

@@ -11,7 +11,8 @@
     <link href="<?=base_url()?>public/dashboard_assets/css/ui.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
 </head>
-<body class="account" data-page="login" style="background-image: url('<?= base_url()?>public/dashboard_assets/images/gallery/login.jpg');">
+<!--<body class="account" data-page="login" style="background-image: url('<?= base_url()?>public/dashboard_assets/images/gallery/login.jpg');">-->
+<body class="account" data-page="login">
     <!-- BEGIN LOGIN BOX -->
     <div class="container" id="login-block">
         <div class="row">

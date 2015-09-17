@@ -22,6 +22,8 @@ $(function() {
                 window.location.href = "dashboard.html";
             }, 2000);
         });
+        //../../images/gallery/login.jpg
+        
         $.backstretch(["public/dashboard_assets/images/gallery/login.jpg"],
         {
             fade: 600,

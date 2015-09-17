@@ -22,6 +22,18 @@ class dashboard_model extends CI_Model{
         }
         return $q->result();
     }
+    
+    
+    public function getUser($u_id){
+        
+        $this->db->where(['id' => $u_id]);
+        $q=$this->db->get('user');   
+        
+        return $q->result();            
+            }
+            
+    
+    
     public function get_projects(){
         $session=  $this->session->all_userdata();
         $id = $session[USER_ID];

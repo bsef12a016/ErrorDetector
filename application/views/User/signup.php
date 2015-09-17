@@ -12,7 +12,7 @@
     <link href="<?=base_url()?>public/dashboard_assets/plugins/icheck/skins/all.css" rel="stylesheet" />
     <link href="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
 </head>
-<body class="account separate-inputs boxed" data-page="signup"  style="background-image: url('<?= base_url()?>public/dashboard_assets/images/gallery/login.jpg');">
+<body class="account separate-inputs boxed" data-page="signup">
     <!-- BEGIN LOGIN BOX -->
     <div class="container" id="login-block">
         <div class="row">

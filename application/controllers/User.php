@@ -32,11 +32,16 @@ class User extends CI_Controller{
         if($result){
             $this->session->set_userdata([USER_NAME => $uname]);
             $this->session->set_userdata([USER_ID => $result[0]->id]);
+            $loginDate = date("Y-m-d h:i:sa");
+            $ip = $this->getIP();
             if($uname == ADMINISTRATOR_CREDENTIAL_NAME){
                 $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_TRUE);                
                 $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);  
                 redirect('AdminDashboard/adminDashboard');
             }  else {
+                $this->user_model->setStatus(['ip' => $ip, 
+                    'lastLogin' => $loginDate,
+                    'status' => 1]);
                 $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);                
                 $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);  
                 redirect('Dashboard/projects');
@@ -113,6 +118,18 @@ class User extends CI_Controller{
         print_r($q);
     }
         
+    
+    
+    public function getIP() {
+        if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+            $ip = $_SERVER["HTTP_CLIENT_IP"];
+        } elseif (!empty ($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+            $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        } else {
+            $ip = $_SERVER["REMOTE_ADDR"];   
+        }
+        return $ip;
+    }
 }
 
 
