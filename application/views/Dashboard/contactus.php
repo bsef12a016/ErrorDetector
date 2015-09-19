@@ -1,7 +1,13 @@
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDNcYpUCMrc&=false&callback=initMap"></script>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
+
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-contact">
     <div class="map-contact">
-        <div class="map" id="contact-map"></div>
+        <div id="map"></div>
     </div>
     <div class="row">
         <div class="col-sm-8">
@@ -63,3 +69,35 @@
 <!-- END PAGE CONTENT -->
 
 
+<script>
+    
+    // The following example creates a marker in Stockholm, Sweden using a DROP
+    // animation. Clicking on the marker will toggle the animation between a BOUNCE
+    // animation and no animation.
+    
+    var marker;
+    
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: {lat: 31.576, lng: 74.425}
+        });
+        
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: {lat: 31.576, lng: 74.425}
+        });
+        marker.addListener('click', toggleBounce);
+    }
+    
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+    
+</script>

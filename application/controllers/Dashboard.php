@@ -124,8 +124,6 @@ class Dashboard extends CI_Controller{
     }
     public function projects() {
         $session=  $this->session->all_userdata();
-        print_r($session[LOGIN_STATUS]);
-        print_r($session[ADMINISTRATOR_CREDENTIAL_STATUS]);
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE && 
                 $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
             $data['projects']=$this->dashboard_model->get_projects();
@@ -166,10 +164,7 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    
-    
-    public function errors_btw_lastLogin($uid,$projID)
-    {
+    public function errors_btw_lastLogin($uid,$projID){
         $q=$this->dashboard_model->getUser($uid);
         $lastLogin=array();
         $lastLogout=array();
@@ -222,7 +217,6 @@ class Dashboard extends CI_Controller{
 //                                print_r($logout);
                                 print_r($errCount_between_lastLOgin);
                                 }
-    
     public function accountSettings() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
@@ -237,147 +231,54 @@ class Dashboard extends CI_Controller{
         }
     }
     //Pending
-
-        public function projectGraph($projID) {
-        
-        $errors=$this->dashboard_model->get_errorsByProjectId($projID);
-        $this->session->set_userdata(['projid'=>$projID]);
-        $lastOccur=array();
-        foreach($errors as $value){
-            $lastOccur[]=$value->lastOccurence;
-        }
-        $dates=array(); 
-        foreach ($lastOccur as $s) {
-            if(ord($s[0])>=48 && ord($s[0])<=57){
-                $dates[] = date('d/M/Y', strtotime($s));
-            }
-            else if($s[0]=='?'){
-                $p = explode("?", $s);
-                $d = implode($p);
-                $date= date('d/M/Y', strtotime($d));
-                $dates[] = $date;	
-            }
-            else{
-                $p = explode(" ", $s);
-                $d=$p[1]." ".$p[2]." ".$p[3];
-                $date= date('d/M/Y', strtotime($d));
-                $dates[] =$date;        	
-                }
-                }
-        
-                $data['lastOccur']=$dates;
- 
-                $today=date("m/d/Y");
-
-                $date_today = date('d/M/Y', strtotime($today));
-                    
-                $date = date('Y-m-d', strtotime($today));
-            
-                $date = date_create($date);
-            
-                $last_12days=array();
-            
-                for($i=0;$i<11;$i++)
-                {
-                    date_modify($date, '+1 day');
-                    $last_12days[$i]= $date->format('d/M/Y')."<br>";
-                    }
-                    $data["last_12days"]=$last_12days;
-        
-        
-
-                    $browser=array();
-                    foreach($errors as $value){
-                        $browser[]=$value->browswer;
-                        }
-                        $chromeCount=0;
-                        $mozillaCount=0;
-                        $safariCount=0;
-                        $ieCount=0;
-                        $othersCount=0;
-                        foreach($browser as $value){
-                            if($value === 'chrome')
-                                {
-                                $chromeCount++;
-                                }
-                                elseif ($value === 'Mozilla')
-                                    {
-                                    $mozillaCount++;
-                                    }
-                                    elseif ($value === 'safari')
-                                        {
-                                        $safariCount++;
-                                        }
-                                        elseif ($value === 'IE')
-                                            {
-                                            $ieCount++;
-                                            }
-                                            else
-                                                {
-                                                $othersCount++;
-                                                }
-                                                }
-                                                $total=$chromeCount+$mozillaCount+$safariCount+$ieCount+$othersCount;
-                                                $browser_percentage=array();
-                                                $browser_percentage['chrome']=($chromeCount/$total)*100;
-                                                $browser_percentage['mozila']=($mozillaCount/$total)*100;
-                                                $browser_percentage['safari']=($safariCount/$total)*100;
-                                                $browser_percentage['ie']=($ieCount/$total)*100;
-                                                $browser_percentage['others']=($othersCount/$total)*100;                            
-                                                $data['browser_percentage']=$browser_percentage;
-                                                
-                                                $err_message=array();
-                                                foreach($errors as $value){
-                                                    $err_message[]=$value->message;
-                                                    }
-                                                    $ReferenceErrorCount=0;
-                                                    $SyntaxErrorCount=0;
-                                                    $failedToLoadResourceCount=0;
-                                                    $TypeErrorCount=0;
-                                                    $ScriptErrorCount=0;
-                                                    $othersCount=0;
-                                                    foreach ($err_message as $value)
-                                                        {
-                                                        if (strpos($value,'ReferenceError') !== false) {
-                                                            $ReferenceErrorCount++;
-                                                            }
-                                                            else if (strpos($value,'SyntaxError') !== false) {
-                                                                $SyntaxErrorCount++;
-                                                                }
-                                                                else if (strpos($value,'404') !== false) {
-                                                                    $failedToLoadResourceCount++;
-                                                                    }
-                                                                    elseif (strpos($value,'TypeError') !== false) {
-                                                                        $TypeErrorCount++;
-                                                                        }
-                                                                        elseif (strpos($value,'Script error') !== false) {
-                                                                            $ScriptErrorCount++;
-                                                                            }
-                                                                            else
-                                                                                {
-                                                                                $othersCount++;
-                                                                                }
-                                                                                }
-                                                                                $total=$ReferenceErrorCount+$SyntaxErrorCount+$failedToLoadResourceCount+$TypeErrorCount+$ScriptErrorCount+$othersCount;
-                                                                                $errMessage=array();
-                                                                                $errMessage['ReferenceError']=($ReferenceErrorCount/$total)*100;
-                                                                                $errMessage['SyntaxError']=($SyntaxErrorCount/$total)*100;
-                                                                                $errMessage['failedToLoadResource']=($failedToLoadResourceCount/$total)*100;
-                                                                                $errMessage['TypeError']=($TypeErrorCount/$total)*100;
-                                                                                $errMessage['ScriptError']=($ScriptErrorCount/$total)*100;
-                                                                                $errMessage['others']=($othersCount/$total)*100;
-                                                                                $data['errMessage']=$errMessage;
-                                                                                
-                                                                                $total_ErrorsExcluding404=$total-$failedToLoadResourceCount;
-                                                                                
-                                                                                
-                                                                                $this->load->view('Dashboard/header_dashboard');
-                                                                                $this->load->view('Dashboard/projectGraph',$data);
-                                                                                $this->load->view('Dashboard/footer_dashboard');
-                                                                                }
-    
-//    public function projectGraph($projID) {
-//        $errors=$this->dashboard_model->get_errorsByProjectId($projID);
+    public function projectGraph($u_id, $projID) {
+        $session=  $this->session->all_userdata();
+        if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
+                && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE
+                && $projID != NULL && $u_id != NULL){
+            if($session[USER_ID] == $u_id){   
+                $data['errors']=$this->dashboard_model->get_errors($u_id ,$projID);
+                
+                if($data['errors'] != "empty"){
+                    print_r($data['errors']);
+//                    $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);
+//                    $this->session->set_userdata(PROJECT_ID, $projID);
+//                    
+//                    $errors=$this->dashboard_model->get_errorsByProjectId($projID);
+//                    $this->session->set_userdata(PROJECT_ID, $projID);
+//                    $lastOccur=array();
+//                    foreach($errors as $value){
+//                        $lastOccur[]=$value->lastOccurence;
+//                    }
+//                    $dates=array(); 
+//                    foreach ($lastOccur as $s) {
+//                        if(ord($s[0])>=48 && ord($s[0])<=57){
+//                            $dates[] = date('d/M/Y', strtotime($s));
+//                        }
+//                        else if($s[0]=='?'){
+//                            $p = explode("?", $s);
+//                            $d = implode($p);
+//                            $date= date('d/M/Y', strtotime($d));
+//                            $dates[] = $date;	
+//                        }
+//                        else{
+//                            $p = explode(" ", $s);
+//                            $d=$p[1]." ".$p[2]." ".$p[3];
+//                            $date= date('d/M/Y', strtotime($d));
+//                            $dates[] =$date;        	
+//                        }
+//            }
+//        $data['lastOccur']=$dates;
+//        $today=date("m/d/Y");
+//        $date_today = date('d/M/Y', strtotime($today));
+//        $date = date('Y-m-d', strtotime($today));
+//        $date = date_create($date);
+//        $last_12days=array();
+//        for($i=0;$i<11;$i++){
+//            date_modify($date, '+1 day');
+//            $last_12days[$i]= $date->format('d/M/Y')."<br>";
+//        }
+//        $data["last_12days"]=$last_12days;
 //        $browser=array();
 //        foreach($errors as $value){
 //            $browser[]=$value->browswer;
@@ -388,85 +289,89 @@ class Dashboard extends CI_Controller{
 //        $ieCount=0;
 //        $othersCount=0;
 //        foreach($browser as $value){
-//            if($value === 'chrome')
-//                {
+//            if($value === 'chrome'){
 //                $chromeCount++;
-//                }
-//                elseif ($value === 'Mozilla')
-//                    {
-//                    $mozillaCount++;
-//                    }
-//                    elseif ($value === 'safari')
-//                        {
-//                        $safariCount++;
-//                        }
-//                        elseif ($value === 'IE')
-//                            {
-//                            $ieCount++;
-//                            }
-//                            else
-//                                {
-//                                $othersCount++;
-//                                }
-//                            }
-//                            $total=$chromeCount+$mozillaCount+$safariCount+$ieCount+$othersCount;
-//                            $browser_percentage=array();
-//                            $browser_percentage['chrome']=($chromeCount/$total)*100;
-//                            $browser_percentage['mozila']=($mozillaCount/$total)*100;
-//                            $browser_percentage['safari']=($safariCount/$total)*100;
-//                            $browser_percentage['ie']=($ieCount/$total)*100;
-//                            $browser_percentage['others']=($othersCount/$total)*100;                            
-//                            $data['browser_percentage']=$browser_percentage;
-//                            
-//                            $err_message=array();
-//                            foreach($errors as $value){
-//                                $err_message[]=$value->message;
-//                                }
-//                                $ReferenceErrorCount=0;
-//                                $SyntaxErrorCount=0;
-//                                $failedToLoadResourceCount=0;
-//                                $TypeErrorCount=0;
-//                                $ScriptErrorCount=0;
-//                                $othersCount=0;
-//                                foreach ($err_message as $value)
-//                                {
-//                                    if (strpos($value,'ReferenceError') !== false) {
-//                                        $ReferenceErrorCount++;
-//                                        }
-//                                        else if (strpos($value,'SyntaxError') !== false) {
-//                                            $SyntaxErrorCount++;
-//                                            }
-//                                            else if (strpos($value,'404') !== false) {
-//                                                $failedToLoadResourceCount++;
-//                                                }
-//                                                elseif (strpos($value,'TypeError') !== false) {
-//                                                    $TypeErrorCount++;
-//                                                    }
-//                                                    elseif (strpos($value,'Script error') !== false) {
-//                                                        $ScriptErrorCount++;
-//                                                        }
-//                                                        else
-//                                                            {
-//                                                            $othersCount++;
-//                                                            }
-//                                }
-//                                $total=$ReferenceErrorCount+$SyntaxErrorCount+$failedToLoadResourceCount+$TypeErrorCount+$ScriptErrorCount+$othersCount;
-//                                $errMessage=array();
-//                                $errMessage['ReferenceError']=($ReferenceErrorCount/$total)*100;
-//                                $errMessage['SyntaxError']=($SyntaxErrorCount/$total)*100;
-//                                $errMessage['failedToLoadResource']=($failedToLoadResourceCount/$total)*100;
-//                                $errMessage['TypeError']=($TypeErrorCount/$total)*100;
-//                                $errMessage['ScriptError']=($ScriptErrorCount/$total)*100;
-//                                $errMessage['others']=($othersCount/$total)*100;
-//                                $data['errMessage']=$errMessage;
-//                                
-//                                $total_ErrorsExcluding404=$total-$failedToLoadResourceCount;
-//                                
-//                                
-//                                $this->load->view('Dashboard/header_dashboard');
-//                                $this->load->view('Dashboard/projectGraph',$data);
-//                                $this->load->view('Dashboard/footer_dashboard');
-//    }
+//            }
+//            elseif ($value === 'Mozilla'){
+//                $mozillaCount++;
+//            }
+//            elseif ($value === 'safari'){
+//                $safariCount++;
+//            }
+//            elseif ($value === 'IE'){
+//                $ieCount++;
+//            }
+//            else{
+//                $othersCount++;
+//            }
+//        }
+//        $total=$chromeCount+$mozillaCount+$safariCount+$ieCount+$othersCount;
+//        $browser_percentage=array();
+//        $browser_percentage['chrome']=($chromeCount/$total)*100;
+//        $browser_percentage['mozila']=($mozillaCount/$total)*100;
+//        $browser_percentage['safari']=($safariCount/$total)*100;
+//        $browser_percentage['ie']=($ieCount/$total)*100;
+//        $browser_percentage['others']=($othersCount/$total)*100;                            
+//        $data['browser_percentage']=$browser_percentage;
+//        $err_message=array();
+//        foreach($errors as $value){
+//            $err_message[]=$value->message;
+//        }
+//        $ReferenceErrorCount=0;
+//        $SyntaxErrorCount=0;
+//        $failedToLoadResourceCount=0;
+//        $TypeErrorCount=0;
+//        $ScriptErrorCount=0;
+//        $othersCount=0;
+//        foreach ($err_message as $value){
+//            if (strpos($value,'ReferenceError') !== false) {
+//                $ReferenceErrorCount++;
+//            }
+//            else if (strpos($value,'SyntaxError') !== false) {
+//                $SyntaxErrorCount++;
+//            }
+//            else if (strpos($value,'404') !== false) {
+//                $failedToLoadResourceCount++;
+//            }
+//            elseif (strpos($value,'TypeError') !== false) {
+//                $TypeErrorCount++;
+//            }
+//            elseif (strpos($value,'Script error') !== false) {
+//                $ScriptErrorCount++;
+//            }
+//            else{
+//                $othersCount++;
+//            }
+//        }
+//        $total=$ReferenceErrorCount+$SyntaxErrorCount+$failedToLoadResourceCount+$TypeErrorCount+$ScriptErrorCount+$othersCount;
+//        $errMessage=array();
+//        $errMessage['ReferenceError']=($ReferenceErrorCount/$total)*100;
+//        $errMessage['SyntaxError']=($SyntaxErrorCount/$total)*100;
+//        $errMessage['failedToLoadResource']=($failedToLoadResourceCount/$total)*100;
+//        $errMessage['TypeError']=($TypeErrorCount/$total)*100;
+//        $errMessage['ScriptError']=($ScriptErrorCount/$total)*100;
+//        $errMessage['others']=($othersCount/$total)*100;
+//        $data['errMessage']=$errMessage;
+//        $total_ErrorsExcluding404=$total-$failedToLoadResourceCount;
+//        $this->load->view('Dashboard/header_dashboard');
+//        $this->load->view('Dashboard/projectGraph',$data);
+//        $this->load->view('Dashboard/footer_dashboard');
+//
+                }
+                else{
+                    redirect('Dashboard/projects');                                        
+                }
+            }
+            else{
+                redirect('Dashboard/projects');                    
+            }
+        }
+        else{
+            redirect('Home/index');
+        }
+        
+        
+    }
     //DONE
     public function regenerateApiKey($u_id, $projectID, $apiKey){
         $session=  $this->session->all_userdata();
@@ -568,7 +473,6 @@ class Dashboard extends CI_Controller{
     public function sucess() {
         $this->load->view('Dashboard/sucess', array('error' => ' ' ));
     }
-    
     public function sendMail() {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE

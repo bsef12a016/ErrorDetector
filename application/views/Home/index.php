@@ -67,7 +67,7 @@
         </section>
         <!-- END: LAYOUT/SLIDERS/REVO-SLIDER-8 -->
         <!-- BEGIN: CONTENT/MISC/WHY-CHOOSE-US-1 -->
-        <div class="c-content-box c-size-lg c-bg-grey-1">
+<!--        <div class="c-content-box c-size-lg c-bg-grey-1">
             <div class="container">
                 <div class="">
                     <div class="row">
@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- END: CONTENT/MISC/WHY-CHOOSE-US-1 -->
         <!-- BEGIN: CONTENT/FEATURES/FEATURES-1 -->
         <!-- BEGIN: FEATURES 1 -->

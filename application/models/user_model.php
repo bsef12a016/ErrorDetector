@@ -7,18 +7,18 @@
  */
 class user_model extends CI_Model
 {
-    public function get($user_id=null)
-    {
-        if($user_id==null)
-        {
-            $q=$this->db->get('user');            
-        }
-        else {
+    public function get($user_id = null){        
+        if($user_id != null){
             $this->db->where(['id' => $user_id]);
-            $q=$this->db->get('user');            
-                         
+            $q = $this->db->get('user');
+            if($q){
+                return $q->result();
+            }
+            else {
+                return NULL;   
+            }
         }
-        return $q->result();
+        return NULL;   
     }
         
     public function insert($d)
@@ -53,6 +53,11 @@ class user_model extends CI_Model
         $this->db->update('user', $data);
         return $this->db->insert_id();
     }
+    public function checkProjectCount($userID) {
+        $this->db->where(['u_id' => $userID]);
+        return $this->db->count_all_results('project');
+    }
+    
 }
 
 

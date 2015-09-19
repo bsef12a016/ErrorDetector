@@ -1,7 +1,7 @@
 <?php
  $session=  $this->session->all_userdata();
 ?>
-    
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +19,7 @@
         <link href="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.css" rel="stylesheet">
         <!-- END PAGE STYLE -->
         <script src="<?=base_url()?>public/dashboard_assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-            
+        
         <!-- BEGIN PAGE STYLE -->
         <link href="<?= base_url()?>public/dashboard_assets/plugins/step-form-wizard/css/step-form-wizard.min.css" rel="stylesheet">
     </head>
@@ -50,16 +50,13 @@
                                         print_r($session[USER_NAME]);    
                                     }
                                     ?></h4>
-                                        
+                                
                             </div>
                         </div>
                     </div>
                     <ul class="nav nav-sidebar">
                         <li class=" nav-active active">
                             <a href="<?= site_url('AdminDashboard/adminDashboard')?>"><i class="fa fa-dashboard"></i><span data-translate="dashboard">Dashboard</span></a>
-                        </li>
-                        <li class="">
-                            <a href="<?= site_url('AdminDashboard/graphs')?>"><i class="icon-bar-chart"></i><span data-translate="dashboard">Graph</span></a>
                         </li>
                         <li class="">
                             <a href="<?= site_url('Emails/userMails')?>"><i class="octicon octicon-mail-read"></i><span data-translate="Mailbox">Mailbox</span></a>
@@ -85,7 +82,7 @@
                 </div>
             </div>
             <!-- END SIDEBAR -->
-                
+            
             <div class="main-content">
                 <!-- BEGIN TOPBAR -->
                 <div class="topbar">
@@ -95,7 +92,6 @@
                             <ul class="nav nav-icons">
                                 <li><a href="<?= site_url('AdminDashboard/adminDashboard')?>" class=""><span class="fa fa-dashboard"></span></a></li>
                                 <li><a href="<?= site_url('Emails/userMails')?>"><span class="octicon octicon-mail-read"></span></a></li>
-                                <li><a href="<?= site_url('AdminDashboard/graphs')?>"><span class="octicon octicon-graph"></span></a></li>
                             </ul>
                         </div>
                     </div>

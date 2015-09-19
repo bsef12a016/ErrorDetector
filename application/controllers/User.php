@@ -17,40 +17,46 @@ class User extends CI_Controller{
     //*********************************
 
     public function login(){
-        
+        $this->session->set_userdata(SIGNIN_ERROR, "");
         $this->load->view('User/login');
     }
     public function usr_login(){        
         $uname = $this->input->post('u_name');
         $pass = $this->input->post('password');
         $result = $this->login_model->get($uname,$pass);
-        $uid = $result[0]->u_id;
-         $resultuser=  $this->user_model->get($uid);
-        $this->session->set_userdata(['email'=>$resultuser[0]->email]);
-
-        print_r($result);
-        if($result){
-            $this->session->set_userdata([USER_NAME => $uname]);
-            $this->session->set_userdata([USER_ID => $result[0]->id]);
-            $loginDate = date("Y-m-d h:i:sa");
-            $ip = $this->getIP();
-            if($uname == ADMINISTRATOR_CREDENTIAL_NAME){
-                $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_TRUE);                
-                $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);  
-                redirect('AdminDashboard/adminDashboard');
-            }  else {
-                $this->user_model->setStatus(['ip' => $ip, 
-                    'lastLogin' => $loginDate,
-                    'status' => 1]);
-                $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);                
-                $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);  
-                redirect('Dashboard/projects');
+        if(!$result){
+            $this->session->set_userdata(SIGNIN_ERROR, SIGNIN_ERROR);
+            $this->load->view('User/login');
+        }  else {
+            $uid = $result[0]->u_id;
+            $resultuser = $this->user_model->get($uid);
+            $this->session->set_userdata(['email'=>$resultuser[0]->email]);
+            if($resultuser){
+                $this->session->set_userdata([USER_NAME => $uname]);
+                $this->session->set_userdata([USER_ID => $result[0]->u_id]);
+                $loginDate = date("Y-m-d h:i:sa");
+                $ip = $this->getIP();
+                if($uname == ADMINISTRATOR_CREDENTIAL_NAME){
+                    $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_TRUE);                
+                    $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);  
+                    redirect('AdminDashboard/adminDashboard');
+                }  else {
+                    $this->user_model->setStatus(['ip' => $ip, 
+                        'lastLogin' => $loginDate,
+                        'status' => 1]);
+                    $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);                
+                    $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);
+                    redirect('Dashboard/projects');
+                }
+            }
+            else{
+                $this->load->view('User/login');
             }
         }
-        else{
-            $this->load->view('User/login');
-        }
     }
+    public function signup() {
+        $this->load->view('User/signup');
+    }    
     public function user_signup(){        
         $fname = $this->input->post('firstname');
         $lname = $this->input->post('lastname');
@@ -64,7 +70,9 @@ class User extends CI_Controller{
             'last_name' => $lname, 
             'email' => $email,
             'trial_startDate' => $trial_start,
-            'trial_expirydate' => $trial_expiry 
+            'trial_expirydate' => $trial_expiry,
+            'username' => $uname,
+            'password' => $pass
                 ]);
         if($q){
             $s = $this->login_model->insert([
@@ -76,50 +84,20 @@ class User extends CI_Controller{
         if($s){
              $this->session->set_userdata([USER_NAME => $uname]);
              $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);  
-             $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);                
-
-            redirect('Dashboard/addProject');
+             $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);
+             redirect('Dashboard/addProject');
         }
         else{
             $this->load->view('User/signup');            
         }
     }
-    public function signup() {
-        $this->load->view('User/signup');
-    }
+
     public function message(){
         $this->load->view('User/message');    
     }   
     public function comming_soon() {
         $this->load->view('User/comming_soon');
     } 
-    public function get($u_id = null){
-        $q = $this->user_model->get($u_id);
-        print_r($q);
-    }
-    public function insert($f_name, $l_name, $status, $email){
-        $q = $this->user_model->insert([
-            'first_name'=>$f_name, 
-            'last_name'=>$l_name, 
-            'status'=>$status, 
-            'email'=>$email]);
-        print_r($q);
-    }
-    public function update($u_id,$f_name,$l_name,$status,$email){
-        $q = $this->user_model->update([
-            'first_name' => $f_name, 
-            'last_name' => $l_name, 
-            'status' => $status, 
-            'email' => $email],$u_id);
-        print_r($q);        
-    }
-    public function delete($u_id){
-        $q=$this->user_model->delete($u_id);
-        print_r($q);
-    }
-        
-    
-    
     public function getIP() {
         if(!empty($_SERVER["HTTP_CLIENT_IP"])){
             $ip = $_SERVER["HTTP_CLIENT_IP"];
@@ -130,6 +108,11 @@ class User extends CI_Controller{
         }
         return $ip;
     }
+    public function checkUserProjectCount($userID) {
+        echo $this->user_model->checkProjectCount($userID);   
+    }
+    
+    
 }
 
 

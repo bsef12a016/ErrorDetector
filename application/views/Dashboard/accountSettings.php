@@ -35,7 +35,7 @@
                                        
                                     <div class="col-sm-9 prepend-icon">
                                              
-                                        <input name="name" class="form-control" aria-required="true"  id="uName" required type="text" value=" <?php echo $session[USER_NAME] ?>" placeholder="Enter User Name" minlength="3"  required >
+                                        <input name="name" class="form-control" aria-required="true"  id="seusrName" required type="text" value=" <?php echo $session[USER_NAME] ?>" placeholder="Enter User Name" minlength="3"  required >
                                        
                                         <i class="icon-user"></i>
                                     </div>
@@ -46,7 +46,7 @@
                                 <div class="row">
                                     <div class="col-sm-9 col-sm-offset-3">
                                         <div class="pull-right">
-                                            <input class="btn btn-embossed btn-primary m-t-10 m-b-40" id="username" type="button" value="Update/Change Name" onclick="changeUsername()" disabled="disabled">
+                                            <input class="btn btn-embossed btn-primary m-t-10 m-b-40" id="username1" type="button" value="Update/Change Name" onclick="changeUsername()" disabled="disabled">
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                     </label>
                                    
                                                 <div class="col-sm-9 prepend-icon">
-                                        <input name="email" class="form-control form-white email" aria-required="true" id="email" value= "<?php echo $session["email"] ?>" required  type="text" placeholder="Enter user email" minlength="3"  required >
+                                        <input name="email1" class="form-control form-white email" aria-required="true" id="email" value= "<?php echo $session["email"] ?>" required  type="text" placeholder="Enter user email" minlength="3"  required >
                                         <i class="icon-envelope"></i>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                 <div class="row">
                                     <div class="col-sm-9 col-sm-offset-3">
                                         <div class="pull-right">
-                                            <input class="btn btn-embossed btn-primary m-t-10 m-b-40" id="reemail" type="button" value="Update/Change Email" onclick="replaceemail()" disabled="disabled">
+                                            <input class="btn btn-embossed btn-primary m-t-10 m-b-40" id="reemail1" type="button" value="Update/Change Email" onclick="replaceemail()" disabled="disabled">
                                         </div>
                                     </div>
                                 </div>

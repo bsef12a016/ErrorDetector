@@ -68,8 +68,12 @@ class dashboard_model extends CI_Model{
         else {
             if($this->projectExistenceCheck($u_id, $proj_id)){
                 $this->db->where(['project_id' => $proj_id]);
-                $q=$this->db->get('error_metadata');            
-                return $q->result();
+                $q=$this->db->get('error_metadata');
+                if($q){
+                    return $q->result();
+                    }  else {
+                        return "empty";                
+                        }
             }  else {
                 return "empty";                
             }

@@ -60,7 +60,7 @@ class Home extends CI_Controller{
         $subject = $this->input->post('subject');
         $emailFrom = $this->input->post('email');
         $message = $this->input->post('message');
-        $date = date("Y-m-d h:i:sa");
+        $date = date("m/d/Y h:i:sa");
         $result = $this->home_model->insertVisitorMail([
                     'Name' => $name,
                     'Subject' => $subject,

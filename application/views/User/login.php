@@ -1,8 +1,10 @@
+<?php $session=  $this->session->all_userdata();?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Themes Lab - Creative Laborator</title>
+    <title>Login - jErrors - JavaScript Error Tracking for Modern Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="" name="description" />
     <meta content="themes-lab" name="author" />
@@ -20,6 +22,7 @@
                 <div class="account-wall">
                     <i class="user-img icons-faces-users-03"></i>
                     <form id="s" class="form-signin" role="form" method="post" action="<?=site_url('User/usr_login')?>">
+                        <h4 style="color: red"><?php echo $session[SIGNIN_ERROR]; ?></h4>
                         <div class="append-icon">
                             <input type="text" name="u_name" id="name" class="form-control form-white username" placeholder="Username" required>
                             <i class="icon-user"></i>
@@ -57,7 +60,7 @@
             </div>
         </div>
         <p class="account-copyright">
-            <span>Copyright © 2015 </span><span>THEMES LAB</span>.<span>All rights reserved.</span>
+            <span>Copyright © 2015 </span><span>jErrors</span>.<span>All rights reserved.</span>
         </p>
     </div>
     <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery/jquery-1.11.1.min.js"></script>
@@ -72,10 +75,6 @@
         $(function(){
             
           $("#s").submit(function(e){
-
-
-
-          
         });
     </script>
     

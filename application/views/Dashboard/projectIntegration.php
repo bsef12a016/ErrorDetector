@@ -33,8 +33,8 @@
                                         $session=  $this->session->all_userdata();
                                             
                                         ?>
-                                    <span class="">src</span><span class="">=</span><span class="">"</span><span class="">Link of our JS Detection Library</span><span class="">"</span>
-                                    <span class="">data-apikey</span><span class="">=</span><span class="">"</span><span class=""><?=$session["projapikey"]?></span><span class="">"</span><span class="">></span>
+                                    <span class="">src</span><span class="">=</span><span class="">"</span><span class="">http://jerrors-1cad.kxcdn.com/jerrors.js</span><span class="">"</span>
+                                    <span class="">data-apikey</span><span class="">=</span><span class="">"</span><span class=""><?=$session[PROJECT_APIKEY]?></span><span class="">"</span><span class="">></span>
                                     <span class="">
                                         <span class="">&lt;</span><span class="">/</span><span class="">script</span>
                                     </span><span class="">&gt;</span>
@@ -44,7 +44,7 @@
                             <div class="row">
                                 <div class="col-sm-9 col-sm-offset-3">
                                     <div class="pull-right">
-                                        <a href="<?= site_url('Dashboard/userDashboard')?>"><button class="btn btn-embossed btn-primary m-t-20" type="submit">View Dashboard</button></a>
+                                        <a href="<?= site_url('Dashboard/projects')?>"><button class="btn btn-embossed btn-primary m-t-20" type="submit">View Dashboard</button></a>
                                     </div>
                                 </div>
                             </div>

@@ -508,8 +508,7 @@
 <!-- BEGIN PAGE SCRIPTS -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/summernote/summernote.min.js"></script> <!-- Simple HTML Editor -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/quicksearch/quicksearch.min.js"></script> <!-- Search Filter -->
-<script src="<?=base_url()?>public/dashboard_assets/plugins/charts-morris/raphael.min.js"></script> <!-- Morris Charts -->
-<script src="<?=base_url()?>public/dashboard_assets/plugins/charts-morris/morris.min.js"></script> <!-- Morris Charts -->
+
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/mailbox.js"></script>
 <!-- END PAGE SCRIPTS -->
 </body>

@@ -21,6 +21,7 @@ class admin_dashboard_model extends CI_Model{
     public function getAllErrors()
             {
         $errors=$this->db->get('error_metadata');
+        
         return $errors->result();
         }
                 

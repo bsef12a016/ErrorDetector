@@ -131,3 +131,7 @@ define('VISITOR_EMAIL_STATUS_FALSE', FALSE);
 define('USER_COUNT', 'USER_COUNT');
 define('PROJECTS_COUNT', 'PROJECTS_COUNT');
 define('ERRORS_COUNT', 'ERRORS_COUNT');
+
+
+define('SIGNIN_ERROR', 'Username or password is invalid');
+

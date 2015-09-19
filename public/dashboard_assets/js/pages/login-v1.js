@@ -24,7 +24,7 @@ $(function() {
         });
         //../../images/gallery/login.jpg
         
-        $.backstretch(["public/dashboard_assets/images/gallery/login.jpg"],
+        $.backstretch(["http://localhost/FYP_UI/public/dashboard_assets/images/gallery/login.jpg"],
         {
             fade: 600,
             duration: 4000
@@ -181,7 +181,7 @@ $(function() {
     if($('body').data('page')== 'signup'){
 
        var form = $(".form-signup");
-       $.backstretch(["public/dashboard_assets/images/gallery/login.jpg"],
+       $.backstretch(["http://localhost/FYP_UI/public/dashboard_assets/images/gallery/login.jpg"],
        {
         fade: 600,
         duration: 4000

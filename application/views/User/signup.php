@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Themes Lab - Creative Laborator</title>
+    <title>Signup - jErrors - JavaScript Error Tracking for Modern Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="" name="description" />
     <meta content="themes-lab" name="author" />
@@ -74,7 +74,7 @@
             </div>
         </div>
         <p class="account-copyright">
-            <span>Copyright © 2015 </span><span>THEMES LAB</span>.<span>All rights reserved.</span>
+            <span>Copyright © 2015 </span><span>jErrors</span>.<span>All rights reserved.</span>
         </p>
     </div>
     <!-- END LOCKSCREEN BOX -->
