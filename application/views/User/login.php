@@ -32,10 +32,10 @@
                             <i class="icon-lock"></i>
                         </div>
                         <input type="submit" id="sub" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left" value="Sign in"></input>
-                        <div class="social-btn">
+<!--                        <div class="social-btn">
                             <button type="button" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left"></i>Connect with Facebook</button>
                             <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
-                        </div>
+                        </div>-->
                         <div class="clearfix">
                             <p class="pull-left m-t-20"><a id="password" href="#">Forgot password?</a></p>
                             <p class="pull-right m-t-20"><a href="<?php echo site_url('User/signup')?>">New here? Sign up</a></p>

@@ -6,9 +6,9 @@
         <div class="c-layout-breadcrumbs-1 c-bgimage c-subtitle c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-37.jpg)">
             <div class="container" style="margin-top:40px;">
                 <div class="c-page-title c-pull-left">
-                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">Features</h3>
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">About Us</h3>
                     <h4 class="c-font-white c-font-thin c-opacity-07">
-                        Page Sub Title Goes Here
+			------------------
                     </h4>
                 </div>
             </div>
@@ -28,21 +28,9 @@
                         </div>
                         <!-- End-->
                         <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud exerci et tation diam nisl ut aliquip ex ea commodo consequat euismod tincidunt ut laoreet dolore magna aluam.
-                        </p>
-                        <ul class="c-content-list-1 c-theme c-font-uppercase">
-                            <li>
-                                Perfect Design interface
-                            </li>
-                            <li>
-                                Huge Community
-                            </li>
-                            <li>
-                                Support for Everyone
-                            </li>
-                        </ul>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy nibh euismod tincidunt ut laoreet dolore.
+				jErrors is a cloud-based error and real user monitoring(RUM) platform that was founded with the mission of enabling companies of all sizes to provide tool to monitor errors and improve their products.
+				We deliver an intuitive, bug free and faster experience in their applications and websites. We are fully dedicated to meet their needs.
+				We are developers!
                         </p>
                     </div>
                 </div>
@@ -71,17 +59,17 @@
                                     <div class="c-overlay-wrapper">
                                         <div class="c-overlay-content">
                                             <a href="#"><i class="icon-link"></i></a>
-                                            <a href="<?=base_url()?>public/assets/base/img/content/team/team13.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-4">
+                                            <a href="<?=base_url()?>public/assets/base/img/content/team/nabeel.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-4">
                                                 <i class="icon-magnifier"></i>
                                             </a>
                                         </div>
                                     </div>
-                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/team13.jpg" alt="">
+                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/nabeel.jpg" alt="">
                                 </div>
                                 <div class="c-body">
                                     <div class="c-head">
                                         <div class="c-name c-font-uppercase c-font-bold">
-                                            Jhon Doe
+                                            Nabeel Akhtar
                                         </div>
                                         <ul class="c-socials c-theme">
                                             <li>
@@ -90,16 +78,47 @@
                                             <li>
                                                 <a href="#"><i class="icon-social-facebook"></i></a>
                                             </li>
+                                        </ul>
+                                    </div>
+                                    <div class="c-position">
+                                        Software Engineer
+                                    </div>
+					<p>
+					</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="c-content-person-1 c-option-2">
+                                <div class="c-caption c-content-overlay">
+                                    <div class="c-overlay-wrapper">
+                                        <div class="c-overlay-content">
+                                            <a href="#"><i class="icon-link"></i></a>
+                                            <a href="<?=base_url()?>public/assets/base/img/content/team/khiz.png" data-lightbox="fancybox" data-fancybox-group="gallery-4">
+                                                <i class="icon-magnifier"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/khiz.png" alt="">
+                                </div>
+                                <div class="c-body">
+                                    <div class="c-head">
+                                        <div class="c-name c-font-uppercase c-font-bold">
+                                            Saima Sajjad
+                                        </div>
+                                        <ul class="c-socials c-theme">
                                             <li>
-                                                <a href="#"><i class="icon-social-dribbble"></i></a>
+                                                <a href="#"><i class="icon-social-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="icon-social-facebook"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="c-position">
-                                        CEO, Mockingbird
+                                        Software Engineer
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet, dolor nemo amet elit. Nulla nemo consequuntur.
                                     </p>
                                 </div>
                             </div>
@@ -110,17 +129,17 @@
                                     <div class="c-overlay-wrapper">
                                         <div class="c-overlay-content">
                                             <a href="#"><i class="icon-link"></i></a>
-                                            <a href="<?=base_url()?>public/assets/base/img/content/team/team12.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-4">
+                                            <a href="<?=base_url()?>public/assets/base/img/content/team/erum.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-4">
                                                 <i class="icon-magnifier"></i>
                                             </a>
                                         </div>
                                     </div>
-                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/team12.jpg" alt="">
+                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/erum.jpg" alt="">
                                 </div>
                                 <div class="c-body">
                                     <div class="c-head">
                                         <div class="c-name c-font-uppercase c-font-bold">
-                                            Jhon Doe
+                                            Iram Ahmed
                                         </div>
                                         <ul class="c-socials c-theme">
                                             <li>
@@ -129,18 +148,13 @@
                                             <li>
                                                 <a href="#"><i class="icon-social-facebook"></i></a>
                                             </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-dribbble"></i></a>
-                                            </li>
                                         </ul>
                                     </div>
                                     <div class="c-position">
-                                        CEO, Mockingbird
+                                        Software Engineer
                                     </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, dolor nemo amet elit. Nulla nemo consequuntur.
-                                    </p>
-                                </div>
+					<p></p>
+                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -149,74 +163,28 @@
                                     <div class="c-overlay-wrapper">
                                         <div class="c-overlay-content">
                                             <a href="#"><i class="icon-link"></i></a>
-                                            <a href="<?=base_url()?>public/assets/base/img/content/team/team11.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-4">
+                                            <a href="<?=base_url()?>public/assets/base/img/content/team/khiz.png" data-lightbox="fancybox" data-fancybox-group="gallery-4">
                                                 <i class="icon-magnifier"></i>
                                             </a>
                                         </div>
                                     </div>
-                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/team11.jpg" alt="">
+                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/khiz.png" alt="">
                                 </div>
                                 <div class="c-body">
                                     <div class="c-head">
                                         <div class="c-name c-font-uppercase c-font-bold">
-                                            Jhon Doe
+                                            Khizra Sarmad
                                         </div>
                                         <ul class="c-socials c-theme">
                                             <li>
-                                                <a href="#"><i class="icon-social-twitter"></i></a>
-                                            </li>
-                                            <li>
                                                 <a href="#"><i class="icon-social-facebook"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-dribbble"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="c-position">
-                                        CEO, Mockingbird
+                                        Software Engineer
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet, dolor nemo amet elit. Nulla nemo consequuntur.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="c-content-person-1 c-option-2">
-                                <div class="c-caption c-content-overlay">
-                                    <div class="c-overlay-wrapper">
-                                        <div class="c-overlay-content">
-                                            <a href="#"><i class="icon-link"></i></a>
-                                            <a href="<?=base_url()?>public/assets/base/img/content/team/team12.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-4">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <img class="c-overlay-object img-responsive" src="<?=base_url()?>public/assets/base/img/content/team/team12.jpg" alt="">
-                                </div>
-                                <div class="c-body">
-                                    <div class="c-head">
-                                        <div class="c-name c-font-uppercase c-font-bold">
-                                            Jhon Doe
-                                        </div>
-                                        <ul class="c-socials c-theme">
-                                            <li>
-                                                <a href="#"><i class="icon-social-twitter"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-facebook"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-dribbble"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="c-position">
-                                        CEO, Mockingbird
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, dolor nemo amet elit. Nulla nemo consequuntur.
                                     </p>
                                 </div>
                             </div>
@@ -233,4 +201,3 @@
         <!-- END: PAGE CONTENT -->
     </div>
     <!-- END: PAGE CONTAINER -->
- 

@@ -74,7 +74,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade  active in" id="tab3_1">
                                 <h2>Delete project</h2>
-                                <p>Project Name: <b><?php echo $value->name;  ?></b></p>
+                                <p>Project Name: <b><?php echo ucwords($value->name);  ?></b></p>
                                 <p>Once you delete this project, there is no going back.</p>
                                 <input class="btn btn-embossed btn-primary m-t-20" id="submit" type="button" value="Delete Project" onclick="deleteproject()">
                             </div>

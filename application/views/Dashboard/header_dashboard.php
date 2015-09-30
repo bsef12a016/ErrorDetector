@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="description" content="admin-themes-lab">
         <meta name="author" content="themes-lab">
-        <link rel="shortcut icon" href="<?=base_url()?>public/dashboard_assets/images/favicon.png" type="image/png">
+        <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
         <title>Dashboard - jErrors - JavaScript Error Tracking for Modern Web</title>
         <link href="<?=base_url()?>public/dashboard_assets/css/chartist.min.css" rel="stylesheet" type="text/css"/>
         <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
@@ -52,7 +52,7 @@
                                         print_r(ucwords($session[USER_NAME]));    
                                     }
                                     ?></h4>
-                                
+                                        
                             </div>
                         </div>
                     </div>
@@ -62,6 +62,7 @@
                         </li>
                     <?php
                     if($session[PROJECT_OPEN_STATUS] == PROJECT_OPEN_STATUS_TRUE){
+                        
                         $href = 'Dashboard/settings/';
                         $href .= $session[USER_ID];
                         $href .= '/';
@@ -76,7 +77,17 @@
                         $href_table .= $session[USER_ID];
                         $href_table .= '/';
                         $href_table .= $session[PROJECT_ID];
+                            
+                            
+                        $href_mainView = 'Dashboard/userDashboard/';
+                        $href_mainView .= $session[USER_ID];
+                        $href_mainView .= '/';
+                        $href_mainView .= $session[PROJECT_ID];
+                            
                     ?>
+                        <li class="">
+                            <a href="<?= site_url($href_mainView)?>"><i class="fa fa-cubes"></i><span data-translate="medias manager">Main View</span></a>
+                        </li>
                         <li class="">
                             <a href="<?= site_url($href_table)?>"><i class="fa fa-table"></i><span data-translate="medias manager">Tabular View</span></a>
                         </li>
@@ -134,7 +145,7 @@
                             }
                         ?>
                             </ul>
-                                
+                            
                         </div>
                     </div>
                     <div class="header-right">

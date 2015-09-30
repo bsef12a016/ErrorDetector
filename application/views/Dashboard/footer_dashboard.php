@@ -1,6 +1,8 @@
 </div>
 <!-- END MAIN CONTENT -->
-
+<?php
+ $session=  $this->session->all_userdata();
+?>
 </section>
 
 <!-- BEGIN SEARCH -->
@@ -183,11 +185,10 @@
         $("#create").prop('disabled',false);
     }
    }
-    $("seusrName").on("keyup",function (){
+    $("#seusrName").on("keyup",function (){
         var val1=$("#seusrName").val();
        var s = $("input#uName1").val();
-       alert(val1);
-       alert(s);
+      
         if(val1.trim()){
             if(val1.trim()===s.trim())
             {
@@ -203,9 +204,10 @@
         }
     });
      
-      $("#email1").on("keyup",function (){ 
-           var val1=$("#email1").val();
+      $("#emailset").on("keyup",function (){ 
+           var val1=$("#emailset").val();
            var s1 = $("input#uemail1").val();
+            
          if(val1){
             if(val1.trim()===s1.trim())
             {
@@ -256,7 +258,7 @@
     }
    }
    function replaceemail() {
-        var email = $("input#email").val();
+        var email = $("input#emailset").val();
         jQuery.ajax({
             type: "POST",
             url: "<?php echo base_url(); ?>" + "/Dashboard/reemail",
@@ -267,12 +269,12 @@
                 {
                     
                     jQuery("div#test1").show();
-                    jQuery("div#value1").html(" email has been changed");
+                    jQuery("div#value1").html(" Email has been changed");
                 }
                 else
                 {
                     jQuery("div#test1").show();
-                    jQuery("div#value1").html("email is empty");
+                    jQuery("div#value1").html("Email is empty");
                 }
                 
             }
@@ -280,7 +282,7 @@
         });
     }
     function replacepwd() {
-        alert("ok");
+       
         var oldpwd = $("input#oldpwd").val();
         var newpwd = $("input#newpwd").val();
         
@@ -296,13 +298,13 @@
                     
                     
                     jQuery("div#test").show();
-                    jQuery("div#value").html("password has been changed");
+                    jQuery("div#value").html("Password has been changed");
                     
                 }
                 else
                 {
                     jQuery("div#test").show();
-                    jQuery("div#value").html("old password is incorrect");
+                    jQuery("div#value").html("Old password is incorrect");
                 }
                 
                 
@@ -312,7 +314,7 @@
         });
     }
     function changeUsername() {
-        var user_name = $("input#uName").val(); 
+        var user_name = $("input#seusrName").val(); 
         jQuery.ajax({
             type: "POST",
             
@@ -324,12 +326,12 @@
                 if(res)
                 {  
                     jQuery("div#test2").show();
-                    jQuery("div#value2").html(" username has been changed");
+                    jQuery("div#value2").html(" Username has been changed");
                 }
                 else
                 {
                     jQuery("div#test2").show();
-                    jQuery("div#value2").html("username is empty");
+                    jQuery("div#value2").html("Username is empty");
                 }
                 
                 

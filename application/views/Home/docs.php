@@ -5,16 +5,19 @@
     <div class="c-layout-breadcrumbs-1 c-bgimage c-subtitle c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url(<?=base_url()?>public/assets/base/img/content/backgrounds/bg-37.jpg)">
         <div class="container" style="margin-top:40px;">
             <div class="c-page-title c-pull-left">
-                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">jErrors Documentation</h3>
+                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">DOCS</h3>
+                <h4 class="c-font-white c-font-thin c-opacity-07">
+                    ---------
+                </h4>
             </div>
         </div>
     </div>
     <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
     <!-- BEGIN: CONTENT/FEATURES/FEATURES-5 -->
     <!-- BEGIN: FEATURES 5 -->
-        
-        
-        
+    
+    
+    
     <div class="c-content-box c-size-lg c-bg-grey-1">
         <div class="container">
             <div class="c-content-panel">
@@ -33,17 +36,17 @@
                                         The 404 or Not Found error message is an HTTP standard response code indicating that the client was able to communicate with a given server, but the server could not find what was requested. The jerrors.js library also captures 404 errors.
                                     </p>
                                 </div>
-                                
+                                    
                                 <div class="tab-content c-padding-sm">
                                     <h1>
                                         How to Install
                                     </h1>
                                     <p>
                                         Include jqery and jerrors.js in the <head> tag of your website, before any 
-                                        <span class="">
-                                            <span class="">&lt;</span><span class="">/</span><span class="">script</span>
-                                        </span><span class="">&gt;</span>
-                                        othertags.
+                                    <span class="">
+                                        <span class="">&lt;</span><span class="">/</span><span class="">script</span>
+                                    </span><span class="">&gt;</span>
+                                    othertags.
                                     </p>
                                     <code data-language="html" class="">
                                         <span class="">
@@ -59,7 +62,7 @@
                                         <span class="">
                                             <span class="">&lt;</span><span class="">script</span>
                                         </span>
-                                        <span class="">src</span><span class="">=</span><span class="">"</span><span class="">http://jsdetector-1cad.kxcdn.com/jsdetector.js</span><span class="">"</span>
+                                        <span class="">src</span><span class="">=</span><span class="">"</span><span class="">http://jerrors-1cad.kxcdn.com/jerrors.js</span><span class="">"</span>
                                         <span class="">data-apikey</span><span class="">=</span><span class="">"</span><span class="">YOUR API KEY HERE</span><span class="">"</span><span class="">></span>
                                         <span class="">
                                             <span class="">&lt;</span><span class="">/</span><span class="">script</span>
@@ -75,20 +78,20 @@
                                         Sending Caught Exceptions or Custom Errors
                                     </h1>
                                     <p>
-                                    You can easily tell SNIK about caught exceptions by calling notifyException.
-                                    <br>
-                                    try{
-                                    <br>
-                                    &#09;//Some code which might throw an exception
-                                    } catch (e) {
-                                    notifyException(e);
-                                    }
-                                    Since many exceptions in JavaScript are named simply Error, we also allow you to provide a custom error name when calling  notifyException:
-                                    try {
-                                    //Some code which might throw an exception
-                                    } catch (e) {
-                                    notifyException(e, "CustomErrorName");
-                                    }
+                                        You can easily tell SNIK about caught exceptions by calling notifyException.
+                                        <br>
+                                        try{
+                                        <br>
+                                        &#09;//Some code which might throw an exception
+                                        } catch (e) {
+                                        notifyException(e);
+                                        }
+                                        Since many exceptions in JavaScript are named simply Error, we also allow you to provide a custom error name when calling  notifyException:
+                                        try {
+                                        //Some code which might throw an exception
+                                        } catch (e) {
+                                        notifyException(e, "CustomErrorName");
+                                        }
                                     </p>
                                 </div>
                                 <div class="tab-content c-padding-sm">
@@ -96,21 +99,21 @@
                                         API Key Configuration
                                     </h1>
                                     <p>
-                                    You can easily tell SNIK about caught exceptions by calling notifyException.
-                                    try{
-                                    //Some code which might throw an exception
-                                    } catch (e) {
-                                    notifyException(e);
-                                    }
-                                    Since many exceptions in JavaScript are named simply Error, we also allow you to provide a custom error name when calling  notifyException:
-                                    try {
-                                    //Some code which might throw an exception
-                                    } catch (e) {
-                                    notifyException(e, "CustomErrorName");
-                                    }
+                                        You can easily tell SNIK about caught exceptions by calling notifyException.
+                                        try{
+                                        //Some code which might throw an exception
+                                        } catch (e) {
+                                        notifyException(e);
+                                        }
+                                        Since many exceptions in JavaScript are named simply Error, we also allow you to provide a custom error name when calling  notifyException:
+                                        try {
+                                        //Some code which might throw an exception
+                                        } catch (e) {
+                                        notifyException(e, "CustomErrorName");
+                                        }
                                     </p>
                                 </div>
-                                    
+                                
                                 <div class="tab-content c-padding-sm">
                                     <h1>
                                         Contributing to the Documentation
@@ -137,8 +140,7 @@
     </div>
 </div>
 <!-- END: PAGE CONTAINER -->
-    
-    
-    
-    
-    
+
+
+
+

@@ -41,28 +41,21 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDN
         <div class="col-sm-4 col-sm-offset-1">
             <div class="additional">
                 <h3>Need Help?</h3>
-                <p>Don’t hesitate to ask us something. Email us directly <a href="#">support@themes-lab.com</a> or call us at <b>1-254-752-254</b>. You can checkout our <a href="#">FAQ</a> and <a href="#">Forum</a> page to get more information about our products.</p>
+                <p>Don’t hesitate to ask us something. Email us directly <a href="#">jerrors@gamil.com</a> or call us at <b>+923244456881</b></p>
             </div>
-            <div class="additional">
-                <h3>FAQ</h3>
-                <p>As a Harvard professor, he was one of the first to explore the relationship between chemical equilibrium and the reaction rate of chemical processes.</p>
-            </div>
-            <div class="phone">
-                <h1 class="c-primary">542 578 20 88</h1>
-                AVAILABLE AT 12PM - 18PM
-            </div>
+            
         </div>
     </div>
     <div class="footer">
         <div class="copyright">
             <p class="pull-left sm-pull-reset">
                 <span>Copyright <span class="copyright">©</span> 2015 </span>
-                <span>THEMES LAB</span>.
+                <span>jError's</span>.
                 <span>All rights reserved. </span>
             </p>
-            <p class="pull-right sm-pull-reset">
+<!--            <p class="pull-right sm-pull-reset">
                 <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
-            </p>
+            </p>-->
         </div>
     </div>
 </div>

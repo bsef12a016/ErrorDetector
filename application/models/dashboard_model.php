@@ -8,32 +8,22 @@
 
 class dashboard_model extends CI_Model{
     
-    public function insert_project($d)
-    {
+    public function insert_project($d){
         $this->db->insert('project', $d);
         return $this->db->insert_id();
     }
-    public function chekProjectName($projNmae)
-    {
-        if($projNmae!=null)
-        {
+    public function chekProjectName($projNmae){
+        if($projNmae!=null){
             $this->db->where(['name' => $projNmae]);
             $q=$this->db->get('project');            
         }
         return $q->result();
     }
-    
-    
     public function getUser($u_id){
-        
         $this->db->where(['id' => $u_id]);
         $q=$this->db->get('user');   
-        
         return $q->result();            
-            }
-            
-    
-    
+    }
     public function get_projects(){
         $session=  $this->session->all_userdata();
         $id = $session[USER_ID];
@@ -61,40 +51,32 @@ class dashboard_model extends CI_Model{
         }
     }
     public function get_errors($u_id = NULL, $proj_id = NULL){
-        if($proj_id == NULL && $u_id == NULL)
-        {
+        if($proj_id == NULL && $u_id == NULL){
             return "empty";
         }
         else {
             if($this->projectExistenceCheck($u_id, $proj_id)){
                 $this->db->where(['project_id' => $proj_id]);
-                $q=$this->db->get('error_metadata');
-                if($q){
+                $q = $this->db->get('error_metadata');
+                if(empty($q)){
+                    return "empty";                
+                }  else {
                     return $q->result();
-                    }  else {
-                        return "empty";                
-                        }
+                }
             }  else {
                 return "empty";                
             }
         }
     }    
-
     public function get_errorsByProjectId($proj_id){
-        
         $this->db->where(['project_id' => $proj_id]);
         $q=$this->db->get('error_metadata');            
         return $q->result();
-        
     }    
-    public function get_errorsprproj($proj_id=NULL)
-    {
-       
-        
-            $this->db->where(['project_id' => $proj_id]);
-            $q=$this->db->get('error_metadata'); 
-            $s=$q->num_rows();
-       
+    public function get_errorsprproj($proj_id=NULL){
+        $this->db->where(['project_id' => $proj_id]);
+        $q=$this->db->get('error_metadata'); 
+        $s=$q->num_rows();
         return $s;
     }
     public function get_error_details($u_id, $id = null,$proj_id = NULL){
@@ -103,10 +85,10 @@ class dashboard_model extends CI_Model{
             $this->db->where(['id' => $id]);
             $q=$this->db->get('error_metadata');            
             return $q->result();
-            }    
-            else{
-                return NULL;
-                }
+        }    
+        else{
+            return NULL;
+        }
     }
     public function projectExistenceCheck($u_id, $projectID) {
         $this->db->where(['u_id' => $u_id]);
@@ -126,8 +108,7 @@ class dashboard_model extends CI_Model{
             $this->db->delete('project');
             return $this->db->affected_rows();        
         }
-    }
-    
+    }  
     public function insertUserMail($data){
         $this->db->insert('user_mails', $data);
         return $this->db->insert_id();

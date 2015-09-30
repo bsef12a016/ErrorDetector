@@ -55,7 +55,7 @@
                             </label>
                         </div>
                         <input type="submit" id="sub" class="btn btn-lg btn-dark m-t-20" data-style="expand-left" value="Register"></input>
-                        <div class="social-btn">
+<!--                        <div class="social-btn">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-facebook pull-left"></i>Sign In with Facebook</button>
@@ -64,7 +64,7 @@
                                     <button type="button" class="btn btn-lg btn-block btn-danger"><i class="fa fa-google pull-left"></i>Sign In with Google</button>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="clearfix">
                             <p class="pull-right m-t-20"><a href="<?php echo site_url('User/login')?>">Already have an account? Sign In</a></p>
                             <p class="pull-left m-t-20"><a href="<?php echo site_url('Home/index')?>">Back to main page</a></p>

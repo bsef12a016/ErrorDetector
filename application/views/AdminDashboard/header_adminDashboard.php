@@ -1,7 +1,7 @@
 <?php
  $session=  $this->session->all_userdata();
 ?>
-
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +19,7 @@
         <link href="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.css" rel="stylesheet">
         <!-- END PAGE STYLE -->
         <script src="<?=base_url()?>public/dashboard_assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        
+            
         <!-- BEGIN PAGE STYLE -->
         <link href="<?= base_url()?>public/dashboard_assets/plugins/step-form-wizard/css/step-form-wizard.min.css" rel="stylesheet">
     </head>
@@ -47,10 +47,10 @@
                                     $session=  $this->session->all_userdata();
                                     if($session[USER_NAME])
                                     {
-                                        print_r($session[USER_NAME]);    
+                                        print_r(ucwords($session[USER_NAME]));    
                                     }
                                     ?></h4>
-                                
+                                        
                             </div>
                         </div>
                     </div>
@@ -61,14 +61,6 @@
                         <li class="">
                             <a href="<?= site_url('Emails/userMails')?>"><i class="octicon octicon-mail-read"></i><span data-translate="Mailbox">Mailbox</span></a>
                         </li>
-                        <!--                        <li class="nav-parent">
-                                                    <a href=""><i class="icon-basket"></i><span data-translate="pages">eCommerce </span><span class="fa arrow"></span></a>
-                                                    <ul class="children collapse">
-                                                        <li><a href="ecommerce-cart.html"> Shopping Cart</a></li>
-                                                        <li><a href="ecommerce-invoice.html"> Invoice</a></li>
-                                                        <li><a href="ecommerce-pricing-table.html"><span class="pull-right badge badge-success">5</span> Pricing Table</a></li>
-                                                    </ul>
-                                                </li>-->
                     </ul>
                     <!-- SIDEBAR WIDGET FOLDERS -->
                     <div class="sidebar-footer clearfix">
@@ -82,7 +74,7 @@
                 </div>
             </div>
             <!-- END SIDEBAR -->
-            
+                
             <div class="main-content">
                 <!-- BEGIN TOPBAR -->
                 <div class="topbar">
@@ -106,21 +98,12 @@
                                     $session=  $this->session->all_userdata();
                                     if($session[USER_NAME])
                                     {
-                                        print_r($session[USER_NAME]);    
+                                        print_r(ucwords($session[USER_NAME]));    
                                     }
                                     ?>
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <!--                                    <li>
-                                                                            <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="<?= site_url('Dashboard/accountSettings')?>"><i class="icon-settings"></i><span>Account Settings</span></a>
-                                                                        </li>-->
                                     <li>
                                         <a href="<?= site_url('AdminDashboard/logout')?>"><i class="icon-logout"></i><span>Logout</span></a>
                                     </li>
