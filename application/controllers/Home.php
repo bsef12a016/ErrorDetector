@@ -13,8 +13,10 @@ class Home extends CI_Controller{
          $this->load->model('home_model');
     }
     public function index() {
-        
-        $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
+        $session=  $this->session->all_userdata();
+        if($session[LOGIN_STATUS] !== LOGIN_STATUS_TRUE){
+            $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);            
+        }
         $this->load->view('Home/header');
         $this->load->view('Home/index');
         $this->load->view('Home/footer');

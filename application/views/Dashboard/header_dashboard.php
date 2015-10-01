@@ -137,7 +137,9 @@
                         <?php
                             if($session[PROJECT_OPEN_STATUS] == PROJECT_OPEN_STATUS_TRUE){
                                 $href_graph = 'Dashboard/projectGraph/';
-				$href_graph .= $session[USER_ID];
+                                $href_graph .= $session[USER_ID];
+                                $href_graph .= '/';
+                                $href_graph .= $session[PROJECT_ID];
                         ?>
                                 <li><a href="<?= site_url($href_table) ?>" class=""><span class="fa fa-table"></span></a></li>
                                 <li><a href="<?= site_url($href_graph) ?>" class=""><span class="octicon octicon-graph"></span></a></li>

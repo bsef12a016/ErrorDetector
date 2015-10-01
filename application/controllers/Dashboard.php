@@ -16,8 +16,8 @@ class Dashboard extends CI_Controller{
     //DONE
      public function geterr() {
        
-         $q=$this->dashboard_model->get_errorsprproj(8);
-       echo json_encode($q);
+        $q = $this->dashboard_model->get_errorsprproj(8);
+        echo json_encode($q);
     }
   
     public function userDashboard($u_id, $projID) {
@@ -56,6 +56,7 @@ class Dashboard extends CI_Controller{
                 $data['error']=$this->dashboard_model->get_error_details($u_id, $id, $projID);
                 if($data['error']){
                     $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);                        
+                    $this->session->set_userdata(PROJECT_ID, $projID);
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/error_details', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -80,6 +81,7 @@ class Dashboard extends CI_Controller{
                 $data['projects']=$this->dashboard_model->get_projectsID($u_id ,$projID);
                 if($data['projects']){
                     $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);
+                    $this->session->set_userdata(PROJECT_ID, $projID);
                     $this->load->view('Dashboard/header_dashboard');
                     $this->load->view('Dashboard/settings', $data);
                     $this->load->view('Dashboard/footer_dashboard');
@@ -98,15 +100,12 @@ class Dashboard extends CI_Controller{
         
     public function logout(){
         $session=  $this->session->all_userdata();
+        $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         if($session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
             $logoutDate = date("Y-m-d h:i:sa");
             $this->user_model->setStatusLogout(['lastLogout' => $logoutDate,
                 'status' => 0]);
         }
-        
-        session_destroy();
-        $this->load->library('session');
-        $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         redirect('Home/index');
     }
     public function addProject() {
@@ -408,6 +407,7 @@ class Dashboard extends CI_Controller{
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
                 && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+            $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_FALSE);
             $this->load->view('Dashboard/header_dashboard');
             $this->load->view('Dashboard/contactus');
             $this->load->view('Dashboard/footer_dashboard');
@@ -537,6 +537,4 @@ class Dashboard extends CI_Controller{
         }
        echo json_encode($name);
     }
-    
-
 }

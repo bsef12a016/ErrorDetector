@@ -38,7 +38,7 @@ class User extends CI_Controller{
                 $ip = $this->getIP();
                 if($uname == ADMINISTRATOR_CREDENTIAL_NAME){
                     $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_TRUE);                
-                    $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);  
+                    $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);  
                     redirect('AdminDashboard/adminDashboard');
                 }  else {
                     $this->user_model->setStatus(['ip' => $ip, 

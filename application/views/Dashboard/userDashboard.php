@@ -78,3 +78,20 @@ $status = FALSE;
     </div>
 </div>
 
+<?php
+    $href_mainView = 'Dashboard/userDashboard/';
+    $href_mainView .= $session[USER_ID];
+    $href_mainView .= '/';
+    $href_mainView .= $session[PROJECT_ID];
+    ?>
+<script>
+    (function myFunction() {
+        setTimeout(function(){
+            window.location = "<?= site_url($href_mainView)?>";
+        }, 300000);
+    })();    
+    
+</script>
+
+
+

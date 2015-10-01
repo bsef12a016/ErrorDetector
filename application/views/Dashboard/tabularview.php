@@ -1,3 +1,6 @@
+<?php
+$session=  $this->session->all_userdata();
+?>
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content">
     <div class="header">
@@ -65,3 +68,18 @@
     </div>
 </div>
 <!-- END PAGE CONTENT -->
+
+<?php
+    $href_table = 'Dashboard/tabularview/';
+    $href_table .= $session[USER_ID];
+    $href_table .= '/';
+    $href_table .= $session[PROJECT_ID];
+    ?>
+<script>
+    (function myFunction() {
+        setTimeout(function(){
+            window.location = "<?= site_url($href_table)?>";
+        }, 300000);
+    })();    
+    
+</script>

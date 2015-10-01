@@ -1,4 +1,6 @@
-
+<?php
+$session=  $this->session->all_userdata();
+?>
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-app mailbox">
     <section class="app">
@@ -43,56 +45,15 @@
         <aside class="email-details">
             <section>
                 <div class="email-subject">
-                    <h1>Theory of <strong>Design</strong></h1>
+                    <h1><strong>Visitor's</strong> Mail</h1>
                     <div class="clearfix">
-                        <div class="go-back-list"><i data-rel="tooltip" data-placement="bottom" data-original-title="Back to email list" class="icon-arrow-left"></i></div>
-                        <p>from <strong><span class="sender">Sandra Merlin</span></strong> &bull; <span class="date">16 January, 4:04pm</span></p>
-                        <div class="pos-rel pull-left">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300"> 
-                                <i class=" icon-rounded-arrow-down-thin"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="reorder-menu">Delete email</a></li>
-                                <li><a href="#" class="remove-menu">Move</a></li>
-                                <li><a href="#" class="hide-top-sidebar">Print</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="email-details-inner withScroll" data-height="window" data-padding="155">
                     <div class="email-content">
-                        <p>Hi Steve,</p>
-                        <p>Visual hierarchy is one of the most important principles behind effective web design. We will see how you can use some very basic exercises in your own designs to put these principles into practice.</p>
-                        <blockquote class="blue">
-                            <p><strong>Design is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it's really how it works.</strong></p>
-                        </blockquote>
-                        <p>At it's core, design is all about visual communication: To be an effective designer, you have to be able to clearly communicate your ideas to viewers or else lose their attention.</p>
-                        <div class="email-attachment clearfix">
-                            <div class="attachments">
-                                <span><i class="fa fa-file-image-o"></i> Home.jpg <span class="small">(10mb)</span></span>
-                                <span><i class="fa fa-file-pdf-o"></i> Resume.pdf <span class="small">(5.2mb)</span></span> 
-                            </div>
-                            <div class="attachments-actions">
-                                <div class="move-attachments">
-                                    <i class=" icon-rounded-arrow-left-thin"></i>
-                                    <i class=" icon-rounded-arrow-right-thin"></i>
-                                </div>
-                                <div class="download-attachment">
-                                    <i class="icon-rounded-download"></i>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="answers">
-                        <div class="answer-subject">
-                            <h2 class="answer-title"></h2>
-                            <p>from <strong>me</strong> &bull; <span class="answer-date"></span></p>
-                        </div>
-                        <div class="answer-content"></div>
-                    </div>
-                    <div class="write-answer">
-                        <div class="answer-textarea"></div>
-                        <button id="save" class="btn btn-primary" type="button">Send</button>
+                        <p>Hi, <?= print_r(ucwords($session[USER_NAME]))?>,</p>
+                        <p>Click on any mail to see mail content here.</p>
+                        <div style="margin-bottom: 300px;"></div>
                     </div>
                 </div>
             </section>

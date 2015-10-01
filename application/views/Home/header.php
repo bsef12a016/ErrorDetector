@@ -75,7 +75,7 @@
                             </li>
                             <li>
                                 <?php
-                                if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE){
+                                if($session[LOGIN_STATUS] === LOGIN_STATUS_TRUE){
                                     $href_dashboard = 'Dashboard/projects/';
                                     $href_dashboard .= $session[USER_ID];
                                     

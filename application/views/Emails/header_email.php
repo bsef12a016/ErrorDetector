@@ -141,7 +141,7 @@
                     <div class="sidebar-footer clearfix">
                         <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-original-title="Fullscreen">
                             <i class="icon-size-fullscreen"></i></a>
-                        <a class="pull-left btn-effect" href="#" data-modal="modal-1" data-rel="tooltip" data-original-title="Logout">
+                        <a class="pull-left btn-effect" href="<?= site_url('AdminDashboard/logout')?>" data-modal="modal-1" data-rel="tooltip" data-original-title="Logout">
                             <i class="icon-power"></i></a>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                                         <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-logout"></i><span>Logout</span></a>
+                                        <a href="<?= site_url('AdminDashboard/logout')?>"><i class="icon-logout"></i><span>Logout</span></a>
                                     </li>
                                 </ul>
                             </li>

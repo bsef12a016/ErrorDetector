@@ -86,7 +86,7 @@
                                     <div id='value2'> </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade " id="tab3_4" >
+<!--                            <div class="tab-pane fade " id="tab3_4" >
                                 <h1><strong>Email Notifications</strong></h1>
                                 <p>  Configure personal email notifications for your projects</p>
                                 <h3><strong>sample</strong></h3>
@@ -136,7 +136,7 @@
                                     <INPUT  name="hideid" id="hideid" TYPE = "Text" VALUE = " <?php echo $session['projid'];  ?>" size="40"  >
                                         
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

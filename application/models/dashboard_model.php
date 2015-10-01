@@ -57,6 +57,7 @@ class dashboard_model extends CI_Model{
         else {
             if($this->projectExistenceCheck($u_id, $proj_id)){
                 $this->db->where(['project_id' => $proj_id]);
+                $this->db->order_by("lastOccurence", "desc");
                 $q = $this->db->get('error_metadata');
                 if(empty($q)){
                     return "empty";                
