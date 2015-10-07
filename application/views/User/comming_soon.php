@@ -20,17 +20,6 @@
         </div>
         <div class="coming-container">
             <!-- BEGIN LOGIN BOX -->
-            <!-- Social Links -->
-            <nav class="social-nav">
-<!--                <ul>
-                    <li><a href="#"><img src="<?=base_url()?>public/dashboard_assets/images/social/icon-facebook.png" alt="facebook"/></a></li>
-                    <li><a href="#"><img src="<?=base_url()?>public/dashboard_assets/images/social/icon-twitter.png" alt="twitter"/></a></li>
-                    <li><a href="#"><img src="<?=base_url()?>public/dashboard_assets/images/social/icon-google.png" alt="google"/></a></li>
-                    <li><a href="#"><img src="<?=base_url()?>public/dashboard_assets/images/social/icon-dribbble.png" alt="dribbble"/></a></li>
-                    <li><a href="#"><img src="<?=base_url()?>public/dashboard_assets/images/social/icon-linkedin.png" alt="facebook"/></a></li>
-                    <li><a href="#"><img src="<?=base_url()?>public/dashboard_assets/images/social/icon-pinterest.png" alt="linkedin" /></a></li>
-                </ul>-->
-            </nav>
             <!-- Site Logo -->
             <div id="logo"><img src="<?=base_url()?>public/dashboard_assets/images/logo/logo-white.png" alt="logo"></div>
             <!-- Main Navigation -->
@@ -39,6 +28,7 @@
                     <li><a href="<?php echo site_url('Home/index') ?>" class="active">Home</a></li>
                     <li><a href="<?php echo site_url('Home/about') ?>">About</a></li>
                     <li><a href="<?php echo site_url('Home/contact') ?>">Contact</a></li>
+                    <li><a href="<?php echo site_url('User/login') ?>">Sign in</a></li>
                 </ul>
             </nav>
             <!-- Home Page -->

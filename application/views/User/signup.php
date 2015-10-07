@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="" name="description" />
     <meta content="themes-lab" name="author" />
-    <link rel="shortcut icon" href="<?=base_url()?>public/dashboard_assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
     <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/css/ui.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/plugins/icheck/skins/all.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
                             <input type="password" name="password" id="password" class="form-control form-white password" placeholder="Password" required>
                             <i class="icon-lock"></i>
                         </div>
-                        <div class="terms option-group">
+                        <div class="terms option-group" style="color: white;">
                             <label for="terms" class="m-t-10">
                                 <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue" required />
                                 I agree with terms and conditions
@@ -65,9 +65,9 @@
                                 </div>
                             </div>
                         </div>-->
-                        <div class="clearfix">
-                            <p class="pull-right m-t-20"><a href="<?php echo site_url('User/login')?>">Already have an account? Sign In</a></p>
-                            <p class="pull-left m-t-20"><a href="<?php echo site_url('Home/index')?>">Back to main page</a></p>
+                        <div class="clearfix" >
+                            <p class="pull-right m-t-20"  style="color: white;"><a href="<?php echo site_url('User/login')?>">Already have an account? Sign In</a></p>
+                            <p class="pull-left m-t-20" style="color: white;"><a href="<?php echo site_url('Home/index')?>">Back to main page</a></p>
                         </div>
                     </form>
                 </div>

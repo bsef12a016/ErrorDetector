@@ -11,7 +11,6 @@ class AdminDashboard extends CI_Controller{
         parent::__construct();
          $this->load->model('admin_dashboard_model');
     }
-        
     public function adminDashboard() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_FLASE 
@@ -75,8 +74,6 @@ class AdminDashboard extends CI_Controller{
                 redirect('Home/index');
             }
     }
-                                                          
-                                                                    
     public function getadmerrors() {
         $q = $this->admin_dashboard_model->errorCount();
         echo json_encode($q);
@@ -88,15 +85,10 @@ class AdminDashboard extends CI_Controller{
             $this->user_model->setStatusLogout(['lastLogout' => $logoutDate,
                 'status' => 0]);
         }
-        session_destroy();
-        $this->load->library('session');
         $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         redirect('Home/index');
     }
     public function show_map(){
          $this->load->view('AdminDashboard/map');
     }   
-        
-        
-        
 }

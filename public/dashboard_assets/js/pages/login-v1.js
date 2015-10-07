@@ -24,12 +24,18 @@ $(function() {
         });
         //../../images/gallery/login.jpg
         
-        $.backstretch(["http://localhost/FYP_UI/public/dashboard_assets/images/gallery/login.jpg"],
-        {
+//        $.backstretch(["http://localhost/FYP_UI/public/dashboard_assets/images/gallery/login.jpg"],
+//        {
+//            fade: 600,
+//            duration: 4000
+//        });
+        $.backstretch(["http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login.jpg",
+                       "http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login_1.jpg", 
+                       "http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login_2.jpg", 
+                       "http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login_3.jpg"], {
             fade: 600,
             duration: 4000
         });
-
         
         /***** DEMO CONTENT, CAN BE REMOVED ******/
         $("#account-builder").on('mouseenter', function() {
@@ -181,11 +187,13 @@ $(function() {
     if($('body').data('page')== 'signup'){
 
        var form = $(".form-signup");
-       $.backstretch(["http://localhost/FYP_UI/public/dashboard_assets/images/gallery/login.jpg"],
-       {
-        fade: 600,
-        duration: 4000
-       });
+       $.backstretch(["http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login.jpg",
+                       "http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login_1.jpg", 
+                       "http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login_2.jpg", 
+                       "http://localhost:8080/FYP_UI/public/dashboard_assets/images/gallery/login_3.jpg"], {
+            fade: 600,
+            duration: 4000
+        });
        $("#account-builder").on('mouseenter', function() {
         TweenMax.to($(this), 0.35, {
             css: {

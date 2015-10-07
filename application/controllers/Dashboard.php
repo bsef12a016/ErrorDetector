@@ -99,6 +99,7 @@ class Dashboard extends CI_Controller{
     }
         
     public function logout(){
+        delete_cookie(LOGIN_STATUS);
         $session=  $this->session->all_userdata();
         $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         if($session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
@@ -106,6 +107,7 @@ class Dashboard extends CI_Controller{
             $this->user_model->setStatusLogout(['lastLogout' => $logoutDate,
                 'status' => 0]);
         }
+        $this->session->sess_destroy();
         redirect('Home/index');
     }
     public function addProject() {
@@ -230,7 +232,7 @@ class Dashboard extends CI_Controller{
         }
     }
     //Pending
-    public function projectGraph($u_id, $projID) {
+    public function projectGraph($u_id,$projID) {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
                 && $session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE
@@ -242,7 +244,7 @@ class Dashboard extends CI_Controller{
                     $this->session->set_userdata(PROJECT_OPEN_STATUS, PROJECT_OPEN_STATUS_TRUE);
                     $this->session->set_userdata(PROJECT_ID, $projID);
                     $errors=$this->dashboard_model->get_errorsByProjectId($projID);
-                    $this->session->set_userdata(PROJECT_ID, $projID);
+                    $this->session->set_userdata(['projid'=>$projID]);
                     $lastOccur=array();
                     foreach($errors as $value){
                         $lastOccur[]=$value->lastOccurence;
@@ -253,11 +255,11 @@ class Dashboard extends CI_Controller{
                             $dates[] = date('d/M/Y', strtotime($s));
                         }
                         else if($s[0]=='?'){
-                            $p = explode("?", $s);
-                            $d = implode($p);
-                            $date= date('d/M/Y', strtotime($d));
-                            $dates[] = $date;	
-                        }
+                $p = explode("?", $s);
+                $d = implode($p);
+                $date= date('d/M/Y', strtotime($d));
+                $dates[] = $date;	
+            }
                         else{
                             $p = explode(" ", $s);
                             $d=$p[1]." ".$p[2]." ".$p[3];
@@ -271,11 +273,78 @@ class Dashboard extends CI_Controller{
                     $date = date('Y-m-d', strtotime($today));
                     $date = date_create($date);
                     $last_12days=array();
-                    for($i=0;$i<11;$i++){
-                        date_modify($date, '+1 day');
-                        $last_12days[$i]= $date->format('d/M/Y')."<br>";
+                    for($i=0;$i<=11;$i++){
+                        $last_12days[$i]= $date->format('d/M/Y');
+                        date_modify($date, '-1 day');
                     }
-                    $data["last_12days"]=$last_12days;
+                    $last_12_days=array();
+                    for ($i=sizeof($last_12days)-1; $i>-1; $i--){
+                        $last_12_days[]=$last_12days[$i];
+                    }
+                    $data["last_12days"]=$last_12_days;
+                    
+                    $count=array();
+                    $i=0;
+                    $last_12_days_errorMessages=array();
+                    $ReferenceError_Count=  array( 
+                        array(0));
+                    $SyntaxError_Count=  array( 
+                        array(0));
+                    $failedToLoadResource_Count=  array( 
+                        array(0));
+                    $TypeError_Count=  array( 
+                        array(0));
+                    $ScriptError_Count=  array( 
+                        array(0));
+                    $others_Count=  array( 
+                        array(0));
+                    
+                    
+                    foreach ($last_12_days as $value){
+                        $count[$i]=0;
+                        $temp=true;
+                        $k=0;
+                        $ReferenceError_Count[$i][0]=0;
+                        $failedToLoadResource_Count[$i][0]=0;
+                        $ScriptError_Count[$i][0]=0;
+                        $SyntaxError_Count[$i][0]=0;
+                        $TypeError_Count[$i][0]=0;
+                        $others_Count[$i][0]=0;
+                        foreach ($dates as $v){
+                            if($value === $v){
+                                $last_12_days_errorMessages[$i]=$errors[$k]->message;
+                                if (strpos($last_12_days_errorMessages[$i],'ReferenceError') !== false) {
+                                    $ReferenceError_Count[$i][0]++;
+                                }
+                                else if (strpos($last_12_days_errorMessages[$i],'SyntaxError') !== false) {
+                                    $SyntaxError_Count[$i][0]++;
+                                }
+                                else if (strpos($last_12_days_errorMessages[$i],'404') !== false) {
+                                    $failedToLoadResource_Count[$i][0]++;
+                                }
+                                elseif (strpos($last_12_days_errorMessages[$i],'TypeError') !== false) {
+                                    $TypeError_Count[$i][0]++;
+                                }
+                                elseif (strpos($last_12_days_errorMessages[$i],'Script error') !== false) {
+                                    $ScriptError_Count[$i][0]++;
+                                }
+                                else{
+                                    $others_Count[$i][0]++;
+                                }
+                                $count[$i]++;
+                            }
+                            $k++;
+                        }
+                        $i++;
+                    }
+
+                    $data["count"]=$count;
+                    $data["ReferenceError_Count"]=$ReferenceError_Count;
+                    $data["SyntaxError_Count"]=$SyntaxError_Count;
+                    $data["failedToLoadResource_Count"]=$failedToLoadResource_Count;
+                    $data["TypeError_Count"]=$TypeError_Count;        
+                    $data["ScriptError_Count"]=$ScriptError_Count;        
+                    $data["others_Count"]=$others_Count;        
                     $browser=array();
                     foreach($errors as $value){
                         $browser[]=$value->browswer;
@@ -288,10 +357,10 @@ class Dashboard extends CI_Controller{
                     foreach($browser as $value){
                         if($value === 'Chrome'){
                             $chromeCount++;
-                       }   
-                       elseif ($value === 'Mozilla'){
-                           $mozillaCount++;
                         }
+                        elseif ($value === 'Mozilla'){
+                            $mozillaCount++;
+                        }   
                         elseif ($value === 'Safari'){
                             $safariCount++;
                         }
@@ -301,7 +370,7 @@ class Dashboard extends CI_Controller{
                         else{
                             $othersCount++;
                         }
-                    }   
+                    }
                     $total=$chromeCount+$mozillaCount+$safariCount+$ieCount+$othersCount;
                     $browser_percentage=array();
                     $browser_percentage['chrome']=($chromeCount/$total)*100;
@@ -336,7 +405,7 @@ class Dashboard extends CI_Controller{
                         elseif (strpos($value,'Script error') !== false) {
                             $ScriptErrorCount++;
                         }
-                        else{
+                       else{
                             $othersCount++;
                         }
                     }
@@ -350,9 +419,6 @@ class Dashboard extends CI_Controller{
                     $errMessage['others']=($othersCount/$total)*100;
                     $data['errMessage']=$errMessage;
                     $total_ErrorsExcluding404=$total-$failedToLoadResourceCount;
-//                    $this->load->view('Dashboard/header_dashboard');
-//                    $this->load->view('Dashboard/projectGraph',$data);
-//                    $this->load->view('Dashboard/footer_dashboard');
                 }
                 else{
                     $data["noprojectmessage"] = "No Error's have been recieved yet.";                                      
@@ -360,16 +426,14 @@ class Dashboard extends CI_Controller{
                 $this->load->view('Dashboard/header_dashboard');
                 $this->load->view('Dashboard/projectGraph',$data);
                 $this->load->view('Dashboard/footer_dashboard');
-            }
+            }   
             else{
                 redirect('Dashboard/projects');                    
             }
         }
         else{
             redirect('Home/index');
-    }
-        
-        
+        }
     }
     //DONE
     public function regenerateApiKey($u_id, $projectID, $apiKey){

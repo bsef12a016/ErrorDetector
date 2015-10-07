@@ -34,11 +34,20 @@ class User extends CI_Controller{
             if($resultuser){
                 $this->session->set_userdata([USER_NAME => $uname]);
                 $this->session->set_userdata([USER_ID => $result[0]->u_id]);
+                
+                //COOKIE
+                $cookie = array(
+                    'name'   => LOGIN_STATUS,
+                    'value'  => LOGIN_STATUS_TRUE,
+                    'expire' => '7200',
+                );                
+                $this->input->set_cookie($cookie);
+
                 $loginDate = date("Y-m-d h:i:sa");
                 $ip = $this->getIP();
                 if($uname == ADMINISTRATOR_CREDENTIAL_NAME){
                     $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_TRUE);                
-                    $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);  
+                    $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);  
                     redirect('AdminDashboard/adminDashboard');
                 }  else {
                     $this->user_model->setStatus(['ip' => $ip, 
@@ -82,6 +91,14 @@ class User extends CI_Controller{
             $this->session->set_userdata([USER_ID => $q]);
         }
         if($s){
+            //COOKIE
+            $cookie = array(
+                'name'   => LOGIN_STATUS,
+                'value'  => LOGIN_STATUS_TRUE,
+                'expire' => '7200',
+            );                
+            $this->input->set_cookie($cookie);
+
              $this->session->set_userdata([USER_NAME => $uname]);
              $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);  
              $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);

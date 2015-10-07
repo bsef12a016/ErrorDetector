@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="" name="description" />
     <meta content="themes-lab" name="author" />
-    <link rel="shortcut icon" href="<?=base_url()?>public/dashboard_assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
     <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/css/ui.css" rel="stylesheet">
     <link href="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
@@ -37,12 +37,13 @@
                             <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
                         </div>-->
                         <div class="clearfix">
-                            <p class="pull-left m-t-20"><a id="password" href="#">Forgot password?</a></p>
-                            <p class="pull-right m-t-20"><a href="<?php echo site_url('User/signup')?>">New here? Sign up</a></p>
+<!--                            <p class="pull-left m-t-20"><a id="password" href="#">Forgot password?</a></p>-->
+                            <p class="pull-left m-t-20"><a id="password" href="<?php echo site_url('Home/index')?>"><-Back to main page</a></p>
+                            <p class="pull-right m-t-20"><a href="<?php echo site_url('User/comming_soon')?>">New here? Sign up</a></p>
                         </div>
-                        <div class="clearfix">
+<!--                        <div class="clearfix">
                             <p class="pull-left m-t-0"><a id="password" href="<?php echo site_url('Home/index')?>"><-Back to main page</a></p>
-                        </div>
+                        </div>-->
 
                     </form>
                     <form class="form-password" role="form">

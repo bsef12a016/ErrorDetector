@@ -12,21 +12,14 @@ class Home extends CI_Controller{
         parent::__construct();
          $this->load->model('home_model');
         $session=  $this->session->all_userdata();
-        if($this->input->cookie(LOGIN_STATUS,TRUE)){
-            $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);            
-        }  else {
+        
+        try {
+            if($session[LOGIN_STATUS] !== LOGIN_STATUS_TRUE){
+                $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);            
+            }
+        } catch (Exception $e) {
             $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);            
         }
-        
-        
-        
-//        try {
-//            if($session[LOGIN_STATUS] !== LOGIN_STATUS_TRUE){
-//                $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);            
-//            }
-//        } catch (Exception $e) {
-//            $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);            
-//        }
         
         
 
