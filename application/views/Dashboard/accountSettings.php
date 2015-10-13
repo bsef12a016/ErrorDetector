@@ -1,4 +1,3 @@
-
 <!-- BEGIN PAGE CONTENT -->
 <?php $session=  $this->session->all_userdata();?>
 <script src="<?=base_url()?>public/assets/plugins/jquery.min.js" type="text/javascript"></script>
@@ -24,8 +23,7 @@
                                     Name
                                 </label>
                                      <?php
-                                    $session=  $this->session->all_userdata();
-                                    
+                                    $session=  $this->session->all_userdata();                                    
                                      ?>
                                 <div class="col-sm-9 prepend-icon">
                                     <input name="name" class="form-control" aria-required="true"  id="seusrName" required type="text" value=" <?= $session[USER_NAME] ?>" minlength="3"  required >

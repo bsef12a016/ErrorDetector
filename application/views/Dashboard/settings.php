@@ -6,8 +6,6 @@
    foreach ($projects as $value) {
        $href_delete = 'Dashboard/deleteproj1/';
        $href_delete .= $value->id;
-//       $this->session->set_userdata(['projid'=>$value->id]);
-//       $this->session->set_userdata(['apikey'=>$value->apikey]);
        $apiKey = $value->apikey;
        $projectID = $value->id;
        $u_id = $value->u_id;
@@ -28,9 +26,9 @@
                     if(res == "Key Is not Regenerated. Try again later."){
                         alert(res);
                     }else{   
-                    jQuery("input#api").val(res);
-                    jQuery("div#test2").show();
-                    jQuery("div#value2").html(" Include new generated api key in your project \n\
+                        jQuery("input#api").val(res);
+                        jQuery("div#test2").show();
+                        jQuery("div#value2").html(" Include new generated api key in your project \n\
                                    otherwise you will not get the errors.");
                     }
                 },
@@ -69,7 +67,6 @@
                         <ul class="nav nav-tabs nav-red">
                             <li class="active" ><a aria-expanded="false" href="#tab3_1" data-toggle="tab"><i class="icon-home"></i> General</a></li>
                             <li><a aria-expanded="false" href="#tab3_2" data-toggle="tab"><i class="icon-user"></i> Api key</a></li>
-<!--                            <li ><a aria-expanded="false" href="#tab3_4" data-toggle="tab"><i class="icon-cloud-download"></i> Email notification</a></li>-->
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade  active in" id="tab3_1">
@@ -86,64 +83,11 @@
                                     <div id='value2'> </div>
                                 </div>
                             </div>
-<!--                            <div class="tab-pane fade " id="tab3_4" >
-                                <h1><strong>Email Notifications</strong></h1>
-                                <p>  Configure personal email notifications for your projects</p>
-                                <h3><strong>sample</strong></h3>
-                                <p>Email subscriptions</p>
-                                <div class="terms option-group">
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        A new error is received
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        An error occurs frequently (10, 100, 1000...etc times)
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        Each time an error occurs
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        An error is automatically reopened
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        Project error rate increases significantly
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        User comments on an error
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        Daily summary
-                                    </label>
-                                    <br>
-                                    <label for="terms" class="m-t-10">
-                                        <input type="checkbox" name="terms" id="terms" data-checkbox="icheckbox_square-blue"  />
-                                        Weekly summary
-                                    </label>
-                                </div>
-                                <div id='test' style='display: none'>
-                                    <INPUT  name="hideid" id="hideid" TYPE = "Text" VALUE = " <?php echo $session['projid'];  ?>" size="40"  >
-                                        
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    
-    
+</div>    
 <!-- END PAGE CONTENT -->

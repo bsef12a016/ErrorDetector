@@ -11,6 +11,12 @@ class AdminDashboard extends CI_Controller{
         parent::__construct();
          $this->load->model('admin_dashboard_model');
     }
+
+    //***********************************************
+    //Admindashboard - Fetching db consumption count
+    //Per Month, users count, errors count, projects 
+    //count. 
+    //***********************************************    
     public function adminDashboard() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_FLASE 
@@ -74,21 +80,31 @@ class AdminDashboard extends CI_Controller{
                 redirect('Home/index');
             }
     }
+
+    //***********************************************
+    //Fetching total errors count
+    //***********************************************    
     public function getadmerrors() {
         $q = $this->admin_dashboard_model->errorCount();
         echo json_encode($q);
     }
+
+    //***********************************************
+    //Logging out from admindashboard
+    //***********************************************    
     public function logout(){
+        delete_cookie(LOGIN_STATUS);
+        delete_cookie(ADMINISTRATOR_CREDENTIAL_STATUS);
         $session=  $this->session->all_userdata();
-        if($session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
+        if($session[ADMINISTRATOR_CREDENTIAL_STATUS] === ADMINISTRATOR_CREDENTIAL_STATUS_TRUE){
             $logoutDate = date("Y-m-d h:i:sa");
             $this->user_model->setStatusLogout(['lastLogout' => $logoutDate,
                 'status' => 0]);
         }
         $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
+        $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);
+        $this->session->sess_destroy();
         redirect('Home/index');
     }
-    public function show_map(){
-         $this->load->view('AdminDashboard/map');
-    }   
+  
 }

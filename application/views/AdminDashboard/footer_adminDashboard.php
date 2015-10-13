@@ -1,8 +1,8 @@
 </div>
 <!-- END MAIN CONTENT -->
-    
+
 </section>
-    
+
 <!-- BEGIN SEARCH -->
 <div id="morphsearch" class="morphsearch">
     <form class="morphsearch-form">
@@ -48,7 +48,6 @@
 <script src="<?=base_url()?>public/dashboard_assets/js/quickview.js"></script> <!-- Chat Script -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/search.js"></script> <!-- Search Script -->
 <!-- BEGIN PAGE SCRIPT -->
-<!--    <script src="<?=base_url()?>public/dashboard_assets/plugins/noty/jquery.noty.packaged.min.js"></script>  <!-- Notifications -->-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-editable/js/bootstrap-editable.min.js"></script> <!-- Inline Edition X-editable -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"></script> <!-- Context Menu -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/multidatepicker/multidatespicker.min.js"></script> <!-- Multi dates Picker -->
@@ -57,17 +56,7 @@
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-chartjs/Chart.min.js"></script>  <!-- ChartJS Chart -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- financial Charts -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts Export Tool -->
-
-
-
-<!--<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.js"></script>  Vector Map -->
-<!--<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script>  Vector World Map  
-<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script>  Vector Map Black Theme -->
-
-
-
-
-
+<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script>  <!--Vector Map Black Theme -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/skycons/skycons.min.js"></script> <!-- Animated Weather Icons -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/simple-weather/jquery.simpleWeather.js"></script> <!-- Weather Plugin -->
 <script src="<?=base_url()?>public/dashboard_assets/js/widgets/widget_weather.js"></script>
@@ -75,38 +64,23 @@
 <!-- END PAGE SCRIPT -->
 <!-- BEGIN PAGE SCRIPTS -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Form Validation -->
-    
 <!--Contact Us Script-->
-<!--<script src="//maps.google.com/maps/api/js?sensor=true"></script>  Google Maps 
-<script src="<?=base_url()?>public/dashboard_assets/plugins/google-maps/gmaps.min.js"></script>  Google Maps Easy -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/contact.js"></script>
-    
 <!--tabular view-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/table_dynamic.js"></script>
-    
 <!--graph page-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- Financial Charts -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highcharts-more.min.js"></script> <!-- Financial Charts additional -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts export tool -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/charts_finance.js"></script>
-    
-    
-    
 <script src="<?=base_url()?>public/dashboard_assets/plugins/dropzone/dropzone.min.js"></script>  <!-- Upload Image & File in dropzone -->
-    
-    
-    
 <!--counters-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/timepicker/jquery-ui-timepicker-addon.min.js"></script> <!-- Time Picker -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/multidatepicker/multidatespicker.min.js"></script> <!-- Multi dates Picker -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/countup/countUp.min.js"></script> <!-- Animated Counter Number -->
-    
-    
-    
-    
-    
 <!-- END PAGE SCRIPTS -->
+
 <script>
     $("#projName").on("keydown",function (e){
         var val=$("#projName").val();

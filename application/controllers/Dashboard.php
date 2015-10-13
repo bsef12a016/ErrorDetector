@@ -13,13 +13,19 @@ class Dashboard extends CI_Controller{
          $this->load->model('login_model');
           $this->load->model('user_model');
     }
-    //DONE
-     public function geterr() {
-       
-        $q = $this->dashboard_model->get_errorsprproj(8);
+
+    //***********************************************
+    //Fetching Errors count against project ID
+    //***********************************************
+    public function geterr() {
+        $session=  $this->session->all_userdata();
+        $q = $this->dashboard_model->get_errorsprproj($session[PROJECT_ID]);
         echo json_encode($q);
     }
-  
+
+    //***********************************************
+    //User Dashboard
+    //***********************************************
     public function userDashboard($u_id, $projID) {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
@@ -46,7 +52,11 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    //DONE
+
+    //***********************************************
+    //Fetching Error details, against recieving 
+    //ID, Project Id, User ID.
+    //***********************************************
     public function error_details($u_id = NULL, $id = NULL, $projID = NULL) {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
@@ -72,7 +82,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    //DONE
+
+    //***********************************************
+    //Settings Page of a project
+    //***********************************************
     public function settings($u_id = NULL, $projID = NULL) {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -97,9 +110,13 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-        
+
+    //***********************************************
+    //Logging out
+    //***********************************************
     public function logout(){
         delete_cookie(LOGIN_STATUS);
+        delete_cookie(ADMINISTRATOR_CREDENTIAL_STATUS);
         $session=  $this->session->all_userdata();
         $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);
         if($session[ADMINISTRATOR_CREDENTIAL_STATUS] == ADMINISTRATOR_CREDENTIAL_STATUS_FALSE){
@@ -110,6 +127,10 @@ class Dashboard extends CI_Controller{
         $this->session->sess_destroy();
         redirect('Home/index');
     }
+
+    //***********************************************
+    //Adding New Project.
+    //***********************************************
     public function addProject() {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -123,6 +144,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
+
+    //***********************************************
+    //Fetching All projects 
+    //***********************************************
     public function projects() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE && 
@@ -137,6 +162,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
+
+    //***********************************************
+    //Project Integration Page
+    //***********************************************
     public function projectIntegration() {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -165,6 +194,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
+
+    //***********************************************
+    //Khizra
+    //***********************************************
     public function errors_btw_lastLogin($uid,$projID){
         $q=$this->dashboard_model->getUser($uid);
         $lastLogin=array();
@@ -218,6 +251,10 @@ class Dashboard extends CI_Controller{
 //                                print_r($logout);
                                 print_r($errCount_between_lastLOgin);
                                 }
+
+    //***********************************************
+    //Account Settings Page
+    //***********************************************
     public function accountSettings() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
@@ -231,7 +268,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    //Pending
+
+    //***********************************************
+    //Khizra
+    //***********************************************
     public function projectGraph($u_id,$projID) {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -435,7 +475,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    //DONE
+
+    //***********************************************
+    //Regenerating API Key
+    //***********************************************
     public function regenerateApiKey($u_id, $projectID, $apiKey){
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -452,7 +495,10 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    //DONE
+
+    //***********************************************
+    //Deleting Project
+    //***********************************************
     public function deleteProject($u_id, $projectID) {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE 
@@ -467,6 +513,10 @@ class Dashboard extends CI_Controller{
             echo json_encode($val);
         }
     }   
+
+    //***********************************************
+    //User's Countactus Page
+    //***********************************************
     public function contactus() {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -477,6 +527,10 @@ class Dashboard extends CI_Controller{
             $this->load->view('Dashboard/footer_dashboard');
         }
     }
+
+    //***********************************************
+    //Showing Success message
+    //***********************************************
     public function contactusSuccess() {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -486,6 +540,10 @@ class Dashboard extends CI_Controller{
             $this->load->view('Dashboard/footer_dashboard');
         }
     }
+
+    //***********************************************
+    //Tabular view of errors
+    //***********************************************
     public function tabularview($u_id, $projID) {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -512,7 +570,7 @@ class Dashboard extends CI_Controller{
             redirect('Home/index');
         }
     }
-    //STILL PENDING
+
     public function uploadpic() {
         $config = array(
             'upload_path' => "./images/",
@@ -537,6 +595,10 @@ class Dashboard extends CI_Controller{
     public function sucess() {
         $this->load->view('Dashboard/sucess', array('error' => ' ' ));
     }
+
+    //***********************************************
+    //Sending Mail to admin
+    //***********************************************
     public function sendMail() {
         $session = $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_TRUE
@@ -556,6 +618,10 @@ class Dashboard extends CI_Controller{
             redirect('Dashboard/contactusSuccess');       
         }    
     }
+
+    //***********************************************
+    //Re-setting Passowrd
+    //***********************************************
     public function repwd() {
         $q=null;
         $s=null;
@@ -575,6 +641,10 @@ class Dashboard extends CI_Controller{
             }
            echo  json_encode($s);
     }
+
+    //***********************************************
+    //Re-setting Email ID
+    //***********************************************
     public function reemail() {
         $s1=null;
         $email=  $this->input->post('email');
@@ -588,6 +658,10 @@ class Dashboard extends CI_Controller{
         }
           echo json_encode($s1);
     }
+
+    //***********************************************
+    //Re-Setting User name
+    //***********************************************
     public function redata() {
        $s = null;
         $session = $this->session->all_userdata();

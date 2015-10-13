@@ -6,8 +6,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <meta name="description" content="admin-themes-lab">
-        <meta name="author" content="themes-lab">
         <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
         <title>Dashboard - jErrors - JavaScript Error Tracking for Modern Web</title>
         <link href="<?=base_url()?>public/dashboard_assets/css/chartist.min.css" rel="stylesheet" type="text/css"/>
@@ -52,7 +50,7 @@
                                         print_r(ucwords($session[USER_NAME]));    
                                     }
                                     ?></h4>
-                                        
+                                
                             </div>
                         </div>
                     </div>
@@ -147,7 +145,7 @@
                             }
                         ?>
                             </ul>
-                            
+                                
                         </div>
                     </div>
                     <div class="header-right">

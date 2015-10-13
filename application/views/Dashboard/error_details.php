@@ -1,5 +1,10 @@
 <?php
 $ip  = "111.68.105.70";
+    
+foreach ($error as $value) {
+    $ip = $value->clientIP;
+        
+}
 $url = "http://freegeoip.net/json/$ip";
 $ch  = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -15,20 +20,12 @@ if ($data) {
     print_r("lat=".$lat.'<br>'."lon=".$lon);
     }
 ?>
-    
-    
-    
+
+
+
 <script
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDNcYpUCMrc&=false&callback=initMap"></script>
-    
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
-
-    
-<!--<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDNcYpUCMrc&=false"></script>
-
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
--->
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-thin">
     <div class="row">
@@ -53,7 +50,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDN
                         <div class="tab-pane fade active in" id="tab1_1">
                             <div class="row column-seperation">
                                 <div class="col-md-12">
-                                    
                                     <h3><strong><?= $pieces[0] ?> </strong><?php if(count($pieces) == 2){ echo $pieces[1]; }?></h3>
                                     <h4 style="font-size: 15px;"><strong>Error File Url: </strong><?= $value->fileUrl;?></h4>
                                     <h4 style="font-size: 15px;"><strong>Webpage Url: </strong><?= $value->webPageUrl;?></h4>
@@ -77,26 +73,25 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDN
                             <h4 style="font-size: 15px;"><strong>Last Occurence: </strong><?= $value->lastOccurence;?></h4>
                         </div>
                     </div>
-                    
                     <div class="row">
                         <div id="map"></div>
                     </div>
-                        
+                    
                 </div>
                 <?php
                            }
                 ?>
-                
+                    
             </div>
             <div class="row">
                 <div id="map"></div>
             </div>
         </div>
     </div>
-    
+        
 </div>
 <!-- END PAGE CONTENT -->
-    
+
 <script>
     
     // The following example creates a marker in Stockholm, Sweden using a DROP

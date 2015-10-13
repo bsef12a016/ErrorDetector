@@ -1,6 +1,5 @@
 <?php
 $session=  $this->session->all_userdata();
-
 ?>
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-app mailbox">

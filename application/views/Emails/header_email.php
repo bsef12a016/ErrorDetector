@@ -13,8 +13,6 @@
             $count[$i]=1;
             $temp=$value;
         }
-//array is already sorted and diff dates are indexed at:
-// $index=0, $index=index+count[i]   
     }    
     $index=0;
     $each_month=array();
@@ -53,8 +51,6 @@
             $count[$i]=1;
             $temp=$value;
         }
-//array is already sorted and diff dates are indexed at:
-// $index=0, $index=index+count[i]   
     }    
     $index=0;
     $each_month=array();
@@ -86,8 +82,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <meta name="description" content="admin-themes-lab">
-        <meta name="author" content="themes-lab">
         <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
         <title>Email's - jErrors - JavaScript Error Tracking for Modern Web</title>
         <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>

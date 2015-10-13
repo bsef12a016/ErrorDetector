@@ -11,6 +11,10 @@ class Emails extends CI_Controller{
         parent::__construct();
          $this->load->model('emails_model');
     }
+    
+    //***********************************************
+    //Fetching user emails count (Per month)
+    //***********************************************    
     public function yearlyUserMails() {
         $userMails=$this->emails_model->getUsersMail();
         $year=date("Y");
@@ -62,6 +66,10 @@ class Emails extends CI_Controller{
         }
         return $months;
     }
+    
+    //***********************************************
+    //Fetching visitor emails count (Per month)
+    //***********************************************    
     public function yearlyVisitorMails() {
         $visitorMails=$this->emails_model->getVisitorsMail();        
         $year=date("Y");
@@ -113,6 +121,10 @@ class Emails extends CI_Controller{
         }
         return $months; 
     }
+    
+    //***********************************************
+    //Fetching All User emails
+    //***********************************************    
     public function userMails() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_FLASE 
@@ -127,6 +139,10 @@ class Emails extends CI_Controller{
             $this->load->view('Emails/footer_email');        
         }
     }
+    
+    //***********************************************
+    //Fetching All Visitor emails
+    //***********************************************    
     public function visitorsMails() {
         $session=  $this->session->all_userdata();
         if($session[LOGIN_STATUS] == LOGIN_STATUS_FLASE 

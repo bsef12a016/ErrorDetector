@@ -83,9 +83,28 @@
                                 <a href="<?= site_url($href_dashboard)?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>Dashboard</a>
                                 <?php
                                 
+                                }else if($session[ADMINISTRATOR_CREDENTIAL_STATUS] === ADMINISTRATOR_CREDENTIAL_STATUS_TRUE){
+
+                                ?>
+                                <a href="<?= site_url('AdminDashboard/adminDashboard')?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i> Admin Dashboard</a>
+                                <?php
+                                
                                 }else{
                                 ?>
                                 <a href="<?php echo site_url('User/login')?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i> Sign In</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            
+                            <li>
+                                <?php
+                                if($session[LOGIN_STATUS] === LOGIN_STATUS_TRUE || $session[ADMINISTRATOR_CREDENTIAL_STATUS] === ADMINISTRATOR_CREDENTIAL_STATUS_TRUE){
+                                ?>
+                                <?php
+                                }else{
+                                ?>
+                                <a href="<?php echo site_url('User/comming_soon')?>" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i>Singup Invitation</a>
                                 <?php
                                 }
                                 ?>

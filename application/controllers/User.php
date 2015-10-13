@@ -15,11 +15,32 @@ class User extends CI_Controller{
     }
     
     //*********************************
-
+    
+    //***********************************************
+    //Login Page of jErrors
+    //***********************************************    
     public function login(){
         $this->session->set_userdata(SIGNIN_ERROR, "");
         $this->load->view('User/login');
     }
+
+    //***********************************************
+    //Signup Page of jErrors
+    //***********************************************    
+    public function signup() {
+        $this->load->view('User/signup');
+    }    
+    
+    //***********************************************
+    //Beta Version, Signup Invitation Page of jErrors
+    //***********************************************    
+    public function comming_soon() {
+        $this->load->view('User/comming_soon');
+    } 
+    
+    //***********************************************
+    //Checking whether login request is valid or not    
+    //***********************************************    
     public function usr_login(){        
         $uname = $this->input->post('u_name');
         $pass = $this->input->post('password');
@@ -34,20 +55,35 @@ class User extends CI_Controller{
             if($resultuser){
                 $this->session->set_userdata([USER_NAME => $uname]);
                 $this->session->set_userdata([USER_ID => $result[0]->u_id]);
-                
-                //COOKIE
-                $cookie = array(
-                    'name'   => LOGIN_STATUS,
-                    'value'  => LOGIN_STATUS_TRUE,
-                    'expire' => '7200',
-                );                
-                $this->input->set_cookie($cookie);
-
                 $loginDate = date("Y-m-d h:i:sa");
                 $ip = $this->getIP();
+                
+                
+                //***********************************************
+                //Checking whethr login request is come from
+                //client or administrator    
+                //***********************************************    
                 if($uname == ADMINISTRATOR_CREDENTIAL_NAME){
                     $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_TRUE);                
                     $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_FLASE);  
+                    //COOKIE
+                    $cookie_user = array(
+                        'name'   => LOGIN_STATUS,
+                        'value'  => LOGIN_STATUS_FLASE,
+                        'expire' => '7200',
+                    );                
+                    $this->input->set_cookie($cookie_user);
+                    $cookie_admin = array(
+                        'name'   => ADMINISTRATOR_CREDENTIAL_STATUS,
+                        'value'  => ADMINISTRATOR_CREDENTIAL_STATUS_TRUE,
+                        'expire' => '7200',
+                    );                
+                    $this->input->set_cookie($cookie_admin);
+                            
+                    //***********************************************
+                    //Redirecting to Admindashboard Page 
+                    //***********************************************    
+
                     redirect('AdminDashboard/adminDashboard');
                 }  else {
                     $this->user_model->setStatus(['ip' => $ip, 
@@ -55,6 +91,23 @@ class User extends CI_Controller{
                         'status' => 1]);
                     $this->session->set_userdata(ADMINISTRATOR_CREDENTIAL_STATUS, ADMINISTRATOR_CREDENTIAL_STATUS_FALSE);                
                     $this->session->set_userdata(LOGIN_STATUS, LOGIN_STATUS_TRUE);
+                    //COOKIE
+                    $cookie_user = array(
+                        'name'   => LOGIN_STATUS,
+                        'value'  => LOGIN_STATUS_TRUE,
+                        'expire' => '7200',
+                    );                
+                    $this->input->set_cookie($cookie_user);
+                    $cookie_admin = array(
+                        'name'   => ADMINISTRATOR_CREDENTIAL_STATUS,
+                        'value'  => ADMINISTRATOR_CREDENTIAL_STATUS_FALSE,
+                        'expire' => '7200',
+                    );                
+                    $this->input->set_cookie($cookie_admin);
+                    
+                    //***********************************************
+                    //Redirecting to Client Dashboard Page 
+                    //***********************************************    
                     redirect('Dashboard/projects');
                 }
             }
@@ -63,9 +116,10 @@ class User extends CI_Controller{
             }
         }
     }
-    public function signup() {
-        $this->load->view('User/signup');
-    }    
+        
+    //***********************************************
+    //Signing Up the new user 
+    //***********************************************    
     public function user_signup(){        
         $fname = $this->input->post('firstname');
         $lname = $this->input->post('lastname');
@@ -108,27 +162,6 @@ class User extends CI_Controller{
             $this->load->view('User/signup');            
         }
     }
-
-    public function message(){
-        $this->load->view('User/message');    
-    }   
-    public function comming_soon() {
-        $this->load->view('User/comming_soon');
-    } 
-    public function getIP() {
-        if(!empty($_SERVER["HTTP_CLIENT_IP"])){
-            $ip = $_SERVER["HTTP_CLIENT_IP"];
-        } elseif (!empty ($_SERVER["HTTP_X_FORWARDED_FOR"])) {
-            $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
-        } else {
-            $ip = $_SERVER["REMOTE_ADDR"];   
-        }
-        return $ip;
-    }
-    public function checkUserProjectCount($userID) {
-        echo $this->user_model->checkProjectCount($userID);   
-    }
-    
     
 }
 

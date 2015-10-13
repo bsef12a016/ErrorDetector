@@ -1,9 +1,8 @@
-
 <script
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDNcYpUCMrc&=false&callback=initMap"></script>
-
+    
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
-
+    
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-contact">
     <div class="map-contact">
@@ -43,7 +42,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDN
                 <h3>Need Help?</h3>
                 <p>Don’t hesitate to ask us something. Email us directly <a href="#">jerrors@gamil.com</a> or call us at <b>+923244456881</b></p>
             </div>
-            
+                
         </div>
     </div>
     <div class="footer">
@@ -53,15 +52,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDN
                 <span>jError's</span>.
                 <span>All rights reserved. </span>
             </p>
-<!--            <p class="pull-right sm-pull-reset">
-                <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
-            </p>-->
         </div>
     </div>
 </div>
 <!-- END PAGE CONTENT -->
-
-
+    
+    
 <script>
     
     // The following example creates a marker in Stockholm, Sweden using a DROP
@@ -73,14 +69,14 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUstEMWunH22j5D0mpJatREDN
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 13,
-            center: {lat: 31.576, lng: 74.425}
+            center: {lat: 33.69, lng: 73.055}
         });
         
         marker = new google.maps.Marker({
             map: map,
             draggable: true,
             animation: google.maps.Animation.DROP,
-            position: {lat: 31.576, lng: 74.425}
+            position: {lat: 33.69, lng: 73.055}
         });
         marker.addListener('click', toggleBounce);
     }

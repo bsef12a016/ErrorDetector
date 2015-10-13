@@ -1,14 +1,12 @@
 <?php
  $session=  $this->session->all_userdata();
 ?>
-    
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <meta name="description" content="admin-themes-lab">
-        <meta name="author" content="themes-lab">
         <link rel="shortcut icon" type="image/png" href="<?=base_url()?>public/assets/base/img/content/misc/js1.png" />
         <title>Dashboard - jErrors - JavaScript Error Tracking for Modern Web</title>
         <link href="<?=base_url()?>public/dashboard_assets/css/style.css" rel="stylesheet">
@@ -18,8 +16,7 @@
         <link href="<?=base_url()?>public/dashboard_assets/plugins/metrojs/metrojs.min.css" rel="stylesheet">
         <link href="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.css" rel="stylesheet">
         <!-- END PAGE STYLE -->
-        <script src="<?=base_url()?>public/dashboard_assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-            
+        <script src="<?=base_url()?>public/dashboard_assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>      
         <!-- BEGIN PAGE STYLE -->
         <link href="<?= base_url()?>public/dashboard_assets/plugins/step-form-wizard/css/step-form-wizard.min.css" rel="stylesheet">
     </head>
@@ -32,7 +29,7 @@
             <div class="sidebar">
                 <div class="logopanel">
                     <h1>
-                        <a href="dashboard.html"></a>
+                        <a href=""></a>
                     </h1>
                 </div>
                 <div class="sidebar-inner">
@@ -43,14 +40,15 @@
                         <div class="userlogged clearfix">
                             <i class="icon icons-faces-users-01"></i>
                             <div class="user-details">
-                                <h4><?php
+                                <h4>
+                                    <?php
                                     $session=  $this->session->all_userdata();
                                     if($session[USER_NAME])
                                     {
                                         print_r(ucwords($session[USER_NAME]));    
                                     }
-                                    ?></h4>
-                                        
+                                    ?>
+                                </h4>                                        
                             </div>
                         </div>
                     </div>
@@ -73,8 +71,7 @@
                     </div>
                 </div>
             </div>
-            <!-- END SIDEBAR -->
-                
+            <!-- END SIDEBAR -->                
             <div class="main-content">
                 <!-- BEGIN TOPBAR -->
                 <div class="topbar">

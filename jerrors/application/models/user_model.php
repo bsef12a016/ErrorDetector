@@ -19,17 +19,23 @@ class user_model extends CI_Model
             }
         }
         return NULL;   
-    }      
-    public function insert($d) {
+    }
+        
+    public function insert($d)
+    {
         $this->db->insert('user', $d);
         return $this->db->insert_id();
-    }   
-    public function update($d,$u_id){
+    }
+    
+    public function update($d,$u_id)
+    {
         $this->db->where(['id'=>$u_id]);
         $this->db->update('user',$d);
         return $this->db->affected_rows();
-    } 
-    public function delete($u_id){
+    }
+    
+    public function delete($u_id)
+    {
         $this->db->where(['id'=>$u_id]);
         $this->db->delete('user');
         return $this->db->affected_rows();        

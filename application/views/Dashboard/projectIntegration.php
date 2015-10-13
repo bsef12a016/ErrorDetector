@@ -33,14 +33,13 @@
                                         $session=  $this->session->all_userdata();
                                             
                                         ?>
-                                    <span class="">src</span><span class="">=</span><span class="">"</span><span class="">http://jerrors-1cad.kxcdn.com/jerrors.js</span><span class="">"</span>
+                                    <span class="">src</span><span class="">=</span><span class="">"</span><span class="">http://jerror-210d.kxcdn.com/jerrors.js</span><span class="">"</span>
                                     <span class="">data-apikey</span><span class="">=</span><span class="">"</span><span class=""><?=$session[PROJECT_APIKEY]?></span><span class="">"</span><span class="">></span>
                                     <span class="">
                                         <span class="">&lt;</span><span class="">/</span><span class="">script</span>
                                     </span><span class="">&gt;</span>
                                 </code>
-                            </div>
-                                
+                            </div>                                
                             <div class="row">
                                 <div class="col-sm-9 col-sm-offset-3">
                                     <div class="pull-right">
@@ -58,7 +57,7 @@
                 <div class="panel-content">
                     <h2>Sample Integration</h2>
                     <div class="portfolioContainer grid">
-                            <img src="<?=base_url()?>public/assets/base/img/content/backgrounds/description.png" alt="9"/>
+                        <img src="<?=base_url()?>public/assets/base/img/content/backgrounds/description.png" alt="9"/>
                     </div>
                 </div>
             </div>

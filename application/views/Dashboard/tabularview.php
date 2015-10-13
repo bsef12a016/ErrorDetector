@@ -61,14 +61,10 @@ $session=  $this->session->all_userdata();
                 <span>jError's</span>.
                 <span>All rights reserved. </span>
             </p>
-<!--            <p class="pull-right sm-pull-reset">
-                <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
-            </p>-->
         </div>
     </div>
 </div>
 <!-- END PAGE CONTENT -->
-
 <?php
     $href_table = 'Dashboard/tabularview/';
     $href_table .= $session[USER_ID];

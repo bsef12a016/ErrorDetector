@@ -23,14 +23,12 @@
         <div class="bounce3"></div>
     </div>
 </div>
-    <div id='usrname' style='display: none'>
-                                     <input name="usrname1" class="form-control" aria-required="true"  id="uName1" required type="text" value=" <?php echo $session[USER_NAME] ?>" placeholder="Enter User Name" minlength="3"  required >
-                                       
-                                </div>
-    <div id='email' style='display: none'>
-                                    <input name="email2" class="form-control" aria-required="true"  id="uemail1" required type="text" value=" <?php echo $session['email'] ?>" placeholder="Enter User Name" minlength="3"  required >
-                                       
-                                </div>
+<div id='usrname' style='display: none'>
+    <input name="usrname1" class="form-control" aria-required="true"  id="uName1" required type="text" value=" <?php echo $session[USER_NAME] ?>" placeholder="Enter User Name" minlength="3"  required >                                         
+</div>
+<div id='email' style='display: none'>
+    <input name="email2" class="form-control" aria-required="true"  id="uemail1" required type="text" value=" <?php echo $session['email'] ?>" placeholder="Enter User Name" minlength="3"  required >                                        
+</div>
 <!-- END PRELOADER -->
 <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
 <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery/jquery-1.11.1.min.js"></script>
@@ -59,7 +57,6 @@
 <script src="<?=base_url()?>public/dashboard_assets/js/quickview.js"></script> <!-- Chat Script -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/search.js"></script> <!-- Search Script -->
 <!-- BEGIN PAGE SCRIPT -->
-<!--    <script src="<?=base_url()?>public/dashboard_assets/plugins/noty/jquery.noty.packaged.min.js"></script>  <!-- Notifications -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-editable/js/bootstrap-editable.min.js"></script> <!-- Inline Edition X-editable -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"></script> <!-- Context Menu -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/multidatepicker/multidatespicker.min.js"></script> <!-- Multi dates Picker -->
@@ -68,13 +65,6 @@
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-chartjs/Chart.min.js"></script>  <!-- ChartJS Chart -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- financial Charts -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts Export Tool -->
-
-
-<!--<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/ammap.min.js"></script>  Vector Map 
-<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script>  Vector World Map  
-<script src="<?=base_url()?>public/dashboard_assets/plugins/maps-amcharts/ammap/themes/black.min.js"></script>  Vector Map Black Theme -->
-
-
 <script src="<?=base_url()?>public/dashboard_assets/plugins/skycons/skycons.min.js"></script> <!-- Animated Weather Icons -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/simple-weather/jquery.simpleWeather.js"></script> <!-- Weather Plugin -->
 <script src="<?=base_url()?>public/dashboard_assets/js/widgets/widget_weather.js"></script>
@@ -82,81 +72,25 @@
 <!-- END PAGE SCRIPT -->
 <!-- BEGIN PAGE SCRIPTS -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Form Validation -->
-    
-<!--Contact Us Script
-<script src="//maps.google.com/maps/api/js?sensor=true"></script>  Google Maps 
-<script src="<?=base_url()?>public/dashboard_assets/plugins/google-maps/gmaps.min.js"></script>  Google Maps Easy 
-<script src="<?=base_url()?>public/dashboard_assets/js/pages/contact.js"></script>-->
-    
 <!--tabular view-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/table_dynamic.js"></script>
-    
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.js" type="text/javascript"></script>
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.js" type="text/javascript"></script>
-    
 <!--graph page-->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highstock.min.js"></script> <!-- Financial Charts -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/highcharts-more.min.js"></script> <!-- Financial Charts additional -->
 <script src="<?=base_url()?>public/dashboard_assets/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts export tool -->
 <script src="<?=base_url()?>public/dashboard_assets/js/pages/charts_finance.js"></script>
-    
-    
-    
 <script src="<?=base_url()?>public/dashboard_assets/plugins/dropzone/dropzone.min.js"></script>  <!-- Upload Image & File in dropzone -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
 <!-- END PAGE SCRIPTS -->
-<!--<script>
-    $("#projName").on("keydown",function (e){
-        var val=$("#projName").val();
-            alert("PN - val " + val);
-        if(val!=""){
-            $("#projURL").on("keydown",function (e){
-                var val_2=$("#projURL").val();
-                alert("PN - val_2 " + val_2);
-                if(val_2!=""){
-                    $("#create").prop('disabled',false);
-                }else{
-                    $("#create").prop('disabled',true);
-                }
-            });    
-        }else{
-            $("#create").prop('disabled',true);
-        }
-    });
-    $("#projURL").on("keydown",function (e){
-        var val=$("#projURL").val();
-            alert("PU - val " + val);
-        if(val!=""){
-            $("#projName").on("keydown",function (e){
-                var val_2=$("#projName").val();
-                alert("PU - val_2 " + val_2);
-                if(val_2!=""){
-                    $("#create").prop('disabled',false);
-                }else{
-                    $("#create").prop('disabled',true);
-                }
-            });
-        }else{
-            $("#create").prop('disabled',true);
-        }
-    });    
-</script>-->
 <script>
-     var a=false;
-        var b=false;
+    var a=false;
+    var b=false;
     $("#projURL").on("keydown",function (e){
         
         var val1=$("#projURL").val();
-       
+        
         if(val1){
             a=true;
         }else{
@@ -165,10 +99,10 @@
         }
         proj();
     });
-     $("#projName").on("keydown",function (e){
+    $("#projName").on("keydown",function (e){
         var val=$("#projName").val();
         
-       
+        
         if(val){
             b=true;
         }else{
@@ -177,56 +111,56 @@
         }
         proj();
     });
-   function proj()
-   {
-      
-       if(a && b)
+    function proj()
     {
-        $("#create").prop('disabled',false);
+        
+        if(a && b)
+        {
+            $("#create").prop('disabled',false);
+        }
     }
-   }
     $("#seusrName").on("keyup",function (){
         var val1=$("#seusrName").val();
-       var s = $("input#uName1").val();
-      
+        var s = $("input#uName1").val();
+        
         if(val1.trim()){
             if(val1.trim()===s.trim())
             {
-             $("#username1").prop('disabled',true);
+                $("#username1").prop('disabled',true);
             }
             else
             {
-                 $("#username1").prop('disabled',false);
+                $("#username1").prop('disabled',false);
             }
         }else{
-           
+            
             $("#username1").prop('disabled',true);
         }
     });
-     
-      $("#emailset").on("keyup",function (){ 
-           var val1=$("#emailset").val();
-           var s1 = $("input#uemail1").val();
-            
-         if(val1){
+    
+    $("#emailset").on("keyup",function (){ 
+        var val1=$("#emailset").val();
+        var s1 = $("input#uemail1").val();
+        
+        if(val1){
             if(val1.trim()===s1.trim())
             {
-             $("#reemail1").prop('disabled',true);
+                $("#reemail1").prop('disabled',true);
             }
-             else
+            else
             {
-                 $("#reemail1").prop('disabled',false);
+                $("#reemail1").prop('disabled',false);
             }  
         }else{
             $("#reemail1").prop('disabled',true);
         }
     });
-   x=false;
-   y=false;
+    x=false;
+    y=false;
     $("#oldpwd").on("keydown",function (e){
         
         var val1=$("#oldpwd").val();
-       
+        
         if(val1){
             x=true;
             
@@ -236,7 +170,7 @@
         }
         f2();
     });
-     $("#newpwd").on("keydown",function (e){
+    $("#newpwd").on("keydown",function (e){
         var val=$("#newpwd").val();
         
         if(val){
@@ -249,15 +183,15 @@
         }
         f2();
     });
-   function f2()
-   {
-      
-       if(x && y)
+    function f2()
     {
-        $("#createacc").prop('disabled',false);
+        
+        if(x && y)
+        {
+            $("#createacc").prop('disabled',false);
+        }
     }
-   }
-   function replaceemail() {
+    function replaceemail() {
         var email = $("input#emailset").val();
         jQuery.ajax({
             type: "POST",
@@ -282,7 +216,7 @@
         });
     }
     function replacepwd() {
-       
+        
         var oldpwd = $("input#oldpwd").val();
         var newpwd = $("input#newpwd").val();
         
@@ -333,12 +267,9 @@
                     jQuery("div#test2").show();
                     jQuery("div#value2").html("Username is empty");
                 }
-                
-                
             },error:function(res) {
                 alert("error");
             }
-            
         });
     }
 </script>

@@ -14,8 +14,6 @@
             $count[$i]=1;
             $temp=$value;
         }
-//array is already sorted and diff dates are indexed at:
-// $index=0, $index=index+count[i]   
     }    
     $index=0;
     $each_month=array();
@@ -134,7 +132,6 @@ foreach ($ip as $value){
         });
     });
 </script> 
-    
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content page-thin">
     <div class="row">
@@ -148,7 +145,6 @@ foreach ($ip as $value){
                 </div>
             </div>
         </div>
-            
         <div class="col-xlg-12 col-lg-12 m-t-30">
             <div class="row">
                 <div class="col-md-12">
@@ -160,47 +156,6 @@ foreach ($ip as $value){
                             </div>
                         </div>
                         <div class="panel-body p-15 p-b-0">
-                            <!--                            <div class="row m-b-10">
-                                                            <div class="col-xs-3 big-icon">
-                                                                <i class="icon-users"></i>
-                                                            </div>
-                                                            <div class="col-xs-9">
-                                                                <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="60">
-                                                                    <div>
-                                                                        <small class="stat-title">Visits today</small>
-                                                                        <h1 class="f-40 m-0 w-300">25 610</h1>
-                                                                    </div>
-                                                                    <div>
-                                                                        <small class="stat-title">Visits yesterday</small>
-                                                                        <h1 class="f-40 m-0 w-300">22 420</h1>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-6">
-                                                                <small class="stat-title">New Visitors</small>
-                                                                <div class="live-tile" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                                                                    <div>
-                                                                        <h3 class="f-20 m-0 w-300">37.5%</h3>
-                                                                    </div>
-                                                                    <div>
-                                                                        <h3 class="f-20 m-0 w-300">34.2%</h3>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-6">
-                                                                <small class="stat-title">Bounce Rate</small>
-                                                                <div class="live-tile f-right" data-mode="carousel" data-direction="vertical" data-delay="3500" data-height="23">
-                                                                    <div>
-                                                                        <h3 class="f-20 t-right m-0 w-500">5.6%</h3>
-                                                                    </div>
-                                                                    <div>
-                                                                        <h3 class="f-20 t-right m-0 w-500">7.4%</h3>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>-->
                         </div>
                         <div class="panel-stat-chart" style="margin:20px; margin-right: 40px">
                             <canvas id="visitorsChart" style="margin:20px "></canvas>
@@ -209,12 +164,10 @@ foreach ($ip as $value){
                 </div>
             </div>
         </div>
-            
         <div class="col-lg-12">
             <div id="container" style="height: 400px; min-width: 310px"></div>                
         </div>
     </div>
-        
 </div>
 <!-- END PAGE CONTENT -->
 <script>
@@ -238,22 +191,22 @@ foreach ($ip as $value){
                         echo $points[$i].',';      
                     }
                 } ?>]
-            }
-        ]
-    };
-    var chartOptions = {
-        scaleShowGridLines : false,
-        bezierCurve: true,
-        pointDot: true,
-        pointHitDetectionRadius: 20,
-        tooltipCornerRadius: 0,
-        scaleShowLabels: false,
-        showTooltips: true,
-        responsive: true,
-        showScale: true                
-    };
-    var ctx = document.getElementById("visitorsChart").getContext("2d");
-    var myNewChart = new Chart(ctx).Line(visitorsData, chartOptions);
+                                }
+                            ]
+                        };
+                        var chartOptions = {
+                            scaleShowGridLines : false,
+                            bezierCurve: true,
+                            pointDot: true,
+                            pointHitDetectionRadius: 20,
+                            tooltipCornerRadius: 0,
+                            scaleShowLabels: false,
+                            showTooltips: true,
+                            responsive: true,
+                            showScale: true                
+                        };
+                        var ctx = document.getElementById("visitorsChart").getContext("2d");
+                        var myNewChart = new Chart(ctx).Line(visitorsData, chartOptions);
 </script>
 <!-- BEGIN PAGE CONTENT -->
 <div class="page-content">
@@ -306,71 +259,6 @@ foreach ($ip as $value){
             </div>
         </div>
     </div>
-    
-<!--    <h3><strong>User</strong> Widgets</h3>
-<p class="f-16">We have created various user widgets look to let you choose what you like.</p>
-<div class="row">
-<div class="col-lg-6">
-    <div class="panel widget-member2">
-        <div class="row">
-            <div class="col-lg-2 col-xs-3">
-                <img src="<?=base_url()?>public/dashboard_assets/images/avatars/profil4.jpg" alt="profil 4" class="pull-left img-responsive">
-            </div>
-            <div class="col-lg-10 col-xs-9">
-                <div class="clearfix">
-                    <h3 class="m-t-0 member-name"><strong>John Snow</strong> <span class="member-job">Software Engineer</span></h3>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p><i class="fa fa-map-marker c-gray-light p-r-10"></i> Cebu Business Park, Cebu City, Philippines</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xlg-4 col-lg-6 col-sm-4">
-                        <p><i class="fa fa-skype c-gray-light p-r-10"></i> weno.camesong</p>
-                    </div>
-                    <div class="col-xlg-4 col-lg-6 col-sm-4 align-right">
-                        <p><i class="icon-envelope  c-gray-light p-r-10"></i> cameso@it.com</p>
-                    </div>
-                    <div class="col-xlg-4 col-lg-6 col-sm-4 align-right">
-                        <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-6">
-    <div class="panel widget-member2">
-        <div class="row">
-            <div class="col-lg-2 col-xs-3">
-                <img src="<?=base_url()?>public/dashboard_assets/images/avatars/profil4.jpg" alt="profil 4" class="pull-left img-responsive">
-            </div>
-            <div class="col-lg-10 col-xs-9">
-                <div class="clearfix">
-                    <h3 class="m-t-0 member-name"><strong>John Snow</strong> <span class="member-job">Software Engineer</span></h3>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p><i class="fa fa-map-marker c-gray-light p-r-10"></i> Cebu Business Park, Cebu City, Philippines</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xlg-4 col-lg-6 col-sm-4">
-                        <p><i class="fa fa-skype c-gray-light p-r-10"></i> weno.camesong</p>
-                    </div>
-                    <div class="col-xlg-4 col-lg-6 col-sm-4 align-right">
-                        <p><i class="icon-envelope  c-gray-light p-r-10"></i> cameso@it.com</p>
-                    </div>
-                    <div class="col-xlg-4 col-lg-6 col-sm-4 align-right">
-                        <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>-->
 </div>
 <!-- END PAGE CONTENT -->
 <script type="text/javascript">
@@ -382,31 +270,31 @@ foreach ($ip as $value){
                 echo "[".$lat[$i].",".$lon[$i]."],";                    
             }               
             }?>
-        ];
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 20,
-            center: new google.maps.LatLng(-39.92, 151.25),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        var infowindow = new google.maps.InfoWindow();
-        var marker, i;
-        var markers = new Array();
-        for (i = 0; i < locations.length; i++) {  
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-                map: map
-            });
-            markers.push(marker);
-        }
-        function AutoCenter() {
-            //  Create a new viewpoint bound
-            var bounds = new google.maps.LatLngBounds();
-            //  Go through each...
-            $.each(markers, function (index, marker) {
-                bounds.extend(marker.position);
-            });
-            //  Fit these bounds to the map
-            map.fitBounds(bounds);
-        }
-        AutoCenter();
+                    ];
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 20,
+                        center: new google.maps.LatLng(-39.92, 151.25),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+                    var infowindow = new google.maps.InfoWindow();
+                    var marker, i;
+                    var markers = new Array();
+                    for (i = 0; i < locations.length; i++) {  
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                            map: map
+                        });
+                        markers.push(marker);
+                    }
+                    function AutoCenter() {
+                        //  Create a new viewpoint bound
+                        var bounds = new google.maps.LatLngBounds();
+                        //  Go through each...
+                        $.each(markers, function (index, marker) {
+                            bounds.extend(marker.position);
+                        });
+                        //  Fit these bounds to the map
+                        map.fitBounds(bounds);
+                    }
+                    AutoCenter();
 </script>
